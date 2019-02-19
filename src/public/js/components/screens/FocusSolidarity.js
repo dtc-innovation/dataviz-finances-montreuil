@@ -17,7 +17,7 @@ import {EXPENDITURES} from '../../../../shared/js/finance/constants';
 import DownloadSection from "../../../../shared/js/components/gironde.fr/DownloadSection";
 
 
-import {urls, INSERTION_PICTO, ENFANCE_PICTO, HANDICAPES_PICTO, PERSONNES_AGEES_PICTO} from '../../constants/resources';
+import {assets, INSERTION_PICTO, ENFANCE_PICTO, HANDICAPES_PICTO, PERSONNES_AGEES_PICTO} from '../../constants/resources';
 
 import FocusDetail from '../FocusDetail';
 import FocusDonut from '../FocusDonut';
@@ -34,7 +34,7 @@ interface FocusSolidarityProps{
 */
 
 export function FocusSol({
-    currentYear, currentYearSolidarity, solidarityByYear, screenWidth, urls
+    currentYear, currentYearSolidarity, solidarityByYear, screenWidth, assets
 }) {
 
     const years = solidarityByYear.keySeq().toJS();
@@ -138,7 +138,7 @@ export function FocusSol({
             React.createElement(FocusDetail, {
                 className: 'insertion',
                 title: 'Personnes en insertion',
-                illustrationUrl: urls[INSERTION_PICTO],
+                illustration: assets[INSERTION_PICTO],
                 // (May 29th) different than what was hardcoded ("244 Millions €")
                 amount: currentYearSolidarity ? currentYearSolidarity.get('DF-2-1') : undefined,
                 proportion: currentYearSolidarity ? currentYearSolidarity.get('DF-2-1')/currentYearSolidarity.solidarityExpenditures : 1,
@@ -162,7 +162,7 @@ export function FocusSol({
             React.createElement(FocusDetail, {
                 className: 'handicap',
                 title: 'Personnes en situation de handicap',
-                illustrationUrl: urls[HANDICAPES_PICTO],
+                illustration: assets[HANDICAPES_PICTO],
                 // (May 29th) different than what was hardcoded ("218 Millions €",)
                 amount: currentYearSolidarity ? currentYearSolidarity.get('DF-2-2') : undefined,
                 proportion: currentYearSolidarity ? currentYearSolidarity.get('DF-2-2')/currentYearSolidarity.solidarityExpenditures : 1,
@@ -191,7 +191,7 @@ L’objectif de ces aides est de soutenir la vie à domicile, faciliter l’acce
             React.createElement(FocusDetail, {
                 className: 'elderly',
                 title: 'Personnes âgées',
-                illustrationUrl: urls[PERSONNES_AGEES_PICTO],
+                illustration: assets[PERSONNES_AGEES_PICTO],
                 amount: currentYearSolidarity ? currentYearSolidarity.get('DF-2-3') : undefined,
                 proportion: currentYearSolidarity ? currentYearSolidarity.get('DF-2-3')/currentYearSolidarity.solidarityExpenditures : 1,
                 text: `L’Allocation Personnalisée d’Autonomie (APA) est la principale aide financière destinée à favoriser l’autonomie des personnes âgées.  Elle est versée directement à la personne ou à l’établissement en charge de cette personne, selon des critères d’attribution précis. https://www.gironde.fr/handicap-grand-age/aides-et-prestations-apa-pch-et-cmi L’application de la loi d’adaptation de la société au vieillissement (ASV) a entraîné une revalorisation de l’APA.`,
@@ -214,7 +214,7 @@ L’objectif de ces aides est de soutenir la vie à domicile, faciliter l’acce
             React.createElement(FocusDetail, {
                 className: 'childhood',
                 title: 'Enfance',
-                illustrationUrl: urls[ENFANCE_PICTO],
+                illustration: assets[ENFANCE_PICTO],
                 // (May 29th) different than what was hardcoded ("168 Millions €")
                 amount: currentYearSolidarity ? currentYearSolidarity.get('DF-2-4') : undefined,
                 proportion: currentYearSolidarity ? currentYearSolidarity.get('DF-2-4')/currentYearSolidarity.solidarityExpenditures : 1,
@@ -293,7 +293,7 @@ export default connect(
             currentYearSolidarity: solidarityByYear.get(currentYear),
             solidarityByYear,
             screenWidth,
-            urls
+            assets
         };
     },
     () => ({})

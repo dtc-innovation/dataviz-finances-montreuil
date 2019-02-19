@@ -20,7 +20,7 @@ import { EXPENDITURES } from '../../../../shared/js/finance/constants';
 export function Home({
     expenditures,
     currentYear,
-    urls: {
+    assets: {
         explore,
         solidarity, invest, presence
     }
@@ -89,7 +89,7 @@ export default connect(
 
         return {
             currentYear,
-            urls: {
+            assets: {
                 explore: '#!/explorer',
                 solidarity: '#!/focus/'+SOLIDARITES,
                 invest: '#!/focus/'+INVEST,

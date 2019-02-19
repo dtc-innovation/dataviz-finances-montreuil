@@ -29,7 +29,7 @@ import PrimaryCallToAction from "../../../../shared/js/components/gironde.fr/Pri
 import Markdown from "../../../../shared/js/components/Markdown";
 import MoneyAmount from "../../../../shared/js/components/MoneyAmount";
 
-import { urls } from "../../constants/resources";
+import { assets } from "../../constants/resources";
 
 import M52ByFonction from "../M52ByFonction";
 import BudgetConstructionAnimation from "../BudgetConstructionAnimation";
@@ -42,7 +42,7 @@ export function TotalBudget({
     totals,
     m52Instruction,
     labelsById,
-    urls: {
+    assets: {
         expenditures: expURL,
         revenue: revURL,
         rf,
@@ -251,7 +251,7 @@ export default connect(
                       Subventions: totalById.get("DI-2")
                   }
                 : undefined,
-            urls: {
+            assets: {
                 expenditures: "#!/finance-details/" + EXPENDITURES,
                 revenue: "#!/finance-details/" + REVENUE,
                 rf: "#!/finance-details/" + RF,

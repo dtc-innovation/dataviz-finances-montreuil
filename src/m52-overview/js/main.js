@@ -10,7 +10,7 @@ import {hierarchicalM52} from '../../shared/js/finance/memoized';
 import xmlDocumentToDocumentBudgetaire from '../../shared/js/finance/xmlDocumentToDocumentBudgetaire';
 import makeNatureToChapitreFI from '../../shared/js/finance/makeNatureToChapitreFI.js';
 import visitHierarchical from '../../shared/js/finance/visitHierarchical.js';
-import {urls} from '../../public/js/constants/resources';
+import {assets} from '../../public/js/constants/resources';
 import {PAR_PUBLIC_VIEW, PAR_PRESTATION_VIEW, M52_INSTRUCTION, EXPENDITURES, REVENUE} from '../../shared/js/finance/constants';
 import {
     DOCUMENT_BUDGETAIRE_RECEIVED,

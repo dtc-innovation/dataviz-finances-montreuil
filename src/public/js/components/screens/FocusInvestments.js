@@ -27,7 +27,7 @@ import { EXPENDITURES, DI } from "../../../../shared/js/finance/constants";
 import { makeElementById } from "./FinanceElement";
 
 import {
-  urls,
+  assets,
   COLLEGE_PICTO,
   ENVIRONNEMENT_AMENAGEMENT_PICTO,
   PATRIMOINE_PICTO,
@@ -44,7 +44,7 @@ export function FocusSol({
   population,
   yearDIDetails,
   screenWidth,
-  urls
+  assets
 }) {
   const investmentProportion =
     yearInvestments &&
@@ -179,7 +179,7 @@ export function FocusSol({
       React.createElement(FocusDetail, {
         className: "colleges",
         title: "Les Collèges",
-        illustrationUrl: urls[COLLEGE_PICTO],
+        illustration: assets[COLLEGE_PICTO],
         amount: yearDIDetails ? yearDIDetails["DI-1-1"] : undefined,
         proportion: yearDIDetails
           ? yearDIDetails["DI-1-1"] / focusDetailsDenominator
@@ -200,7 +200,7 @@ export function FocusSol({
       React.createElement(FocusDetail, {
         className: "roads",
         title: "Infrastructures et routes",
-        illustrationUrl: urls[ROUTES_PICTO],
+        illustration: assets[ROUTES_PICTO],
         amount: yearDIDetails ? yearDIDetails["DI-1-2"] : undefined,
         proportion: yearDIDetails
           ? yearDIDetails["DI-1-2"] / focusDetailsDenominator
@@ -221,7 +221,7 @@ export function FocusSol({
       React.createElement(FocusDetail, {
         className: "buildings",
         title: "Patrimoine et Batiments",
-        illustrationUrl: urls[PATRIMOINE_PICTO],
+        illustration: assets[PATRIMOINE_PICTO],
         amount: yearDIDetails ? yearDIDetails["DI-1-3"] : undefined,
         proportion: yearDIDetails
           ? yearDIDetails["DI-1-3"] / focusDetailsDenominator
@@ -243,7 +243,7 @@ export function FocusSol({
       React.createElement(FocusDetail, {
         className: "environment",
         title: "Environnement et aménagement",
-        illustrationUrl: urls[ENVIRONNEMENT_AMENAGEMENT_PICTO],
+        illustration: assets[ENVIRONNEMENT_AMENAGEMENT_PICTO],
         amount: yearDIDetails ? yearDIDetails["DI-1-4"] : undefined,
         proportion: yearDIDetails
           ? yearDIDetails["DI-1-4"] / focusDetailsDenominator
@@ -264,7 +264,7 @@ export function FocusSol({
       React.createElement(FocusDetail, {
         className: "city-subsidy",
         title: "Subventions",
-        illustrationUrl: urls[SOUTIEN_COMMUNES_PICTO],
+        illustration: assets[SOUTIEN_COMMUNES_PICTO],
         amount: yearDIDetails ? yearDIDetails["DI-2"] : undefined,
         proportion: yearDIDetails
           ? yearDIDetails["DI-2"] / focusDetailsDenominator
@@ -289,7 +289,7 @@ export function FocusSol({
       React.createElement(FocusDetail, {
         className: "social-estate",
         title: "Immobilier social",
-        illustrationUrl: urls[SOUTIEN_COMMUNES_PICTO],
+        illustration: assets[SOUTIEN_COMMUNES_PICTO],
         amount: yearDIDetails ? yearDIDetails["DI-1-5"] : undefined,
         proportion: yearDIDetails
           ? yearDIDetails["DI-1-5"] / focusDetailsDenominator
@@ -407,7 +407,7 @@ export default connect(
       partitionByYear,
       population: 1505517, // source : https://www.gironde.fr/le-departement
       screenWidth,
-      urls
+      assets
     };
   },
   () => ({})

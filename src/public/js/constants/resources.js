@@ -1,3 +1,16 @@
+import insertionSvg from '../../../../images/Insertion.svg';
+import collegesSvg from '../../../../images/Colleges.svg';
+import enfanceSvg from '../../../../images/Enfance.svg';
+import environnementAmenagementSvg from '../../../../images/EnvironnementAmenagement.svg';
+import handicapesSvg from '../../../../images/Handicapes.svg';
+import patrimoineSvg from '../../../../images/Patrimoine.svg';
+import routesSvg from '../../../../images/routes.svg';
+import soutienCommunesSvg from '../../../../images/SoutienCommunes.svg';
+import personnesageesSvg from '../../../../images/Personnesagees.svg';
+import agentesDepartementSvg from '../../../../images/AgentesDepartement.svg';
+import carburantSvg from '../../../../images/Carburant.svg';
+import depensesElectriciteSvg from '../../../../images/depensesElectricite.svg';
+
 export const COMPTES_ADMINISTRATIFS = 'COMPTES_ADMINISTRATIFS';
 
 export const AGGREGATED_ATEMPORAL = "AGGREGATED_ATEMPORAL";
@@ -23,7 +36,7 @@ export const ELECTRICITE_PICTO = 'ELECTRICITE_PICTO';
 
 const env = process.env.NODE_ENV;
 
-export const urls = {
+export const assets = {
     // finance data
     [COMPTES_ADMINISTRATIFS]: {
         "production": undefined,
@@ -51,62 +64,62 @@ export const urls = {
     // pictos
     [INSERTION_PICTO]: {
         "production": undefined,
-        "demo": 'https://cdn.rawgit.com/datalocale/pictoGironde/master/Insertion.svg',
+        "demo": insertionSvg,
         get development() { return this.demo }
     }[env],
     [COLLEGE_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/Colleges.svg',
+        "demo": collegesSvg,
         get development() { return this.demo }
     }[env],
     [ENFANCE_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/Enfance.svg',
+        "demo": enfanceSvg,
         get development() { return this.demo }
     }[env],
     [ENVIRONNEMENT_AMENAGEMENT_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/EnvironnementAmenagement.svg',
+        "demo": environnementAmenagementSvg,
         get development() { return this.demo }
     }[env],
     [HANDICAPES_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/Handicapes.svg',
+        "demo": handicapesSvg,
         get development() { return this.demo }
     }[env],
     [PATRIMOINE_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/Patrimoine.svg',
+        "demo": patrimoineSvg,
         get development() { return this.demo }
     }[env],
     [ROUTES_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/routes.svg',
+        "demo": routesSvg,
         get development() { return this.demo }
     }[env],
     [SOUTIEN_COMMUNES_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/SoutienCommunes.svg',
+        "demo": soutienCommunesSvg,
         get development() { return this.demo }
     }[env],
     [PERSONNES_AGEES_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/Personnesagees.svg',
+        "demo": personnesageesSvg,
         get development() { return this.demo }
     }[env],
     [AGENTS_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/AgentesDepartement.svg',
+        "demo": agentesDepartementSvg,
         get development() { return this.demo }
     }[env],
     [CARBURANT_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/Carburant.svg',
+        "demo": carburantSvg,
         get development() { return this.demo }
     }[env],
     [ELECTRICITE_PICTO]: {
         "production": undefined,
-        "demo": 'https://rawgit.com/datalocale/pictoGironde/master/depensesElectricite.svg',
+        "demo": depensesElectriciteSvg,
         get development() { return this.demo }
     }[env]
 }

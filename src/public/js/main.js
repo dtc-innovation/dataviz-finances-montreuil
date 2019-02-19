@@ -6,7 +6,7 @@ import { Record, Map as ImmutableMap, List, Set as ImmutableSet } from 'immutabl
 import { csvParse } from 'd3-dsv';
 import page from 'page';
 
-import {urls, COMPTES_ADMINISTRATIFS, AGGREGATED_ATEMPORAL, AGGREGATED_TEMPORAL, CORRECTIONS_AGGREGATED} from './constants/resources';
+import {assets, COMPTES_ADMINISTRATIFS, AGGREGATED_ATEMPORAL, AGGREGATED_TEMPORAL, CORRECTIONS_AGGREGATED} from './constants/resources';
 import reducer from './reducer';
 
 import {LigneBudgetRecord, DocumentBudgetaire} from 'document-budgetaire/Records.js';
@@ -124,7 +124,7 @@ store.dispatch({
  * Fetching initial data
  *
  */
-fetch(urls[CORRECTIONS_AGGREGATED]).then(resp => resp.text())
+fetch(assets[CORRECTIONS_AGGREGATED]).then(resp => resp.text())
 .then(csvStringToCorrections)
 .then(corrections => {
     store.dispatch({
@@ -134,7 +134,7 @@ fetch(urls[CORRECTIONS_AGGREGATED]).then(resp => resp.text())
 });
 
 
-fetch(urls[COMPTES_ADMINISTRATIFS]).then(resp => resp.json())
+fetch(assets[COMPTES_ADMINISTRATIFS]).then(resp => resp.json())
 .then(docBudgs => {
     docBudgs = docBudgs.map(db => {
         db.rows = new ImmutableSet(db.rows.map(LigneBudgetRecord))
@@ -148,7 +148,7 @@ fetch(urls[COMPTES_ADMINISTRATIFS]).then(resp => resp.json())
 });
 
 
-fetch(urls[AGGREGATED_ATEMPORAL]).then(resp => resp.text())
+fetch(assets[AGGREGATED_ATEMPORAL]).then(resp => resp.text())
 .then(csvParse)
 .then(textList => {
     store.dispatch({
@@ -157,7 +157,7 @@ fetch(urls[AGGREGATED_ATEMPORAL]).then(resp => resp.text())
     });
 });
 
-fetch(urls[AGGREGATED_TEMPORAL]).then(resp => resp.text())
+fetch(assets[AGGREGATED_TEMPORAL]).then(resp => resp.text())
 .then(csvParse)
 .then(textList => {
     store.dispatch({
