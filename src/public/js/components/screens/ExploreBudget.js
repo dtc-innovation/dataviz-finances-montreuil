@@ -141,8 +141,8 @@ Ainsi les résultats financiers de la Gironde pour cet exercice se traduisent pa
             </div>
             <Markdown>
 Les chiffres étant issus du compte administratif, la différence entre
-le montant des recettes et le montant des dépenses représente l'excédent
-de l'exercice.
+le montant des recettes et le montant des dépenses représente l’excédent
+de l’exercice.
             </Markdown>
         </section>
 
@@ -152,7 +152,7 @@ de l'exercice.
 Le budget prévoit la répartition des recettes et des dépenses sur un
 exercice. Il est composé de la section de fonctionnement et d’investissement.
 Contrairement à l’Etat, les Départements, ont l’obligation d’adopter un budget
-à l’équilibre. Toutefois, le compte administratif peut présenter sur l'exercice
+à l’équilibre. Toutefois, le compte administratif peut présenter sur l’exercice
 un résultat excédentaire ou déficitaire.</Markdown>
 
             <Markdown>
