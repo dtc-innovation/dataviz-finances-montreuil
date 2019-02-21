@@ -1,4 +1,6 @@
 Date,Qui,Combien de temps,Numéro de facture
+<<<<<<< HEAD
+2019-02-21,Mélanie,0.5,
 2019-02-20,Sofia,0.5,
 2019-02-19,Sofia,1,
 2019-02-19,Thomas,0.25,
@@ -10,4 +12,3 @@ Date,Qui,Combien de temps,Numéro de facture
 2019-02-12,Sofia,0.5,20190217-000058
 2019-02-12,Thomas,1,20190217-000058
 2019-02-11,Thomas,1,20190217-000058
-
