@@ -56,6 +56,15 @@ $RX-L: 60%;
                 display: inline-block;
                 margin-right: 1.5em;
             }
+
+            @each $fi in ('F', 'I') {
+                .color.rdfi-#{$fi} {
+                    background: linear-gradient(90deg,
+                        map-get(map-get($rdfi, 'R'), $fi) 50%,
+                        map-get(map-get($rdfi, 'D'), $fi) 50%
+                    );
+                }
+            }
         }
     }
 
@@ -92,14 +101,8 @@ $RX-L: 60%;
         }
     }
 
-    @each $fi in ('F', 'I') {
-        .legend-list .color.rdfi-#{$fi} {
-                background: linear-gradient(90deg,
-                    map-get(map-get($rdfi, 'R'), $fi) 50%,
-                    map-get(map-get($rdfi, 'D'), $fi) 50%
-                );
-                border-radius: 100%;
-            }
+    .legend-list .color {
+        border-radius: 100%;
     }
 
     .bubble-chart-cluster {

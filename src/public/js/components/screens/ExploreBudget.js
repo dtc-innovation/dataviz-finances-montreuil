@@ -51,9 +51,9 @@ export class ExploreBudget extends Component{
                 aggregationTree.children.find(c => c.id.includes('DEPENSE')) :
                 aggregationTree.children.find(c => c.id.includes('RECETTE'))
             )
-            
+
             return rdTree && (FI === 'I' ?
-                rdTree.children.find(c => c.id.includes('INVESTISSEMENT')) : 
+                rdTree.children.find(c => c.id.includes('INVESTISSEMENT')) :
                 rdTree.children.find(c => c.id.includes('FONCTIONNEMENT'))
             );
         })
@@ -79,7 +79,7 @@ export class ExploreBudget extends Component{
         const currentYearrdfiTree = rdfiTreeByYear.get(currentYear);
 
             // For DF, dig to a specific level
-        let bubbleTreeData = (currentYearrdfiTree && RD === 'D' && FI === 'F') ? 
+        let bubbleTreeData = (currentYearrdfiTree && RD === 'D' && FI === 'F') ?
             currentYearrdfiTree.children.find(c => c.id.includes('Gestion courante'))
             : currentYearrdfiTree
 
@@ -103,16 +103,15 @@ export class ExploreBudget extends Component{
         let legendItemIds = [];
         if(barchartPartitionByYear.get(currentYear)){
             barchartPartitionByYear.get(currentYear).forEach(({contentId}, i) => {
-                const colorClassList = ['rdfi-D rdfi-F', 'rdfi-D rdfi-I', 'rdfi-R rdfi-F', 'rdfi-R rdfi-I']
-                colorClassById.set(contentId, colorClassList[i % colorClassList.length])
+                const colorClassList = ['rdfi-D', 'rdfi-D', 'rdfi-R', 'rdfi-R']
+                colorClassById.set(contentId, colorClassList[i % colorClassList.length] + ` area-color-${i+1}`)
             })
-            
+
             legendItemIds = barchartPartitionByYear
                 .map(partition => partition.map(part => part.contentId).toSet())
                 .toSet().flatten().toArray()
         }
 
-         
 
         const legendItems = legendItemIds.map(id => {
             let foundPart;
@@ -214,8 +213,8 @@ export class ExploreBudget extends Component{
                     </ul>
                 </nav>
 
-                { 
-                    currentYearrdfiTree ? 
+                {
+                    currentYearrdfiTree ?
                         <StackChart
                             xs={ years }
                             ysByX={barchartPartitionByYear.map(partition => partition.map(part => part.partAmount))}
