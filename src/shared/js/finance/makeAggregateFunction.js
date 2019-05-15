@@ -5,13 +5,13 @@ export default function makeAggregateFunction(aggregationDescription){
 
     function aggregationDescriptionNodeToAggregatedDocumentBudgetaireNode(aggregationDescriptionNode, documentBudgetaire){
         const {id, label, children, formula} = aggregationDescriptionNode;
-
         return AggregatedDocumentBudgetaire(Object.assign(
             {
                 id,
-                label, 
+                label,
+                rdfi: (id.includes(' RECETTE ') ? 'R' : 'D') + (id.includes(' FONCTIONNEMENT ') ? 'F' : 'I'),
             },
-            formula ? 
+            formula ?
                 // leaf
                 {
                     elements: documentBudgetaire.rows.filter(makeLigneBudgetFilterFromFormula(formula))

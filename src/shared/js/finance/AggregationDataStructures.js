@@ -24,11 +24,12 @@ interface AggregatedDocumentBudgetaire extends Readonly<{
     // in non-leaf nodes, total and elements are computed fields accumulating the children values
     total: number
     elements: ImmutableSet<LigneBudget>,
+    rdfi: string,
     children?: ImmutableSet<AggregatedDocumentBudgetaire>
 }>{}
 
 interface AggregateMaker {
-    (desc: AggregationDescription): 
+    (desc: AggregationDescription):
         (doc: DocumentBudgetaire) => AggregatedDocumentBudgetaire;
 }
 
@@ -56,6 +57,7 @@ export const AggregationDescription = Record(
 export const AggregatedDocumentBudgetaire = Record({
     id: undefined,
     label: undefined,
+    rdfi: undefined,
     elements: undefined,
     children: undefined
 })
