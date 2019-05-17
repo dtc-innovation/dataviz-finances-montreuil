@@ -1,4 +1,4 @@
-import { Map as ImmutableMap, List } from "immutable";
+import { Map as ImmutableMap, Set as ImmutableSet, List } from "immutable";
 
 import React, {Component} from "react";
 import { connect } from "react-redux";
@@ -52,10 +52,7 @@ export class ExploreBudget extends Component{
                 aggregationTree.children.find(c => c.id.includes('RECETTE'))
             )
 
-            return rdTree && (FI === 'I' ?
-                rdTree.children.find(c => c.id.includes('INVESTISSEMENT')) :
-                rdTree.children.find(c => c.id.includes('FONCTIONNEMENT'))
-            );
+            return rdTree;
         })
 
 
@@ -77,19 +74,29 @@ export class ExploreBudget extends Component{
 
         // Bubble data
         const currentYearrdfiTree = rdfiTreeByYear.get(currentYear);
-
-            // For DF, dig to a specific level
-        let bubbleTreeData = (currentYearrdfiTree && RD === 'D' && FI === 'F') ?
-            currentYearrdfiTree.children.find(c => c.id.includes('Gestion courante'))
-            : currentYearrdfiTree
-
+        let bubbleTreeData = currentYearrdfiTree && {
+            children: ImmutableSet().concat(
+                // Investissement and Fonctionnement are mixed together
+                ImmutableSet().concat(...currentYearrdfiTree.children.map(d => d.children))
+                    .filter(d => d.rdfi[0] === RD && d.label !== 'Gestion courante'),
+                // expand 'Gestion courante'
+                RD === 'D' ? ImmutableSet().concat(...currentYearrdfiTree.children.map(d => d.children))
+                    .find(d => d.label === 'Gestion courante')
+                    .children : [],
+            )
+        }
 
         // Build stackachart data from rdfiTree
         const years = aggregationTreeByYear.keySeq().toJS();
 
         const barchartPartitionByYear = rdfiTreeByYear.map(rdfiTree => {
+            const partition = (FI === 'I' ?
+                rdfiTree.children.find(c => c.id.includes('INVESTISSEMENT')) :
+                rdfiTree.children.find(c => c.id.includes('FONCTIONNEMENT'))
+            )
+
             // Create "level 2" data as a list
-            return rdfiTree.children.toList().map(c => {
+            return partition.children.toList().map(c => {
                 return {
                     contentId: c.id,
                     partAmount: aggregatedDocumentBudgetaireNodeTotal(c),
