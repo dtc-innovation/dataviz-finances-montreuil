@@ -170,9 +170,10 @@ in2csv --skip-lines 1 \
 
 Pour mettre à jour l'exercice budgétaire rendu visible dans la page d'accueil les étapes suivantes sont actuellement nécessaires
 
-
-1. Mettre le fichier XML du nouveau CA dans [`data/finances/CA`][folder-CA]
-1. Lancer la commande `npm run dl:plans-de-compte` pour ajouter automatiquement le bon plan de compte dans [`data/finances/planDeComptes`][folder-plan-de-compte] [^plan-de-compte].
+1. Anonymiser le fichier XML du nouveau CA [via l'outil dédié en ligne][anonymisation].
+2. Mettre le fichier XML anonymisé dans [`data/finances/CA`][folder-CA].
+3. Lancer la commande `npm run dl:plans-de-compte` pour ajouter automatiquement le bon plan de compte dans [`data/finances/planDeComptes`][folder-plan-de-compte] [^plan-de-compte].
+4.
 
 ### Les données d'agrégats
 
