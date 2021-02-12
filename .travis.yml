@@ -24,7 +24,7 @@ deploy:
   keep-history: false
   local-dir: dist
   on:
-    branch: master
+    branch: main
 
 # Other configs
 

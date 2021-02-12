@@ -1,4 +1,4 @@
-# Dataviz finances Montreuil [![Build Status](https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil.svg?branch=master)](https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil)
+# Dataviz finances Montreuil [![Build Status](https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil.svg)](https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil)
 
 ## Contribuer
 
@@ -97,7 +97,7 @@ Deux adresses sont ensuite accessibles :
 L'intégration continue est automatise les éléments suivants :
 
 * exécution des tests sur _chaque branche_ ;
-* déploiement de la [démo][] depuis _master_ ;
+* déploiement de la [démo][] depuis la branche `main` ;
 
 Le suivi des _builds_ est assuré par [Travis CI][].
 
@@ -225,7 +225,7 @@ L’outil contient des pages dites “focus” qui permettent au Département de
 [outil-agregations]: https://dtc-innovation.github.io/dataviz-finances-montreuil/
 [outil-formules]: https://dtc-innovation.github.io/dataviz-finances-montreuil/fonctions.html
 
-[folder-CA]: https://github.com/dtc-innovation/dataviz-finances-montreuil/tree/master/data/finances/CA
-[folder-plan-de-compte]: https://github.com/dtc-innovation/dataviz-finances-montreuil/tree/master/data/finances/plansDeCompte
+[folder-CA]: https://github.com/dtc-innovation/dataviz-finances-montreuil/tree/main/data/finances/CA
+[folder-plan-de-compte]: https://github.com/dtc-innovation/dataviz-finances-montreuil/tree/main/data/finances/plansDeCompte
 
 [^plans-de-compte]: La référence officielle des plans de compte se trouve en ligne sur http://odm-budgetaire.org/composants/normes/.

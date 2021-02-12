@@ -118,4 +118,4 @@ Vote du budget le 27 mars - une démo fonctionnelle est prête à cette date
     * Qu’est-ce que vous auriez envie d’apprendre sur ce sujet ? Pourquoi ?
 
 * Préparer également un formulaire en ligne
-* Synthèse des interviews en cours : https://github.com/dtc-innovation/dataviz-finances-montreuil/blob/master/docs/UserResearch_Synthese.md
+* Synthèse des interviews en cours : https://github.com/dtc-innovation/dataviz-finances-montreuil/blob/main/docs/UserResearch_Synthese.md
