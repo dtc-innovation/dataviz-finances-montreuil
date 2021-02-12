@@ -116,7 +116,7 @@ Reste ensuite à [configurer l'outil](#configurer-travis-ci).
 
 Un _Personal access token_ est nécessaire pour que l'automate d'intégration continue puisse publier la [démo][].
 
-🔓 [Générer un nouveau _token_](https://github.com/settings/tokens/new?description=datalocale.github.io/dataviz-finances-gironde&scopes=public_repo)
+🔓 [Générer un nouveau _token_](https://github.com/settings/tokens/new?description=dtc-innovation.github.io/dataviz-finances-montreuil&scopes=public_repo)
 
 Le token créé est à renseigner dans la [configuration Travis CI](#configurer-travis-ci).
 
@@ -173,7 +173,7 @@ Pour mettre à jour l'exercice budgétaire rendu visible dans la page d'accueil 
 1. Anonymiser le fichier XML du nouveau CA [via l'outil dédié en ligne][anonymisation].
 2. Mettre le fichier XML anonymisé dans [`data/finances/CA`][folder-CA].
 3. Lancer la commande `npm run dl:plans-de-compte` pour ajouter automatiquement le bon plan de compte dans [`data/finances/planDeComptes`][folder-plan-de-compte] [^plan-de-compte].
-4.
+4. [Vérifier que l'aggrégation Fonction-Nature][outil-agregations] ne contient pas de _lignes non-utilisées_, ni de _lignes utilisées plus qu'une fois_.
 
 ### Les données d'agrégats
 
@@ -222,7 +222,7 @@ L’outil contient des pages dites “focus” qui permettent au Département de
 [anonymisation]: https://dtc-innovation.github.io/anonymisation-document-budgetaire/
 
 [outil-exploration]: https://dtc-innovation.github.io/dataviz-finances-montreuil/public/
-[outil-agregations]: https://dtc-innovation.github.io/dataviz-finances-montreuil/
+[outil-agregations]: https://dtc-innovation.github.io/agregation-document-budgetaire/?montreuil
 [outil-formules]: https://dtc-innovation.github.io/dataviz-finances-montreuil/fonctions.html
 
 [folder-CA]: https://github.com/dtc-innovation/dataviz-finances-montreuil/tree/main/data/finances/CA
