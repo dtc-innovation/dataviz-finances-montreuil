@@ -17,6 +17,8 @@ jobs:
           node-version: '12.x'
 
       - run: npm ci
+      - run: npm test
+      - run: npm run build
 
       - name: Prepare
         run: |
@@ -27,8 +29,6 @@ jobs:
           cp -rf data ./dist
           cp -rf public ./dist
           cp -rf images ./dist
-
-      - run: npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

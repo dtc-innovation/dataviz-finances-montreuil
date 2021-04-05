@@ -1,4 +1,4 @@
-# Dataviz finances Montreuil [![Build Status](https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil.svg)](https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil)
+# Dataviz finances Montreuil [![Deploiement sur GitHub Pages](https://github.com/dtc-innovation/dataviz-finances-montreuil/actions/workflows/deploy.yml/badge.svg)](https://github.com/dtc-innovation/dataviz-finances-montreuil/actions/workflows/deploy.yml)
 
 ## Contribuer
 
@@ -99,36 +99,7 @@ L'intégration continue est automatise les éléments suivants :
 * exécution des tests sur _chaque branche_ ;
 * déploiement de la [démo][] depuis la branche `main` ;
 
-Le suivi des _builds_ est assuré par [Travis CI][].
-
-#### Actionner le projet
-
-En se rendant sur [Travis CI][] :
-
-1. se connecter avec son compte GitHub (_Sign in with Github_) ;
-2. se rendre sur son [profil Travis CI][] ;
-3. cocher la case du projet `datalocale/dataviz-finances-gironde`.
-
-Reste ensuite à [configurer l'outil](#configurer-travis-ci).
-
-
-#### Générer un token GitHub
-
-Un _Personal access token_ est nécessaire pour que l'automate d'intégration continue puisse publier la [démo][].
-
-🔓 [Générer un nouveau _token_](https://github.com/settings/tokens/new?description=dtc-innovation.github.io/dataviz-finances-montreuil&scopes=public_repo)
-
-Le token créé est à renseigner dans la [configuration Travis CI](#configurer-travis-ci).
-
-#### Configurer TravisCI
-
-Deux variables d'environnement doivent être configurées dans l'[onglet Settings][ci-settings] :
-
-| Name | Value | Display value in build logs |
-| ---- | ----- | --------------------------- |
-| `GH_TOKEN` | _voir [Générer un token](#générer-un-token)_ | **Off** |
-
-![](docs/ci-settings.png)
+Le suivi des _builds_ est assuré par [GitHub Actions].
 
 ## Déploiement
 
@@ -214,10 +185,8 @@ L’outil contient des pages dites “focus” qui permettent au Département de
 [MIT](LICENSE)
 
 [nodejs]: https://nodejs.org/
-[Travis CI]: https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil
-[profil Travis CI]: https://travis-ci.com/profile
+[GitHub Actions]: https://github.com/dtc-innovation/dataviz-finances-montreuil/actions/
 [démo]: https://dtc-innovation.github.io/dataviz-finances-montreuil/public/
-[ci-settings]: https://travis-ci.com/dtc-innovation/dataviz-finances-montreuil/settings
 [DocumentBudgetaire]: https://github.com/DavidBruant/colors-of-the-finances/blob/master/docs/format-fichier.md
 [anonymisation]: https://dtc-innovation.github.io/anonymisation-document-budgetaire/
 
