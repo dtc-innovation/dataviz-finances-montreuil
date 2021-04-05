@@ -1,0 +1,37 @@
+name: Deploiement sur GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+
+      - run: npm ci
+
+      - name: Prepare
+        run: |
+          mkdir ./dist
+          cp *.html ./dist
+          cp robots.txt ./dist
+          cp -rf build ./dist && rm ./dist/build/.gitignore
+          cp -rf data ./dist
+          cp -rf public ./dist
+          cp -rf images ./dist
+
+      - run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
