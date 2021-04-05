@@ -1,0 +1,3670 @@
+@charset "UTF-8";
+.finance-dataviz-container {
+  font: 16px/1.3 "Montserrat", sans-serif;
+  color: #342b24;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /*
+    http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+    */
+  /*
+    Makes the hidden attribute works even when an element is styled display: flex
+    http://lists.w3.org/Archives/Public/public-whatwg-archive/2014May/0001.html
+    */
+  /*
+    In applications, there can be lists but HTML lists have bullet points and a bunch of useless styling attributes
+    */
+  /* default iframe borders are just ugly */ }
+  .finance-dataviz-container h1, .finance-dataviz-container .h1,
+  .finance-dataviz-container h2, .finance-dataviz-container .h2,
+  .finance-dataviz-container h3, .finance-dataviz-container .h3,
+  .finance-dataviz-container h4, .finance-dataviz-container .h4,
+  .finance-dataviz-container h5, .finance-dataviz-container .h5 {
+    color: #342b24;
+    font-family: inherit;
+    font-weight: normal;
+    text-align: center; }
+  .finance-dataviz-container h1, .finance-dataviz-container h2, .finance-dataviz-container h3 {
+    color: #685c53;
+    margin: 0.2em 0; }
+  .finance-dataviz-container h2, .finance-dataviz-container .h2 {
+    font-size: 2.2em; }
+  .finance-dataviz-container h3, .finance-dataviz-container .h3 {
+    font-size: 1.8em; }
+  .finance-dataviz-container h4, .finance-dataviz-container .h4 {
+    font-size: 1.2em; }
+  .finance-dataviz-container p {
+    max-width: 60em; }
+  .finance-dataviz-container select {
+    display: inline;
+    width: auto;
+    max-width: 100%; }
+  .finance-dataviz-container div {
+    font-size: 1em; }
+  .finance-dataviz-container * {
+    color: inherit; }
+  .finance-dataviz-container *, .finance-dataviz-container *::before, .finance-dataviz-container *::after {
+    box-sizing: border-box;
+    /* if you really care about older browsers, add prefixed versions at your own risks */ }
+  .finance-dataviz-container [hidden] {
+    display: none !important; }
+  .finance-dataviz-container html, .finance-dataviz-container body {
+    padding: 0;
+    margin: 0; }
+  .finance-dataviz-container ul, .finance-dataviz-container ol, .finance-dataviz-container menu {
+    margin: 0;
+    padding: 0; }
+  .finance-dataviz-container ul, .finance-dataviz-container menu {
+    list-style: none; }
+  .finance-dataviz-container li {
+    margin: 0;
+    padding: 0; }
+  .finance-dataviz-container button {
+    cursor: pointer; }
+  .finance-dataviz-container iframe {
+    border: 0; }
+  .finance-dataviz-container * {
+    border-collapse: collapse; }
+  .finance-dataviz-container .markdown-rendered {
+    max-width: 60em; }
+    .finance-dataviz-container .markdown-rendered ul, .finance-dataviz-container .markdown-rendered ol {
+      list-style: initial;
+      padding: initial;
+      margin: 1em; }
+  .finance-dataviz-container > * {
+    width: 100%;
+    padding: 0; }
+    @media screen and (min-width: 600px) {
+      .finance-dataviz-container > * {
+        max-width: 1280px;
+        padding: 0; } }
+
+.article > h2 {
+  margin-bottom: 1em;
+  margin-top: 2em; }
+
+.color[class*="area-color-"] {
+  background-color: #000;
+  fill: #000; }
+
+svg .area-color-0.rdfi-D,
+span.area-color-0.rdfi-D,
+.area-color-0[class*="M52-DF"],
+.area-color-0[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-0,
+[class*="M52-DI"] .color.area-color-0 {
+  background-color: #EE9FCF;
+  fill: #EE9FCF; }
+  svg .area-color-0.rdfi-D rect, svg .area-color-0.rdfi-D circle, svg .area-color-0.rdfi-D path,
+  span.area-color-0.rdfi-D rect,
+  span.area-color-0.rdfi-D circle,
+  span.area-color-0.rdfi-D path,
+  .area-color-0[class*="M52-DF"] rect,
+  .area-color-0[class*="M52-DF"] circle,
+  .area-color-0[class*="M52-DF"] path,
+  .area-color-0[class*="M52-DI"] rect,
+  .area-color-0[class*="M52-DI"] circle,
+  .area-color-0[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-0 rect,
+  [class*="M52-DF"] .color.area-color-0 circle,
+  [class*="M52-DF"] .color.area-color-0 path,
+  [class*="M52-DI"] .color.area-color-0 rect,
+  [class*="M52-DI"] .color.area-color-0 circle,
+  [class*="M52-DI"] .color.area-color-0 path {
+    fill: #EE9FCF; }
+  svg .area-color-0.rdfi-D.darker,
+  span.area-color-0.rdfi-D.darker,
+  .area-color-0[class*="M52-DF"].darker,
+  .area-color-0[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-0.darker,
+  [class*="M52-DI"] .color.area-color-0.darker {
+    background-color: #df48a4;
+    fill: #df48a4; }
+    svg .area-color-0.rdfi-D.darker rect, svg .area-color-0.rdfi-D.darker circle, svg .area-color-0.rdfi-D.darker path,
+    span.area-color-0.rdfi-D.darker rect,
+    span.area-color-0.rdfi-D.darker circle,
+    span.area-color-0.rdfi-D.darker path,
+    .area-color-0[class*="M52-DF"].darker rect,
+    .area-color-0[class*="M52-DF"].darker circle,
+    .area-color-0[class*="M52-DF"].darker path,
+    .area-color-0[class*="M52-DI"].darker rect,
+    .area-color-0[class*="M52-DI"].darker circle,
+    .area-color-0[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-0.darker rect,
+    [class*="M52-DF"] .color.area-color-0.darker circle,
+    [class*="M52-DF"] .color.area-color-0.darker path,
+    [class*="M52-DI"] .color.area-color-0.darker rect,
+    [class*="M52-DI"] .color.area-color-0.darker circle,
+    [class*="M52-DI"] .color.area-color-0.darker path {
+      fill: #df48a4; }
+  svg .area-color-0.rdfi-D.lighter,
+  span.area-color-0.rdfi-D.lighter,
+  .area-color-0[class*="M52-DF"].lighter,
+  .area-color-0[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-0.lighter,
+  [class*="M52-DI"] .color.area-color-0.lighter {
+    background-color: #fdf6fa;
+    fill: #fdf6fa; }
+    svg .area-color-0.rdfi-D.lighter rect, svg .area-color-0.rdfi-D.lighter circle, svg .area-color-0.rdfi-D.lighter path,
+    span.area-color-0.rdfi-D.lighter rect,
+    span.area-color-0.rdfi-D.lighter circle,
+    span.area-color-0.rdfi-D.lighter path,
+    .area-color-0[class*="M52-DF"].lighter rect,
+    .area-color-0[class*="M52-DF"].lighter circle,
+    .area-color-0[class*="M52-DF"].lighter path,
+    .area-color-0[class*="M52-DI"].lighter rect,
+    .area-color-0[class*="M52-DI"].lighter circle,
+    .area-color-0[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-0.lighter rect,
+    [class*="M52-DF"] .color.area-color-0.lighter circle,
+    [class*="M52-DF"] .color.area-color-0.lighter path,
+    [class*="M52-DI"] .color.area-color-0.lighter rect,
+    [class*="M52-DI"] .color.area-color-0.lighter circle,
+    [class*="M52-DI"] .color.area-color-0.lighter path {
+      fill: #fdf6fa; }
+
+svg .area-color-0.rdfi-R,
+span.area-color-0.rdfi-R,
+.area-color-0[class*="M52-RF"],
+.area-color-0[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-0,
+[class*="M52-RI"] .color.area-color-0 {
+  background-color: #62A5CB;
+  fill: #62A5CB; }
+  svg .area-color-0.rdfi-R rect, svg .area-color-0.rdfi-R circle, svg .area-color-0.rdfi-R path,
+  span.area-color-0.rdfi-R rect,
+  span.area-color-0.rdfi-R circle,
+  span.area-color-0.rdfi-R path,
+  .area-color-0[class*="M52-RF"] rect,
+  .area-color-0[class*="M52-RF"] circle,
+  .area-color-0[class*="M52-RF"] path,
+  .area-color-0[class*="M52-RI"] rect,
+  .area-color-0[class*="M52-RI"] circle,
+  .area-color-0[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-0 rect,
+  [class*="M52-RF"] .color.area-color-0 circle,
+  [class*="M52-RF"] .color.area-color-0 path,
+  [class*="M52-RI"] .color.area-color-0 rect,
+  [class*="M52-RI"] .color.area-color-0 circle,
+  [class*="M52-RI"] .color.area-color-0 path {
+    fill: #62A5CB; }
+  svg .area-color-0.rdfi-R.darker,
+  span.area-color-0.rdfi-R.darker,
+  .area-color-0[class*="M52-RF"].darker,
+  .area-color-0[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-0.darker,
+  [class*="M52-RI"] .color.area-color-0.darker {
+    background-color: #327195;
+    fill: #327195; }
+    svg .area-color-0.rdfi-R.darker rect, svg .area-color-0.rdfi-R.darker circle, svg .area-color-0.rdfi-R.darker path,
+    span.area-color-0.rdfi-R.darker rect,
+    span.area-color-0.rdfi-R.darker circle,
+    span.area-color-0.rdfi-R.darker path,
+    .area-color-0[class*="M52-RF"].darker rect,
+    .area-color-0[class*="M52-RF"].darker circle,
+    .area-color-0[class*="M52-RF"].darker path,
+    .area-color-0[class*="M52-RI"].darker rect,
+    .area-color-0[class*="M52-RI"].darker circle,
+    .area-color-0[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-0.darker rect,
+    [class*="M52-RF"] .color.area-color-0.darker circle,
+    [class*="M52-RF"] .color.area-color-0.darker path,
+    [class*="M52-RI"] .color.area-color-0.darker rect,
+    [class*="M52-RI"] .color.area-color-0.darker circle,
+    [class*="M52-RI"] .color.area-color-0.darker path {
+      fill: #327195; }
+  svg .area-color-0.rdfi-R.lighter,
+  span.area-color-0.rdfi-R.lighter,
+  .area-color-0[class*="M52-RF"].lighter,
+  .area-color-0[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-0.lighter,
+  [class*="M52-RI"] .color.area-color-0.lighter {
+    background-color: #afd1e4;
+    fill: #afd1e4; }
+    svg .area-color-0.rdfi-R.lighter rect, svg .area-color-0.rdfi-R.lighter circle, svg .area-color-0.rdfi-R.lighter path,
+    span.area-color-0.rdfi-R.lighter rect,
+    span.area-color-0.rdfi-R.lighter circle,
+    span.area-color-0.rdfi-R.lighter path,
+    .area-color-0[class*="M52-RF"].lighter rect,
+    .area-color-0[class*="M52-RF"].lighter circle,
+    .area-color-0[class*="M52-RF"].lighter path,
+    .area-color-0[class*="M52-RI"].lighter rect,
+    .area-color-0[class*="M52-RI"].lighter circle,
+    .area-color-0[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-0.lighter rect,
+    [class*="M52-RF"] .color.area-color-0.lighter circle,
+    [class*="M52-RF"] .color.area-color-0.lighter path,
+    [class*="M52-RI"] .color.area-color-0.lighter rect,
+    [class*="M52-RI"] .color.area-color-0.lighter circle,
+    [class*="M52-RI"] .color.area-color-0.lighter path {
+      fill: #afd1e4; }
+
+svg .area-color-1.rdfi-D,
+span.area-color-1.rdfi-D,
+.area-color-1[class*="M52-DF"],
+.area-color-1[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-1,
+[class*="M52-DI"] .color.area-color-1 {
+  background-color: #FEC125;
+  fill: #FEC125; }
+  svg .area-color-1.rdfi-D rect, svg .area-color-1.rdfi-D circle, svg .area-color-1.rdfi-D path,
+  span.area-color-1.rdfi-D rect,
+  span.area-color-1.rdfi-D circle,
+  span.area-color-1.rdfi-D path,
+  .area-color-1[class*="M52-DF"] rect,
+  .area-color-1[class*="M52-DF"] circle,
+  .area-color-1[class*="M52-DF"] path,
+  .area-color-1[class*="M52-DI"] rect,
+  .area-color-1[class*="M52-DI"] circle,
+  .area-color-1[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-1 rect,
+  [class*="M52-DF"] .color.area-color-1 circle,
+  [class*="M52-DF"] .color.area-color-1 path,
+  [class*="M52-DI"] .color.area-color-1 rect,
+  [class*="M52-DI"] .color.area-color-1 circle,
+  [class*="M52-DI"] .color.area-color-1 path {
+    fill: #FEC125; }
+  svg .area-color-1.rdfi-D.darker,
+  span.area-color-1.rdfi-D.darker,
+  .area-color-1[class*="M52-DF"].darker,
+  .area-color-1[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-1.darker,
+  [class*="M52-DI"] .color.area-color-1.darker {
+    background-color: #bc8701;
+    fill: #bc8701; }
+    svg .area-color-1.rdfi-D.darker rect, svg .area-color-1.rdfi-D.darker circle, svg .area-color-1.rdfi-D.darker path,
+    span.area-color-1.rdfi-D.darker rect,
+    span.area-color-1.rdfi-D.darker circle,
+    span.area-color-1.rdfi-D.darker path,
+    .area-color-1[class*="M52-DF"].darker rect,
+    .area-color-1[class*="M52-DF"].darker circle,
+    .area-color-1[class*="M52-DF"].darker path,
+    .area-color-1[class*="M52-DI"].darker rect,
+    .area-color-1[class*="M52-DI"].darker circle,
+    .area-color-1[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-1.darker rect,
+    [class*="M52-DF"] .color.area-color-1.darker circle,
+    [class*="M52-DF"] .color.area-color-1.darker path,
+    [class*="M52-DI"] .color.area-color-1.darker rect,
+    [class*="M52-DI"] .color.area-color-1.darker circle,
+    [class*="M52-DI"] .color.area-color-1.darker path {
+      fill: #bc8701; }
+  svg .area-color-1.rdfi-D.lighter,
+  span.area-color-1.rdfi-D.lighter,
+  .area-color-1[class*="M52-DF"].lighter,
+  .area-color-1[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-1.lighter,
+  [class*="M52-DI"] .color.area-color-1.lighter {
+    background-color: #fede8b;
+    fill: #fede8b; }
+    svg .area-color-1.rdfi-D.lighter rect, svg .area-color-1.rdfi-D.lighter circle, svg .area-color-1.rdfi-D.lighter path,
+    span.area-color-1.rdfi-D.lighter rect,
+    span.area-color-1.rdfi-D.lighter circle,
+    span.area-color-1.rdfi-D.lighter path,
+    .area-color-1[class*="M52-DF"].lighter rect,
+    .area-color-1[class*="M52-DF"].lighter circle,
+    .area-color-1[class*="M52-DF"].lighter path,
+    .area-color-1[class*="M52-DI"].lighter rect,
+    .area-color-1[class*="M52-DI"].lighter circle,
+    .area-color-1[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-1.lighter rect,
+    [class*="M52-DF"] .color.area-color-1.lighter circle,
+    [class*="M52-DF"] .color.area-color-1.lighter path,
+    [class*="M52-DI"] .color.area-color-1.lighter rect,
+    [class*="M52-DI"] .color.area-color-1.lighter circle,
+    [class*="M52-DI"] .color.area-color-1.lighter path {
+      fill: #fede8b; }
+
+svg .area-color-1.rdfi-R,
+span.area-color-1.rdfi-R,
+.area-color-1[class*="M52-RF"],
+.area-color-1[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-1,
+[class*="M52-RI"] .color.area-color-1 {
+  background-color: #12982D;
+  fill: #12982D; }
+  svg .area-color-1.rdfi-R rect, svg .area-color-1.rdfi-R circle, svg .area-color-1.rdfi-R path,
+  span.area-color-1.rdfi-R rect,
+  span.area-color-1.rdfi-R circle,
+  span.area-color-1.rdfi-R path,
+  .area-color-1[class*="M52-RF"] rect,
+  .area-color-1[class*="M52-RF"] circle,
+  .area-color-1[class*="M52-RF"] path,
+  .area-color-1[class*="M52-RI"] rect,
+  .area-color-1[class*="M52-RI"] circle,
+  .area-color-1[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-1 rect,
+  [class*="M52-RF"] .color.area-color-1 circle,
+  [class*="M52-RF"] .color.area-color-1 path,
+  [class*="M52-RI"] .color.area-color-1 rect,
+  [class*="M52-RI"] .color.area-color-1 circle,
+  [class*="M52-RI"] .color.area-color-1 path {
+    fill: #12982D; }
+  svg .area-color-1.rdfi-R.darker,
+  span.area-color-1.rdfi-R.darker,
+  .area-color-1[class*="M52-RF"].darker,
+  .area-color-1[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-1.darker,
+  [class*="M52-RI"] .color.area-color-1.darker {
+    background-color: #073d12;
+    fill: #073d12; }
+    svg .area-color-1.rdfi-R.darker rect, svg .area-color-1.rdfi-R.darker circle, svg .area-color-1.rdfi-R.darker path,
+    span.area-color-1.rdfi-R.darker rect,
+    span.area-color-1.rdfi-R.darker circle,
+    span.area-color-1.rdfi-R.darker path,
+    .area-color-1[class*="M52-RF"].darker rect,
+    .area-color-1[class*="M52-RF"].darker circle,
+    .area-color-1[class*="M52-RF"].darker path,
+    .area-color-1[class*="M52-RI"].darker rect,
+    .area-color-1[class*="M52-RI"].darker circle,
+    .area-color-1[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-1.darker rect,
+    [class*="M52-RF"] .color.area-color-1.darker circle,
+    [class*="M52-RF"] .color.area-color-1.darker path,
+    [class*="M52-RI"] .color.area-color-1.darker rect,
+    [class*="M52-RI"] .color.area-color-1.darker circle,
+    [class*="M52-RI"] .color.area-color-1.darker path {
+      fill: #073d12; }
+  svg .area-color-1.rdfi-R.lighter,
+  span.area-color-1.rdfi-R.lighter,
+  .area-color-1[class*="M52-RF"].lighter,
+  .area-color-1[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-1.lighter,
+  [class*="M52-RI"] .color.area-color-1.lighter {
+    background-color: #2ae650;
+    fill: #2ae650; }
+    svg .area-color-1.rdfi-R.lighter rect, svg .area-color-1.rdfi-R.lighter circle, svg .area-color-1.rdfi-R.lighter path,
+    span.area-color-1.rdfi-R.lighter rect,
+    span.area-color-1.rdfi-R.lighter circle,
+    span.area-color-1.rdfi-R.lighter path,
+    .area-color-1[class*="M52-RF"].lighter rect,
+    .area-color-1[class*="M52-RF"].lighter circle,
+    .area-color-1[class*="M52-RF"].lighter path,
+    .area-color-1[class*="M52-RI"].lighter rect,
+    .area-color-1[class*="M52-RI"].lighter circle,
+    .area-color-1[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-1.lighter rect,
+    [class*="M52-RF"] .color.area-color-1.lighter circle,
+    [class*="M52-RF"] .color.area-color-1.lighter path,
+    [class*="M52-RI"] .color.area-color-1.lighter rect,
+    [class*="M52-RI"] .color.area-color-1.lighter circle,
+    [class*="M52-RI"] .color.area-color-1.lighter path {
+      fill: #2ae650; }
+
+svg .area-color-2.rdfi-D,
+span.area-color-2.rdfi-D,
+.area-color-2[class*="M52-DF"],
+.area-color-2[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-2,
+[class*="M52-DI"] .color.area-color-2 {
+  background-color: #FE6F3E;
+  fill: #FE6F3E; }
+  svg .area-color-2.rdfi-D rect, svg .area-color-2.rdfi-D circle, svg .area-color-2.rdfi-D path,
+  span.area-color-2.rdfi-D rect,
+  span.area-color-2.rdfi-D circle,
+  span.area-color-2.rdfi-D path,
+  .area-color-2[class*="M52-DF"] rect,
+  .area-color-2[class*="M52-DF"] circle,
+  .area-color-2[class*="M52-DF"] path,
+  .area-color-2[class*="M52-DI"] rect,
+  .area-color-2[class*="M52-DI"] circle,
+  .area-color-2[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-2 rect,
+  [class*="M52-DF"] .color.area-color-2 circle,
+  [class*="M52-DF"] .color.area-color-2 path,
+  [class*="M52-DI"] .color.area-color-2 rect,
+  [class*="M52-DI"] .color.area-color-2 circle,
+  [class*="M52-DI"] .color.area-color-2 path {
+    fill: #FE6F3E; }
+  svg .area-color-2.rdfi-D.darker,
+  span.area-color-2.rdfi-D.darker,
+  .area-color-2[class*="M52-DF"].darker,
+  .area-color-2[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-2.darker,
+  [class*="M52-DI"] .color.area-color-2.darker {
+    background-color: #d53701;
+    fill: #d53701; }
+    svg .area-color-2.rdfi-D.darker rect, svg .area-color-2.rdfi-D.darker circle, svg .area-color-2.rdfi-D.darker path,
+    span.area-color-2.rdfi-D.darker rect,
+    span.area-color-2.rdfi-D.darker circle,
+    span.area-color-2.rdfi-D.darker path,
+    .area-color-2[class*="M52-DF"].darker rect,
+    .area-color-2[class*="M52-DF"].darker circle,
+    .area-color-2[class*="M52-DF"].darker path,
+    .area-color-2[class*="M52-DI"].darker rect,
+    .area-color-2[class*="M52-DI"].darker circle,
+    .area-color-2[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-2.darker rect,
+    [class*="M52-DF"] .color.area-color-2.darker circle,
+    [class*="M52-DF"] .color.area-color-2.darker path,
+    [class*="M52-DI"] .color.area-color-2.darker rect,
+    [class*="M52-DI"] .color.area-color-2.darker circle,
+    [class*="M52-DI"] .color.area-color-2.darker path {
+      fill: #d53701; }
+  svg .area-color-2.rdfi-D.lighter,
+  span.area-color-2.rdfi-D.lighter,
+  .area-color-2[class*="M52-DF"].lighter,
+  .area-color-2[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-2.lighter,
+  [class*="M52-DI"] .color.area-color-2.lighter {
+    background-color: #ffbba3;
+    fill: #ffbba3; }
+    svg .area-color-2.rdfi-D.lighter rect, svg .area-color-2.rdfi-D.lighter circle, svg .area-color-2.rdfi-D.lighter path,
+    span.area-color-2.rdfi-D.lighter rect,
+    span.area-color-2.rdfi-D.lighter circle,
+    span.area-color-2.rdfi-D.lighter path,
+    .area-color-2[class*="M52-DF"].lighter rect,
+    .area-color-2[class*="M52-DF"].lighter circle,
+    .area-color-2[class*="M52-DF"].lighter path,
+    .area-color-2[class*="M52-DI"].lighter rect,
+    .area-color-2[class*="M52-DI"].lighter circle,
+    .area-color-2[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-2.lighter rect,
+    [class*="M52-DF"] .color.area-color-2.lighter circle,
+    [class*="M52-DF"] .color.area-color-2.lighter path,
+    [class*="M52-DI"] .color.area-color-2.lighter rect,
+    [class*="M52-DI"] .color.area-color-2.lighter circle,
+    [class*="M52-DI"] .color.area-color-2.lighter path {
+      fill: #ffbba3; }
+
+svg .area-color-2.rdfi-R,
+span.area-color-2.rdfi-R,
+.area-color-2[class*="M52-RF"],
+.area-color-2[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-2,
+[class*="M52-RI"] .color.area-color-2 {
+  background-color: #5AAF4B;
+  fill: #5AAF4B; }
+  svg .area-color-2.rdfi-R rect, svg .area-color-2.rdfi-R circle, svg .area-color-2.rdfi-R path,
+  span.area-color-2.rdfi-R rect,
+  span.area-color-2.rdfi-R circle,
+  span.area-color-2.rdfi-R path,
+  .area-color-2[class*="M52-RF"] rect,
+  .area-color-2[class*="M52-RF"] circle,
+  .area-color-2[class*="M52-RF"] path,
+  .area-color-2[class*="M52-RI"] rect,
+  .area-color-2[class*="M52-RI"] circle,
+  .area-color-2[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-2 rect,
+  [class*="M52-RF"] .color.area-color-2 circle,
+  [class*="M52-RF"] .color.area-color-2 path,
+  [class*="M52-RI"] .color.area-color-2 rect,
+  [class*="M52-RI"] .color.area-color-2 circle,
+  [class*="M52-RI"] .color.area-color-2 path {
+    fill: #5AAF4B; }
+  svg .area-color-2.rdfi-R.darker,
+  span.area-color-2.rdfi-R.darker,
+  .area-color-2[class*="M52-RF"].darker,
+  .area-color-2[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-2.darker,
+  [class*="M52-RI"] .color.area-color-2.darker {
+    background-color: #35682c;
+    fill: #35682c; }
+    svg .area-color-2.rdfi-R.darker rect, svg .area-color-2.rdfi-R.darker circle, svg .area-color-2.rdfi-R.darker path,
+    span.area-color-2.rdfi-R.darker rect,
+    span.area-color-2.rdfi-R.darker circle,
+    span.area-color-2.rdfi-R.darker path,
+    .area-color-2[class*="M52-RF"].darker rect,
+    .area-color-2[class*="M52-RF"].darker circle,
+    .area-color-2[class*="M52-RF"].darker path,
+    .area-color-2[class*="M52-RI"].darker rect,
+    .area-color-2[class*="M52-RI"].darker circle,
+    .area-color-2[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-2.darker rect,
+    [class*="M52-RF"] .color.area-color-2.darker circle,
+    [class*="M52-RF"] .color.area-color-2.darker path,
+    [class*="M52-RI"] .color.area-color-2.darker rect,
+    [class*="M52-RI"] .color.area-color-2.darker circle,
+    [class*="M52-RI"] .color.area-color-2.darker path {
+      fill: #35682c; }
+  svg .area-color-2.rdfi-R.lighter,
+  span.area-color-2.rdfi-R.lighter,
+  .area-color-2[class*="M52-RF"].lighter,
+  .area-color-2[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-2.lighter,
+  [class*="M52-RI"] .color.area-color-2.lighter {
+    background-color: #9ad090;
+    fill: #9ad090; }
+    svg .area-color-2.rdfi-R.lighter rect, svg .area-color-2.rdfi-R.lighter circle, svg .area-color-2.rdfi-R.lighter path,
+    span.area-color-2.rdfi-R.lighter rect,
+    span.area-color-2.rdfi-R.lighter circle,
+    span.area-color-2.rdfi-R.lighter path,
+    .area-color-2[class*="M52-RF"].lighter rect,
+    .area-color-2[class*="M52-RF"].lighter circle,
+    .area-color-2[class*="M52-RF"].lighter path,
+    .area-color-2[class*="M52-RI"].lighter rect,
+    .area-color-2[class*="M52-RI"].lighter circle,
+    .area-color-2[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-2.lighter rect,
+    [class*="M52-RF"] .color.area-color-2.lighter circle,
+    [class*="M52-RF"] .color.area-color-2.lighter path,
+    [class*="M52-RI"] .color.area-color-2.lighter rect,
+    [class*="M52-RI"] .color.area-color-2.lighter circle,
+    [class*="M52-RI"] .color.area-color-2.lighter path {
+      fill: #9ad090; }
+
+svg .area-color-3.rdfi-D,
+span.area-color-3.rdfi-D,
+.area-color-3[class*="M52-DF"],
+.area-color-3[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-3,
+[class*="M52-DI"] .color.area-color-3 {
+  background-color: #FF6C7E;
+  fill: #FF6C7E; }
+  svg .area-color-3.rdfi-D rect, svg .area-color-3.rdfi-D circle, svg .area-color-3.rdfi-D path,
+  span.area-color-3.rdfi-D rect,
+  span.area-color-3.rdfi-D circle,
+  span.area-color-3.rdfi-D path,
+  .area-color-3[class*="M52-DF"] rect,
+  .area-color-3[class*="M52-DF"] circle,
+  .area-color-3[class*="M52-DF"] path,
+  .area-color-3[class*="M52-DI"] rect,
+  .area-color-3[class*="M52-DI"] circle,
+  .area-color-3[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-3 rect,
+  [class*="M52-DF"] .color.area-color-3 circle,
+  [class*="M52-DF"] .color.area-color-3 path,
+  [class*="M52-DI"] .color.area-color-3 rect,
+  [class*="M52-DI"] .color.area-color-3 circle,
+  [class*="M52-DI"] .color.area-color-3 path {
+    fill: #FF6C7E; }
+  svg .area-color-3.rdfi-D.darker,
+  span.area-color-3.rdfi-D.darker,
+  .area-color-3[class*="M52-DF"].darker,
+  .area-color-3[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-3.darker,
+  [class*="M52-DI"] .color.area-color-3.darker {
+    background-color: #ff0624;
+    fill: #ff0624; }
+    svg .area-color-3.rdfi-D.darker rect, svg .area-color-3.rdfi-D.darker circle, svg .area-color-3.rdfi-D.darker path,
+    span.area-color-3.rdfi-D.darker rect,
+    span.area-color-3.rdfi-D.darker circle,
+    span.area-color-3.rdfi-D.darker path,
+    .area-color-3[class*="M52-DF"].darker rect,
+    .area-color-3[class*="M52-DF"].darker circle,
+    .area-color-3[class*="M52-DF"].darker path,
+    .area-color-3[class*="M52-DI"].darker rect,
+    .area-color-3[class*="M52-DI"].darker circle,
+    .area-color-3[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-3.darker rect,
+    [class*="M52-DF"] .color.area-color-3.darker circle,
+    [class*="M52-DF"] .color.area-color-3.darker path,
+    [class*="M52-DI"] .color.area-color-3.darker rect,
+    [class*="M52-DI"] .color.area-color-3.darker circle,
+    [class*="M52-DI"] .color.area-color-3.darker path {
+      fill: #ff0624; }
+  svg .area-color-3.rdfi-D.lighter,
+  span.area-color-3.rdfi-D.lighter,
+  .area-color-3[class*="M52-DF"].lighter,
+  .area-color-3[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-3.lighter,
+  [class*="M52-DI"] .color.area-color-3.lighter {
+    background-color: #ffd2d8;
+    fill: #ffd2d8; }
+    svg .area-color-3.rdfi-D.lighter rect, svg .area-color-3.rdfi-D.lighter circle, svg .area-color-3.rdfi-D.lighter path,
+    span.area-color-3.rdfi-D.lighter rect,
+    span.area-color-3.rdfi-D.lighter circle,
+    span.area-color-3.rdfi-D.lighter path,
+    .area-color-3[class*="M52-DF"].lighter rect,
+    .area-color-3[class*="M52-DF"].lighter circle,
+    .area-color-3[class*="M52-DF"].lighter path,
+    .area-color-3[class*="M52-DI"].lighter rect,
+    .area-color-3[class*="M52-DI"].lighter circle,
+    .area-color-3[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-3.lighter rect,
+    [class*="M52-DF"] .color.area-color-3.lighter circle,
+    [class*="M52-DF"] .color.area-color-3.lighter path,
+    [class*="M52-DI"] .color.area-color-3.lighter rect,
+    [class*="M52-DI"] .color.area-color-3.lighter circle,
+    [class*="M52-DI"] .color.area-color-3.lighter path {
+      fill: #ffd2d8; }
+
+svg .area-color-3.rdfi-R,
+span.area-color-3.rdfi-R,
+.area-color-3[class*="M52-RF"],
+.area-color-3[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-3,
+[class*="M52-RI"] .color.area-color-3 {
+  background-color: #00AAD2;
+  fill: #00AAD2; }
+  svg .area-color-3.rdfi-R rect, svg .area-color-3.rdfi-R circle, svg .area-color-3.rdfi-R path,
+  span.area-color-3.rdfi-R rect,
+  span.area-color-3.rdfi-R circle,
+  span.area-color-3.rdfi-R path,
+  .area-color-3[class*="M52-RF"] rect,
+  .area-color-3[class*="M52-RF"] circle,
+  .area-color-3[class*="M52-RF"] path,
+  .area-color-3[class*="M52-RI"] rect,
+  .area-color-3[class*="M52-RI"] circle,
+  .area-color-3[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-3 rect,
+  [class*="M52-RF"] .color.area-color-3 circle,
+  [class*="M52-RF"] .color.area-color-3 path,
+  [class*="M52-RI"] .color.area-color-3 rect,
+  [class*="M52-RI"] .color.area-color-3 circle,
+  [class*="M52-RI"] .color.area-color-3 path {
+    fill: #00AAD2; }
+  svg .area-color-3.rdfi-R.darker,
+  span.area-color-3.rdfi-R.darker,
+  .area-color-3[class*="M52-RF"].darker,
+  .area-color-3[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-3.darker,
+  [class*="M52-RI"] .color.area-color-3.darker {
+    background-color: #00576c;
+    fill: #00576c; }
+    svg .area-color-3.rdfi-R.darker rect, svg .area-color-3.rdfi-R.darker circle, svg .area-color-3.rdfi-R.darker path,
+    span.area-color-3.rdfi-R.darker rect,
+    span.area-color-3.rdfi-R.darker circle,
+    span.area-color-3.rdfi-R.darker path,
+    .area-color-3[class*="M52-RF"].darker rect,
+    .area-color-3[class*="M52-RF"].darker circle,
+    .area-color-3[class*="M52-RF"].darker path,
+    .area-color-3[class*="M52-RI"].darker rect,
+    .area-color-3[class*="M52-RI"].darker circle,
+    .area-color-3[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-3.darker rect,
+    [class*="M52-RF"] .color.area-color-3.darker circle,
+    [class*="M52-RF"] .color.area-color-3.darker path,
+    [class*="M52-RI"] .color.area-color-3.darker rect,
+    [class*="M52-RI"] .color.area-color-3.darker circle,
+    [class*="M52-RI"] .color.area-color-3.darker path {
+      fill: #00576c; }
+  svg .area-color-3.rdfi-R.lighter,
+  span.area-color-3.rdfi-R.lighter,
+  .area-color-3[class*="M52-RF"].lighter,
+  .area-color-3[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-3.lighter,
+  [class*="M52-RI"] .color.area-color-3.lighter {
+    background-color: #39d9ff;
+    fill: #39d9ff; }
+    svg .area-color-3.rdfi-R.lighter rect, svg .area-color-3.rdfi-R.lighter circle, svg .area-color-3.rdfi-R.lighter path,
+    span.area-color-3.rdfi-R.lighter rect,
+    span.area-color-3.rdfi-R.lighter circle,
+    span.area-color-3.rdfi-R.lighter path,
+    .area-color-3[class*="M52-RF"].lighter rect,
+    .area-color-3[class*="M52-RF"].lighter circle,
+    .area-color-3[class*="M52-RF"].lighter path,
+    .area-color-3[class*="M52-RI"].lighter rect,
+    .area-color-3[class*="M52-RI"].lighter circle,
+    .area-color-3[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-3.lighter rect,
+    [class*="M52-RF"] .color.area-color-3.lighter circle,
+    [class*="M52-RF"] .color.area-color-3.lighter path,
+    [class*="M52-RI"] .color.area-color-3.lighter rect,
+    [class*="M52-RI"] .color.area-color-3.lighter circle,
+    [class*="M52-RI"] .color.area-color-3.lighter path {
+      fill: #39d9ff; }
+
+svg .area-color-4.rdfi-D,
+span.area-color-4.rdfi-D,
+.area-color-4[class*="M52-DF"],
+.area-color-4[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-4,
+[class*="M52-DI"] .color.area-color-4 {
+  background-color: #E2A302;
+  fill: #E2A302; }
+  svg .area-color-4.rdfi-D rect, svg .area-color-4.rdfi-D circle, svg .area-color-4.rdfi-D path,
+  span.area-color-4.rdfi-D rect,
+  span.area-color-4.rdfi-D circle,
+  span.area-color-4.rdfi-D path,
+  .area-color-4[class*="M52-DF"] rect,
+  .area-color-4[class*="M52-DF"] circle,
+  .area-color-4[class*="M52-DF"] path,
+  .area-color-4[class*="M52-DI"] rect,
+  .area-color-4[class*="M52-DI"] circle,
+  .area-color-4[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-4 rect,
+  [class*="M52-DF"] .color.area-color-4 circle,
+  [class*="M52-DF"] .color.area-color-4 path,
+  [class*="M52-DI"] .color.area-color-4 rect,
+  [class*="M52-DI"] .color.area-color-4 circle,
+  [class*="M52-DI"] .color.area-color-4 path {
+    fill: #E2A302; }
+  svg .area-color-4.rdfi-D.darker,
+  span.area-color-4.rdfi-D.darker,
+  .area-color-4[class*="M52-DF"].darker,
+  .area-color-4[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-4.darker,
+  [class*="M52-DI"] .color.area-color-4.darker {
+    background-color: #7d5a01;
+    fill: #7d5a01; }
+    svg .area-color-4.rdfi-D.darker rect, svg .area-color-4.rdfi-D.darker circle, svg .area-color-4.rdfi-D.darker path,
+    span.area-color-4.rdfi-D.darker rect,
+    span.area-color-4.rdfi-D.darker circle,
+    span.area-color-4.rdfi-D.darker path,
+    .area-color-4[class*="M52-DF"].darker rect,
+    .area-color-4[class*="M52-DF"].darker circle,
+    .area-color-4[class*="M52-DF"].darker path,
+    .area-color-4[class*="M52-DI"].darker rect,
+    .area-color-4[class*="M52-DI"].darker circle,
+    .area-color-4[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-4.darker rect,
+    [class*="M52-DF"] .color.area-color-4.darker circle,
+    [class*="M52-DF"] .color.area-color-4.darker path,
+    [class*="M52-DI"] .color.area-color-4.darker rect,
+    [class*="M52-DI"] .color.area-color-4.darker circle,
+    [class*="M52-DI"] .color.area-color-4.darker path {
+      fill: #7d5a01; }
+  svg .area-color-4.rdfi-D.lighter,
+  span.area-color-4.rdfi-D.lighter,
+  .area-color-4[class*="M52-DF"].lighter,
+  .area-color-4[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-4.lighter,
+  [class*="M52-DI"] .color.area-color-4.lighter {
+    background-color: #fdcc4d;
+    fill: #fdcc4d; }
+    svg .area-color-4.rdfi-D.lighter rect, svg .area-color-4.rdfi-D.lighter circle, svg .area-color-4.rdfi-D.lighter path,
+    span.area-color-4.rdfi-D.lighter rect,
+    span.area-color-4.rdfi-D.lighter circle,
+    span.area-color-4.rdfi-D.lighter path,
+    .area-color-4[class*="M52-DF"].lighter rect,
+    .area-color-4[class*="M52-DF"].lighter circle,
+    .area-color-4[class*="M52-DF"].lighter path,
+    .area-color-4[class*="M52-DI"].lighter rect,
+    .area-color-4[class*="M52-DI"].lighter circle,
+    .area-color-4[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-4.lighter rect,
+    [class*="M52-DF"] .color.area-color-4.lighter circle,
+    [class*="M52-DF"] .color.area-color-4.lighter path,
+    [class*="M52-DI"] .color.area-color-4.lighter rect,
+    [class*="M52-DI"] .color.area-color-4.lighter circle,
+    [class*="M52-DI"] .color.area-color-4.lighter path {
+      fill: #fdcc4d; }
+
+svg .area-color-4.rdfi-R,
+span.area-color-4.rdfi-R,
+.area-color-4[class*="M52-RF"],
+.area-color-4[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-4,
+[class*="M52-RI"] .color.area-color-4 {
+  background-color: #462D87;
+  fill: #462D87; }
+  svg .area-color-4.rdfi-R rect, svg .area-color-4.rdfi-R circle, svg .area-color-4.rdfi-R path,
+  span.area-color-4.rdfi-R rect,
+  span.area-color-4.rdfi-R circle,
+  span.area-color-4.rdfi-R path,
+  .area-color-4[class*="M52-RF"] rect,
+  .area-color-4[class*="M52-RF"] circle,
+  .area-color-4[class*="M52-RF"] path,
+  .area-color-4[class*="M52-RI"] rect,
+  .area-color-4[class*="M52-RI"] circle,
+  .area-color-4[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-4 rect,
+  [class*="M52-RF"] .color.area-color-4 circle,
+  [class*="M52-RF"] .color.area-color-4 path,
+  [class*="M52-RI"] .color.area-color-4 rect,
+  [class*="M52-RI"] .color.area-color-4 circle,
+  [class*="M52-RI"] .color.area-color-4 path {
+    fill: #462D87; }
+  svg .area-color-4.rdfi-R.darker,
+  span.area-color-4.rdfi-R.darker,
+  .area-color-4[class*="M52-RF"].darker,
+  .area-color-4[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-4.darker,
+  [class*="M52-RI"] .color.area-color-4.darker {
+    background-color: #1e143b;
+    fill: #1e143b; }
+    svg .area-color-4.rdfi-R.darker rect, svg .area-color-4.rdfi-R.darker circle, svg .area-color-4.rdfi-R.darker path,
+    span.area-color-4.rdfi-R.darker rect,
+    span.area-color-4.rdfi-R.darker circle,
+    span.area-color-4.rdfi-R.darker path,
+    .area-color-4[class*="M52-RF"].darker rect,
+    .area-color-4[class*="M52-RF"].darker circle,
+    .area-color-4[class*="M52-RF"].darker path,
+    .area-color-4[class*="M52-RI"].darker rect,
+    .area-color-4[class*="M52-RI"].darker circle,
+    .area-color-4[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-4.darker rect,
+    [class*="M52-RF"] .color.area-color-4.darker circle,
+    [class*="M52-RF"] .color.area-color-4.darker path,
+    [class*="M52-RI"] .color.area-color-4.darker rect,
+    [class*="M52-RI"] .color.area-color-4.darker circle,
+    [class*="M52-RI"] .color.area-color-4.darker path {
+      fill: #1e143b; }
+  svg .area-color-4.rdfi-R.lighter,
+  span.area-color-4.rdfi-R.lighter,
+  .area-color-4[class*="M52-RF"].lighter,
+  .area-color-4[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-4.lighter,
+  [class*="M52-RI"] .color.area-color-4.lighter {
+    background-color: #7454c6;
+    fill: #7454c6; }
+    svg .area-color-4.rdfi-R.lighter rect, svg .area-color-4.rdfi-R.lighter circle, svg .area-color-4.rdfi-R.lighter path,
+    span.area-color-4.rdfi-R.lighter rect,
+    span.area-color-4.rdfi-R.lighter circle,
+    span.area-color-4.rdfi-R.lighter path,
+    .area-color-4[class*="M52-RF"].lighter rect,
+    .area-color-4[class*="M52-RF"].lighter circle,
+    .area-color-4[class*="M52-RF"].lighter path,
+    .area-color-4[class*="M52-RI"].lighter rect,
+    .area-color-4[class*="M52-RI"].lighter circle,
+    .area-color-4[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-4.lighter rect,
+    [class*="M52-RF"] .color.area-color-4.lighter circle,
+    [class*="M52-RF"] .color.area-color-4.lighter path,
+    [class*="M52-RI"] .color.area-color-4.lighter rect,
+    [class*="M52-RI"] .color.area-color-4.lighter circle,
+    [class*="M52-RI"] .color.area-color-4.lighter path {
+      fill: #7454c6; }
+
+svg .area-color-5.rdfi-D,
+span.area-color-5.rdfi-D,
+.area-color-5[class*="M52-DF"],
+.area-color-5[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-5,
+[class*="M52-DI"] .color.area-color-5 {
+  background-color: #670501;
+  fill: #670501; }
+  svg .area-color-5.rdfi-D rect, svg .area-color-5.rdfi-D circle, svg .area-color-5.rdfi-D path,
+  span.area-color-5.rdfi-D rect,
+  span.area-color-5.rdfi-D circle,
+  span.area-color-5.rdfi-D path,
+  .area-color-5[class*="M52-DF"] rect,
+  .area-color-5[class*="M52-DF"] circle,
+  .area-color-5[class*="M52-DF"] path,
+  .area-color-5[class*="M52-DI"] rect,
+  .area-color-5[class*="M52-DI"] circle,
+  .area-color-5[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-5 rect,
+  [class*="M52-DF"] .color.area-color-5 circle,
+  [class*="M52-DF"] .color.area-color-5 path,
+  [class*="M52-DI"] .color.area-color-5 rect,
+  [class*="M52-DI"] .color.area-color-5 circle,
+  [class*="M52-DI"] .color.area-color-5 path {
+    fill: #670501; }
+  svg .area-color-5.rdfi-D.darker,
+  span.area-color-5.rdfi-D.darker,
+  .area-color-5[class*="M52-DF"].darker,
+  .area-color-5[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-5.darker,
+  [class*="M52-DI"] .color.area-color-5.darker {
+    background-color: #020000;
+    fill: #020000; }
+    svg .area-color-5.rdfi-D.darker rect, svg .area-color-5.rdfi-D.darker circle, svg .area-color-5.rdfi-D.darker path,
+    span.area-color-5.rdfi-D.darker rect,
+    span.area-color-5.rdfi-D.darker circle,
+    span.area-color-5.rdfi-D.darker path,
+    .area-color-5[class*="M52-DF"].darker rect,
+    .area-color-5[class*="M52-DF"].darker circle,
+    .area-color-5[class*="M52-DF"].darker path,
+    .area-color-5[class*="M52-DI"].darker rect,
+    .area-color-5[class*="M52-DI"].darker circle,
+    .area-color-5[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-5.darker rect,
+    [class*="M52-DF"] .color.area-color-5.darker circle,
+    [class*="M52-DF"] .color.area-color-5.darker path,
+    [class*="M52-DI"] .color.area-color-5.darker rect,
+    [class*="M52-DI"] .color.area-color-5.darker circle,
+    [class*="M52-DI"] .color.area-color-5.darker path {
+      fill: #020000; }
+  svg .area-color-5.rdfi-D.lighter,
+  span.area-color-5.rdfi-D.lighter,
+  .area-color-5[class*="M52-DF"].lighter,
+  .area-color-5[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-5.lighter,
+  [class*="M52-DI"] .color.area-color-5.lighter {
+    background-color: #cc0a02;
+    fill: #cc0a02; }
+    svg .area-color-5.rdfi-D.lighter rect, svg .area-color-5.rdfi-D.lighter circle, svg .area-color-5.rdfi-D.lighter path,
+    span.area-color-5.rdfi-D.lighter rect,
+    span.area-color-5.rdfi-D.lighter circle,
+    span.area-color-5.rdfi-D.lighter path,
+    .area-color-5[class*="M52-DF"].lighter rect,
+    .area-color-5[class*="M52-DF"].lighter circle,
+    .area-color-5[class*="M52-DF"].lighter path,
+    .area-color-5[class*="M52-DI"].lighter rect,
+    .area-color-5[class*="M52-DI"].lighter circle,
+    .area-color-5[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-5.lighter rect,
+    [class*="M52-DF"] .color.area-color-5.lighter circle,
+    [class*="M52-DF"] .color.area-color-5.lighter path,
+    [class*="M52-DI"] .color.area-color-5.lighter rect,
+    [class*="M52-DI"] .color.area-color-5.lighter circle,
+    [class*="M52-DI"] .color.area-color-5.lighter path {
+      fill: #cc0a02; }
+
+svg .area-color-5.rdfi-R,
+span.area-color-5.rdfi-R,
+.area-color-5[class*="M52-RF"],
+.area-color-5[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-5,
+[class*="M52-RI"] .color.area-color-5 {
+  background-color: #ABD533;
+  fill: #ABD533; }
+  svg .area-color-5.rdfi-R rect, svg .area-color-5.rdfi-R circle, svg .area-color-5.rdfi-R path,
+  span.area-color-5.rdfi-R rect,
+  span.area-color-5.rdfi-R circle,
+  span.area-color-5.rdfi-R path,
+  .area-color-5[class*="M52-RF"] rect,
+  .area-color-5[class*="M52-RF"] circle,
+  .area-color-5[class*="M52-RF"] path,
+  .area-color-5[class*="M52-RI"] rect,
+  .area-color-5[class*="M52-RI"] circle,
+  .area-color-5[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-5 rect,
+  [class*="M52-RF"] .color.area-color-5 circle,
+  [class*="M52-RF"] .color.area-color-5 path,
+  [class*="M52-RI"] .color.area-color-5 rect,
+  [class*="M52-RI"] .color.area-color-5 circle,
+  [class*="M52-RI"] .color.area-color-5 path {
+    fill: #ABD533; }
+  svg .area-color-5.rdfi-R.darker,
+  span.area-color-5.rdfi-R.darker,
+  .area-color-5[class*="M52-RF"].darker,
+  .area-color-5[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-5.darker,
+  [class*="M52-RI"] .color.area-color-5.darker {
+    background-color: #6b861c;
+    fill: #6b861c; }
+    svg .area-color-5.rdfi-R.darker rect, svg .area-color-5.rdfi-R.darker circle, svg .area-color-5.rdfi-R.darker path,
+    span.area-color-5.rdfi-R.darker rect,
+    span.area-color-5.rdfi-R.darker circle,
+    span.area-color-5.rdfi-R.darker path,
+    .area-color-5[class*="M52-RF"].darker rect,
+    .area-color-5[class*="M52-RF"].darker circle,
+    .area-color-5[class*="M52-RF"].darker path,
+    .area-color-5[class*="M52-RI"].darker rect,
+    .area-color-5[class*="M52-RI"].darker circle,
+    .area-color-5[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-5.darker rect,
+    [class*="M52-RF"] .color.area-color-5.darker circle,
+    [class*="M52-RF"] .color.area-color-5.darker path,
+    [class*="M52-RI"] .color.area-color-5.darker rect,
+    [class*="M52-RI"] .color.area-color-5.darker circle,
+    [class*="M52-RI"] .color.area-color-5.darker path {
+      fill: #6b861c; }
+  svg .area-color-5.rdfi-R.lighter,
+  span.area-color-5.rdfi-R.lighter,
+  .area-color-5[class*="M52-RF"].lighter,
+  .area-color-5[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-5.lighter,
+  [class*="M52-RI"] .color.area-color-5.lighter {
+    background-color: #cee688;
+    fill: #cee688; }
+    svg .area-color-5.rdfi-R.lighter rect, svg .area-color-5.rdfi-R.lighter circle, svg .area-color-5.rdfi-R.lighter path,
+    span.area-color-5.rdfi-R.lighter rect,
+    span.area-color-5.rdfi-R.lighter circle,
+    span.area-color-5.rdfi-R.lighter path,
+    .area-color-5[class*="M52-RF"].lighter rect,
+    .area-color-5[class*="M52-RF"].lighter circle,
+    .area-color-5[class*="M52-RF"].lighter path,
+    .area-color-5[class*="M52-RI"].lighter rect,
+    .area-color-5[class*="M52-RI"].lighter circle,
+    .area-color-5[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-5.lighter rect,
+    [class*="M52-RF"] .color.area-color-5.lighter circle,
+    [class*="M52-RF"] .color.area-color-5.lighter path,
+    [class*="M52-RI"] .color.area-color-5.lighter rect,
+    [class*="M52-RI"] .color.area-color-5.lighter circle,
+    [class*="M52-RI"] .color.area-color-5.lighter path {
+      fill: #cee688; }
+
+svg .area-color-6.rdfi-D,
+span.area-color-6.rdfi-D,
+.area-color-6[class*="M52-DF"],
+.area-color-6[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-6,
+[class*="M52-DI"] .color.area-color-6 {
+  background-color: #95704D;
+  fill: #95704D; }
+  svg .area-color-6.rdfi-D rect, svg .area-color-6.rdfi-D circle, svg .area-color-6.rdfi-D path,
+  span.area-color-6.rdfi-D rect,
+  span.area-color-6.rdfi-D circle,
+  span.area-color-6.rdfi-D path,
+  .area-color-6[class*="M52-DF"] rect,
+  .area-color-6[class*="M52-DF"] circle,
+  .area-color-6[class*="M52-DF"] path,
+  .area-color-6[class*="M52-DI"] rect,
+  .area-color-6[class*="M52-DI"] circle,
+  .area-color-6[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-6 rect,
+  [class*="M52-DF"] .color.area-color-6 circle,
+  [class*="M52-DF"] .color.area-color-6 path,
+  [class*="M52-DI"] .color.area-color-6 rect,
+  [class*="M52-DI"] .color.area-color-6 circle,
+  [class*="M52-DI"] .color.area-color-6 path {
+    fill: #95704D; }
+  svg .area-color-6.rdfi-D.darker,
+  span.area-color-6.rdfi-D.darker,
+  .area-color-6[class*="M52-DF"].darker,
+  .area-color-6[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-6.darker,
+  [class*="M52-DI"] .color.area-color-6.darker {
+    background-color: #523d2a;
+    fill: #523d2a; }
+    svg .area-color-6.rdfi-D.darker rect, svg .area-color-6.rdfi-D.darker circle, svg .area-color-6.rdfi-D.darker path,
+    span.area-color-6.rdfi-D.darker rect,
+    span.area-color-6.rdfi-D.darker circle,
+    span.area-color-6.rdfi-D.darker path,
+    .area-color-6[class*="M52-DF"].darker rect,
+    .area-color-6[class*="M52-DF"].darker circle,
+    .area-color-6[class*="M52-DF"].darker path,
+    .area-color-6[class*="M52-DI"].darker rect,
+    .area-color-6[class*="M52-DI"].darker circle,
+    .area-color-6[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-6.darker rect,
+    [class*="M52-DF"] .color.area-color-6.darker circle,
+    [class*="M52-DF"] .color.area-color-6.darker path,
+    [class*="M52-DI"] .color.area-color-6.darker rect,
+    [class*="M52-DI"] .color.area-color-6.darker circle,
+    [class*="M52-DI"] .color.area-color-6.darker path {
+      fill: #523d2a; }
+  svg .area-color-6.rdfi-D.lighter,
+  span.area-color-6.rdfi-D.lighter,
+  .area-color-6[class*="M52-DF"].lighter,
+  .area-color-6[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-6.lighter,
+  [class*="M52-DI"] .color.area-color-6.lighter {
+    background-color: #c1a387;
+    fill: #c1a387; }
+    svg .area-color-6.rdfi-D.lighter rect, svg .area-color-6.rdfi-D.lighter circle, svg .area-color-6.rdfi-D.lighter path,
+    span.area-color-6.rdfi-D.lighter rect,
+    span.area-color-6.rdfi-D.lighter circle,
+    span.area-color-6.rdfi-D.lighter path,
+    .area-color-6[class*="M52-DF"].lighter rect,
+    .area-color-6[class*="M52-DF"].lighter circle,
+    .area-color-6[class*="M52-DF"].lighter path,
+    .area-color-6[class*="M52-DI"].lighter rect,
+    .area-color-6[class*="M52-DI"].lighter circle,
+    .area-color-6[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-6.lighter rect,
+    [class*="M52-DF"] .color.area-color-6.lighter circle,
+    [class*="M52-DF"] .color.area-color-6.lighter path,
+    [class*="M52-DI"] .color.area-color-6.lighter rect,
+    [class*="M52-DI"] .color.area-color-6.lighter circle,
+    [class*="M52-DI"] .color.area-color-6.lighter path {
+      fill: #c1a387; }
+
+svg .area-color-6.rdfi-R,
+span.area-color-6.rdfi-R,
+.area-color-6[class*="M52-RF"],
+.area-color-6[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-6,
+[class*="M52-RI"] .color.area-color-6 {
+  background-color: #317CB2;
+  fill: #317CB2; }
+  svg .area-color-6.rdfi-R rect, svg .area-color-6.rdfi-R circle, svg .area-color-6.rdfi-R path,
+  span.area-color-6.rdfi-R rect,
+  span.area-color-6.rdfi-R circle,
+  span.area-color-6.rdfi-R path,
+  .area-color-6[class*="M52-RF"] rect,
+  .area-color-6[class*="M52-RF"] circle,
+  .area-color-6[class*="M52-RF"] path,
+  .area-color-6[class*="M52-RI"] rect,
+  .area-color-6[class*="M52-RI"] circle,
+  .area-color-6[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-6 rect,
+  [class*="M52-RF"] .color.area-color-6 circle,
+  [class*="M52-RF"] .color.area-color-6 path,
+  [class*="M52-RI"] .color.area-color-6 rect,
+  [class*="M52-RI"] .color.area-color-6 circle,
+  [class*="M52-RI"] .color.area-color-6 path {
+    fill: #317CB2; }
+  svg .area-color-6.rdfi-R.darker,
+  span.area-color-6.rdfi-R.darker,
+  .area-color-6[class*="M52-RF"].darker,
+  .area-color-6[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-6.darker,
+  [class*="M52-RI"] .color.area-color-6.darker {
+    background-color: #1b4462;
+    fill: #1b4462; }
+    svg .area-color-6.rdfi-R.darker rect, svg .area-color-6.rdfi-R.darker circle, svg .area-color-6.rdfi-R.darker path,
+    span.area-color-6.rdfi-R.darker rect,
+    span.area-color-6.rdfi-R.darker circle,
+    span.area-color-6.rdfi-R.darker path,
+    .area-color-6[class*="M52-RF"].darker rect,
+    .area-color-6[class*="M52-RF"].darker circle,
+    .area-color-6[class*="M52-RF"].darker path,
+    .area-color-6[class*="M52-RI"].darker rect,
+    .area-color-6[class*="M52-RI"].darker circle,
+    .area-color-6[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-6.darker rect,
+    [class*="M52-RF"] .color.area-color-6.darker circle,
+    [class*="M52-RF"] .color.area-color-6.darker path,
+    [class*="M52-RI"] .color.area-color-6.darker rect,
+    [class*="M52-RI"] .color.area-color-6.darker circle,
+    [class*="M52-RI"] .color.area-color-6.darker path {
+      fill: #1b4462; }
+  svg .area-color-6.rdfi-R.lighter,
+  span.area-color-6.rdfi-R.lighter,
+  .area-color-6[class*="M52-RF"].lighter,
+  .area-color-6[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-6.lighter,
+  [class*="M52-RI"] .color.area-color-6.lighter {
+    background-color: #71add8;
+    fill: #71add8; }
+    svg .area-color-6.rdfi-R.lighter rect, svg .area-color-6.rdfi-R.lighter circle, svg .area-color-6.rdfi-R.lighter path,
+    span.area-color-6.rdfi-R.lighter rect,
+    span.area-color-6.rdfi-R.lighter circle,
+    span.area-color-6.rdfi-R.lighter path,
+    .area-color-6[class*="M52-RF"].lighter rect,
+    .area-color-6[class*="M52-RF"].lighter circle,
+    .area-color-6[class*="M52-RF"].lighter path,
+    .area-color-6[class*="M52-RI"].lighter rect,
+    .area-color-6[class*="M52-RI"].lighter circle,
+    .area-color-6[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-6.lighter rect,
+    [class*="M52-RF"] .color.area-color-6.lighter circle,
+    [class*="M52-RF"] .color.area-color-6.lighter path,
+    [class*="M52-RI"] .color.area-color-6.lighter rect,
+    [class*="M52-RI"] .color.area-color-6.lighter circle,
+    [class*="M52-RI"] .color.area-color-6.lighter path {
+      fill: #71add8; }
+
+svg .area-color-7.rdfi-D,
+span.area-color-7.rdfi-D,
+.area-color-7[class*="M52-DF"],
+.area-color-7[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-7,
+[class*="M52-DI"] .color.area-color-7 {
+  background-color: #B34A01;
+  fill: #B34A01; }
+  svg .area-color-7.rdfi-D rect, svg .area-color-7.rdfi-D circle, svg .area-color-7.rdfi-D path,
+  span.area-color-7.rdfi-D rect,
+  span.area-color-7.rdfi-D circle,
+  span.area-color-7.rdfi-D path,
+  .area-color-7[class*="M52-DF"] rect,
+  .area-color-7[class*="M52-DF"] circle,
+  .area-color-7[class*="M52-DF"] path,
+  .area-color-7[class*="M52-DI"] rect,
+  .area-color-7[class*="M52-DI"] circle,
+  .area-color-7[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-7 rect,
+  [class*="M52-DF"] .color.area-color-7 circle,
+  [class*="M52-DF"] .color.area-color-7 path,
+  [class*="M52-DI"] .color.area-color-7 rect,
+  [class*="M52-DI"] .color.area-color-7 circle,
+  [class*="M52-DI"] .color.area-color-7 path {
+    fill: #B34A01; }
+  svg .area-color-7.rdfi-D.darker,
+  span.area-color-7.rdfi-D.darker,
+  .area-color-7[class*="M52-DF"].darker,
+  .area-color-7[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-7.darker,
+  [class*="M52-DI"] .color.area-color-7.darker {
+    background-color: #4e2000;
+    fill: #4e2000; }
+    svg .area-color-7.rdfi-D.darker rect, svg .area-color-7.rdfi-D.darker circle, svg .area-color-7.rdfi-D.darker path,
+    span.area-color-7.rdfi-D.darker rect,
+    span.area-color-7.rdfi-D.darker circle,
+    span.area-color-7.rdfi-D.darker path,
+    .area-color-7[class*="M52-DF"].darker rect,
+    .area-color-7[class*="M52-DF"].darker circle,
+    .area-color-7[class*="M52-DF"].darker path,
+    .area-color-7[class*="M52-DI"].darker rect,
+    .area-color-7[class*="M52-DI"].darker circle,
+    .area-color-7[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-7.darker rect,
+    [class*="M52-DF"] .color.area-color-7.darker circle,
+    [class*="M52-DF"] .color.area-color-7.darker path,
+    [class*="M52-DI"] .color.area-color-7.darker rect,
+    [class*="M52-DI"] .color.area-color-7.darker circle,
+    [class*="M52-DI"] .color.area-color-7.darker path {
+      fill: #4e2000; }
+  svg .area-color-7.rdfi-D.lighter,
+  span.area-color-7.rdfi-D.lighter,
+  .area-color-7[class*="M52-DF"].lighter,
+  .area-color-7[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-7.lighter,
+  [class*="M52-DI"] .color.area-color-7.lighter {
+    background-color: #fe791c;
+    fill: #fe791c; }
+    svg .area-color-7.rdfi-D.lighter rect, svg .area-color-7.rdfi-D.lighter circle, svg .area-color-7.rdfi-D.lighter path,
+    span.area-color-7.rdfi-D.lighter rect,
+    span.area-color-7.rdfi-D.lighter circle,
+    span.area-color-7.rdfi-D.lighter path,
+    .area-color-7[class*="M52-DF"].lighter rect,
+    .area-color-7[class*="M52-DF"].lighter circle,
+    .area-color-7[class*="M52-DF"].lighter path,
+    .area-color-7[class*="M52-DI"].lighter rect,
+    .area-color-7[class*="M52-DI"].lighter circle,
+    .area-color-7[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-7.lighter rect,
+    [class*="M52-DF"] .color.area-color-7.lighter circle,
+    [class*="M52-DF"] .color.area-color-7.lighter path,
+    [class*="M52-DI"] .color.area-color-7.lighter rect,
+    [class*="M52-DI"] .color.area-color-7.lighter circle,
+    [class*="M52-DI"] .color.area-color-7.lighter path {
+      fill: #fe791c; }
+
+svg .area-color-7.rdfi-R,
+span.area-color-7.rdfi-R,
+.area-color-7[class*="M52-RF"],
+.area-color-7[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-7,
+[class*="M52-RI"] .color.area-color-7 {
+  background-color: #A2B8F0;
+  fill: #A2B8F0; }
+  svg .area-color-7.rdfi-R rect, svg .area-color-7.rdfi-R circle, svg .area-color-7.rdfi-R path,
+  span.area-color-7.rdfi-R rect,
+  span.area-color-7.rdfi-R circle,
+  span.area-color-7.rdfi-R path,
+  .area-color-7[class*="M52-RF"] rect,
+  .area-color-7[class*="M52-RF"] circle,
+  .area-color-7[class*="M52-RF"] path,
+  .area-color-7[class*="M52-RI"] rect,
+  .area-color-7[class*="M52-RI"] circle,
+  .area-color-7[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-7 rect,
+  [class*="M52-RF"] .color.area-color-7 circle,
+  [class*="M52-RF"] .color.area-color-7 path,
+  [class*="M52-RI"] .color.area-color-7 rect,
+  [class*="M52-RI"] .color.area-color-7 circle,
+  [class*="M52-RI"] .color.area-color-7 path {
+    fill: #A2B8F0; }
+  svg .area-color-7.rdfi-R.darker,
+  span.area-color-7.rdfi-R.darker,
+  .area-color-7[class*="M52-RF"].darker,
+  .area-color-7[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-7.darker,
+  [class*="M52-RI"] .color.area-color-7.darker {
+    background-color: #4a75e2;
+    fill: #4a75e2; }
+    svg .area-color-7.rdfi-R.darker rect, svg .area-color-7.rdfi-R.darker circle, svg .area-color-7.rdfi-R.darker path,
+    span.area-color-7.rdfi-R.darker rect,
+    span.area-color-7.rdfi-R.darker circle,
+    span.area-color-7.rdfi-R.darker path,
+    .area-color-7[class*="M52-RF"].darker rect,
+    .area-color-7[class*="M52-RF"].darker circle,
+    .area-color-7[class*="M52-RF"].darker path,
+    .area-color-7[class*="M52-RI"].darker rect,
+    .area-color-7[class*="M52-RI"].darker circle,
+    .area-color-7[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-7.darker rect,
+    [class*="M52-RF"] .color.area-color-7.darker circle,
+    [class*="M52-RF"] .color.area-color-7.darker path,
+    [class*="M52-RI"] .color.area-color-7.darker rect,
+    [class*="M52-RI"] .color.area-color-7.darker circle,
+    [class*="M52-RI"] .color.area-color-7.darker path {
+      fill: #4a75e2; }
+  svg .area-color-7.rdfi-R.lighter,
+  span.area-color-7.rdfi-R.lighter,
+  .area-color-7[class*="M52-RF"].lighter,
+  .area-color-7[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-7.lighter,
+  [class*="M52-RI"] .color.area-color-7.lighter {
+    background-color: #fafbfe;
+    fill: #fafbfe; }
+    svg .area-color-7.rdfi-R.lighter rect, svg .area-color-7.rdfi-R.lighter circle, svg .area-color-7.rdfi-R.lighter path,
+    span.area-color-7.rdfi-R.lighter rect,
+    span.area-color-7.rdfi-R.lighter circle,
+    span.area-color-7.rdfi-R.lighter path,
+    .area-color-7[class*="M52-RF"].lighter rect,
+    .area-color-7[class*="M52-RF"].lighter circle,
+    .area-color-7[class*="M52-RF"].lighter path,
+    .area-color-7[class*="M52-RI"].lighter rect,
+    .area-color-7[class*="M52-RI"].lighter circle,
+    .area-color-7[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-7.lighter rect,
+    [class*="M52-RF"] .color.area-color-7.lighter circle,
+    [class*="M52-RF"] .color.area-color-7.lighter path,
+    [class*="M52-RI"] .color.area-color-7.lighter rect,
+    [class*="M52-RI"] .color.area-color-7.lighter circle,
+    [class*="M52-RI"] .color.area-color-7.lighter path {
+      fill: #fafbfe; }
+
+svg .area-color-8.rdfi-D,
+span.area-color-8.rdfi-D,
+.area-color-8[class*="M52-DF"],
+.area-color-8[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-8,
+[class*="M52-DI"] .color.area-color-8 {
+  background-color: #F7393A;
+  fill: #F7393A; }
+  svg .area-color-8.rdfi-D rect, svg .area-color-8.rdfi-D circle, svg .area-color-8.rdfi-D path,
+  span.area-color-8.rdfi-D rect,
+  span.area-color-8.rdfi-D circle,
+  span.area-color-8.rdfi-D path,
+  .area-color-8[class*="M52-DF"] rect,
+  .area-color-8[class*="M52-DF"] circle,
+  .area-color-8[class*="M52-DF"] path,
+  .area-color-8[class*="M52-DI"] rect,
+  .area-color-8[class*="M52-DI"] circle,
+  .area-color-8[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-8 rect,
+  [class*="M52-DF"] .color.area-color-8 circle,
+  [class*="M52-DF"] .color.area-color-8 path,
+  [class*="M52-DI"] .color.area-color-8 rect,
+  [class*="M52-DI"] .color.area-color-8 circle,
+  [class*="M52-DI"] .color.area-color-8 path {
+    fill: #F7393A; }
+  svg .area-color-8.rdfi-D.darker,
+  span.area-color-8.rdfi-D.darker,
+  .area-color-8[class*="M52-DF"].darker,
+  .area-color-8[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-8.darker,
+  [class*="M52-DI"] .color.area-color-8.darker {
+    background-color: #c20809;
+    fill: #c20809; }
+    svg .area-color-8.rdfi-D.darker rect, svg .area-color-8.rdfi-D.darker circle, svg .area-color-8.rdfi-D.darker path,
+    span.area-color-8.rdfi-D.darker rect,
+    span.area-color-8.rdfi-D.darker circle,
+    span.area-color-8.rdfi-D.darker path,
+    .area-color-8[class*="M52-DF"].darker rect,
+    .area-color-8[class*="M52-DF"].darker circle,
+    .area-color-8[class*="M52-DF"].darker path,
+    .area-color-8[class*="M52-DI"].darker rect,
+    .area-color-8[class*="M52-DI"].darker circle,
+    .area-color-8[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-8.darker rect,
+    [class*="M52-DF"] .color.area-color-8.darker circle,
+    [class*="M52-DF"] .color.area-color-8.darker path,
+    [class*="M52-DI"] .color.area-color-8.darker rect,
+    [class*="M52-DI"] .color.area-color-8.darker circle,
+    [class*="M52-DI"] .color.area-color-8.darker path {
+      fill: #c20809; }
+  svg .area-color-8.rdfi-D.lighter,
+  span.area-color-8.rdfi-D.lighter,
+  .area-color-8[class*="M52-DF"].lighter,
+  .area-color-8[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-8.lighter,
+  [class*="M52-DI"] .color.area-color-8.lighter {
+    background-color: #fb9b9c;
+    fill: #fb9b9c; }
+    svg .area-color-8.rdfi-D.lighter rect, svg .area-color-8.rdfi-D.lighter circle, svg .area-color-8.rdfi-D.lighter path,
+    span.area-color-8.rdfi-D.lighter rect,
+    span.area-color-8.rdfi-D.lighter circle,
+    span.area-color-8.rdfi-D.lighter path,
+    .area-color-8[class*="M52-DF"].lighter rect,
+    .area-color-8[class*="M52-DF"].lighter circle,
+    .area-color-8[class*="M52-DF"].lighter path,
+    .area-color-8[class*="M52-DI"].lighter rect,
+    .area-color-8[class*="M52-DI"].lighter circle,
+    .area-color-8[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-8.lighter rect,
+    [class*="M52-DF"] .color.area-color-8.lighter circle,
+    [class*="M52-DF"] .color.area-color-8.lighter path,
+    [class*="M52-DI"] .color.area-color-8.lighter rect,
+    [class*="M52-DI"] .color.area-color-8.lighter circle,
+    [class*="M52-DI"] .color.area-color-8.lighter path {
+      fill: #fb9b9c; }
+
+svg .area-color-8.rdfi-R,
+span.area-color-8.rdfi-R,
+.area-color-8[class*="M52-RF"],
+.area-color-8[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-8,
+[class*="M52-RI"] .color.area-color-8 {
+  background-color: #02424A;
+  fill: #02424A; }
+  svg .area-color-8.rdfi-R rect, svg .area-color-8.rdfi-R circle, svg .area-color-8.rdfi-R path,
+  span.area-color-8.rdfi-R rect,
+  span.area-color-8.rdfi-R circle,
+  span.area-color-8.rdfi-R path,
+  .area-color-8[class*="M52-RF"] rect,
+  .area-color-8[class*="M52-RF"] circle,
+  .area-color-8[class*="M52-RF"] path,
+  .area-color-8[class*="M52-RI"] rect,
+  .area-color-8[class*="M52-RI"] circle,
+  .area-color-8[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-8 rect,
+  [class*="M52-RF"] .color.area-color-8 circle,
+  [class*="M52-RF"] .color.area-color-8 path,
+  [class*="M52-RI"] .color.area-color-8 rect,
+  [class*="M52-RI"] .color.area-color-8 circle,
+  [class*="M52-RI"] .color.area-color-8 path {
+    fill: #02424A; }
+  svg .area-color-8.rdfi-R.darker,
+  span.area-color-8.rdfi-R.darker,
+  .area-color-8[class*="M52-RF"].darker,
+  .area-color-8[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-8.darker,
+  [class*="M52-RI"] .color.area-color-8.darker {
+    background-color: black;
+    fill: black; }
+    svg .area-color-8.rdfi-R.darker rect, svg .area-color-8.rdfi-R.darker circle, svg .area-color-8.rdfi-R.darker path,
+    span.area-color-8.rdfi-R.darker rect,
+    span.area-color-8.rdfi-R.darker circle,
+    span.area-color-8.rdfi-R.darker path,
+    .area-color-8[class*="M52-RF"].darker rect,
+    .area-color-8[class*="M52-RF"].darker circle,
+    .area-color-8[class*="M52-RF"].darker path,
+    .area-color-8[class*="M52-RI"].darker rect,
+    .area-color-8[class*="M52-RI"].darker circle,
+    .area-color-8[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-8.darker rect,
+    [class*="M52-RF"] .color.area-color-8.darker circle,
+    [class*="M52-RF"] .color.area-color-8.darker path,
+    [class*="M52-RI"] .color.area-color-8.darker rect,
+    [class*="M52-RI"] .color.area-color-8.darker circle,
+    [class*="M52-RI"] .color.area-color-8.darker path {
+      fill: black; }
+  svg .area-color-8.rdfi-R.lighter,
+  span.area-color-8.rdfi-R.lighter,
+  .area-color-8[class*="M52-RF"].lighter,
+  .area-color-8[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-8.lighter,
+  [class*="M52-RI"] .color.area-color-8.lighter {
+    background-color: #059bad;
+    fill: #059bad; }
+    svg .area-color-8.rdfi-R.lighter rect, svg .area-color-8.rdfi-R.lighter circle, svg .area-color-8.rdfi-R.lighter path,
+    span.area-color-8.rdfi-R.lighter rect,
+    span.area-color-8.rdfi-R.lighter circle,
+    span.area-color-8.rdfi-R.lighter path,
+    .area-color-8[class*="M52-RF"].lighter rect,
+    .area-color-8[class*="M52-RF"].lighter circle,
+    .area-color-8[class*="M52-RF"].lighter path,
+    .area-color-8[class*="M52-RI"].lighter rect,
+    .area-color-8[class*="M52-RI"].lighter circle,
+    .area-color-8[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-8.lighter rect,
+    [class*="M52-RF"] .color.area-color-8.lighter circle,
+    [class*="M52-RF"] .color.area-color-8.lighter path,
+    [class*="M52-RI"] .color.area-color-8.lighter rect,
+    [class*="M52-RI"] .color.area-color-8.lighter circle,
+    [class*="M52-RI"] .color.area-color-8.lighter path {
+      fill: #059bad; }
+
+svg .area-color-9.rdfi-D,
+span.area-color-9.rdfi-D,
+.area-color-9[class*="M52-DF"],
+.area-color-9[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-9,
+[class*="M52-DI"] .color.area-color-9 {
+  background-color: #E7AD79;
+  fill: #E7AD79; }
+  svg .area-color-9.rdfi-D rect, svg .area-color-9.rdfi-D circle, svg .area-color-9.rdfi-D path,
+  span.area-color-9.rdfi-D rect,
+  span.area-color-9.rdfi-D circle,
+  span.area-color-9.rdfi-D path,
+  .area-color-9[class*="M52-DF"] rect,
+  .area-color-9[class*="M52-DF"] circle,
+  .area-color-9[class*="M52-DF"] path,
+  .area-color-9[class*="M52-DI"] rect,
+  .area-color-9[class*="M52-DI"] circle,
+  .area-color-9[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-9 rect,
+  [class*="M52-DF"] .color.area-color-9 circle,
+  [class*="M52-DF"] .color.area-color-9 path,
+  [class*="M52-DI"] .color.area-color-9 rect,
+  [class*="M52-DI"] .color.area-color-9 circle,
+  [class*="M52-DI"] .color.area-color-9 path {
+    fill: #E7AD79; }
+  svg .area-color-9.rdfi-D.darker,
+  span.area-color-9.rdfi-D.darker,
+  .area-color-9[class*="M52-DF"].darker,
+  .area-color-9[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-9.darker,
+  [class*="M52-DI"] .color.area-color-9.darker {
+    background-color: #d47826;
+    fill: #d47826; }
+    svg .area-color-9.rdfi-D.darker rect, svg .area-color-9.rdfi-D.darker circle, svg .area-color-9.rdfi-D.darker path,
+    span.area-color-9.rdfi-D.darker rect,
+    span.area-color-9.rdfi-D.darker circle,
+    span.area-color-9.rdfi-D.darker path,
+    .area-color-9[class*="M52-DF"].darker rect,
+    .area-color-9[class*="M52-DF"].darker circle,
+    .area-color-9[class*="M52-DF"].darker path,
+    .area-color-9[class*="M52-DI"].darker rect,
+    .area-color-9[class*="M52-DI"].darker circle,
+    .area-color-9[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-9.darker rect,
+    [class*="M52-DF"] .color.area-color-9.darker circle,
+    [class*="M52-DF"] .color.area-color-9.darker path,
+    [class*="M52-DI"] .color.area-color-9.darker rect,
+    [class*="M52-DI"] .color.area-color-9.darker circle,
+    [class*="M52-DI"] .color.area-color-9.darker path {
+      fill: #d47826; }
+  svg .area-color-9.rdfi-D.lighter,
+  span.area-color-9.rdfi-D.lighter,
+  .area-color-9[class*="M52-DF"].lighter,
+  .area-color-9[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-9.lighter,
+  [class*="M52-DI"] .color.area-color-9.lighter {
+    background-color: #f6e2d0;
+    fill: #f6e2d0; }
+    svg .area-color-9.rdfi-D.lighter rect, svg .area-color-9.rdfi-D.lighter circle, svg .area-color-9.rdfi-D.lighter path,
+    span.area-color-9.rdfi-D.lighter rect,
+    span.area-color-9.rdfi-D.lighter circle,
+    span.area-color-9.rdfi-D.lighter path,
+    .area-color-9[class*="M52-DF"].lighter rect,
+    .area-color-9[class*="M52-DF"].lighter circle,
+    .area-color-9[class*="M52-DF"].lighter path,
+    .area-color-9[class*="M52-DI"].lighter rect,
+    .area-color-9[class*="M52-DI"].lighter circle,
+    .area-color-9[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-9.lighter rect,
+    [class*="M52-DF"] .color.area-color-9.lighter circle,
+    [class*="M52-DF"] .color.area-color-9.lighter path,
+    [class*="M52-DI"] .color.area-color-9.lighter rect,
+    [class*="M52-DI"] .color.area-color-9.lighter circle,
+    [class*="M52-DI"] .color.area-color-9.lighter path {
+      fill: #f6e2d0; }
+
+svg .area-color-9.rdfi-R,
+span.area-color-9.rdfi-R,
+.area-color-9[class*="M52-RF"],
+.area-color-9[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-9,
+[class*="M52-RI"] .color.area-color-9 {
+  background-color: #1F9383;
+  fill: #1F9383; }
+  svg .area-color-9.rdfi-R rect, svg .area-color-9.rdfi-R circle, svg .area-color-9.rdfi-R path,
+  span.area-color-9.rdfi-R rect,
+  span.area-color-9.rdfi-R circle,
+  span.area-color-9.rdfi-R path,
+  .area-color-9[class*="M52-RF"] rect,
+  .area-color-9[class*="M52-RF"] circle,
+  .area-color-9[class*="M52-RF"] path,
+  .area-color-9[class*="M52-RI"] rect,
+  .area-color-9[class*="M52-RI"] circle,
+  .area-color-9[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-9 rect,
+  [class*="M52-RF"] .color.area-color-9 circle,
+  [class*="M52-RF"] .color.area-color-9 path,
+  [class*="M52-RI"] .color.area-color-9 rect,
+  [class*="M52-RI"] .color.area-color-9 circle,
+  [class*="M52-RI"] .color.area-color-9 path {
+    fill: #1F9383; }
+  svg .area-color-9.rdfi-R.darker,
+  span.area-color-9.rdfi-R.darker,
+  .area-color-9[class*="M52-RF"].darker,
+  .area-color-9[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-9.darker,
+  [class*="M52-RI"] .color.area-color-9.darker {
+    background-color: #0d3f38;
+    fill: #0d3f38; }
+    svg .area-color-9.rdfi-R.darker rect, svg .area-color-9.rdfi-R.darker circle, svg .area-color-9.rdfi-R.darker path,
+    span.area-color-9.rdfi-R.darker rect,
+    span.area-color-9.rdfi-R.darker circle,
+    span.area-color-9.rdfi-R.darker path,
+    .area-color-9[class*="M52-RF"].darker rect,
+    .area-color-9[class*="M52-RF"].darker circle,
+    .area-color-9[class*="M52-RF"].darker path,
+    .area-color-9[class*="M52-RI"].darker rect,
+    .area-color-9[class*="M52-RI"].darker circle,
+    .area-color-9[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-9.darker rect,
+    [class*="M52-RF"] .color.area-color-9.darker circle,
+    [class*="M52-RF"] .color.area-color-9.darker path,
+    [class*="M52-RI"] .color.area-color-9.darker rect,
+    [class*="M52-RI"] .color.area-color-9.darker circle,
+    [class*="M52-RI"] .color.area-color-9.darker path {
+      fill: #0d3f38; }
+  svg .area-color-9.rdfi-R.lighter,
+  span.area-color-9.rdfi-R.lighter,
+  .area-color-9[class*="M52-RF"].lighter,
+  .area-color-9[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-9.lighter,
+  [class*="M52-RI"] .color.area-color-9.lighter {
+    background-color: #41d7c2;
+    fill: #41d7c2; }
+    svg .area-color-9.rdfi-R.lighter rect, svg .area-color-9.rdfi-R.lighter circle, svg .area-color-9.rdfi-R.lighter path,
+    span.area-color-9.rdfi-R.lighter rect,
+    span.area-color-9.rdfi-R.lighter circle,
+    span.area-color-9.rdfi-R.lighter path,
+    .area-color-9[class*="M52-RF"].lighter rect,
+    .area-color-9[class*="M52-RF"].lighter circle,
+    .area-color-9[class*="M52-RF"].lighter path,
+    .area-color-9[class*="M52-RI"].lighter rect,
+    .area-color-9[class*="M52-RI"].lighter circle,
+    .area-color-9[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-9.lighter rect,
+    [class*="M52-RF"] .color.area-color-9.lighter circle,
+    [class*="M52-RF"] .color.area-color-9.lighter path,
+    [class*="M52-RI"] .color.area-color-9.lighter rect,
+    [class*="M52-RI"] .color.area-color-9.lighter circle,
+    [class*="M52-RI"] .color.area-color-9.lighter path {
+      fill: #41d7c2; }
+
+svg .area-color-10.rdfi-D,
+span.area-color-10.rdfi-D,
+.area-color-10[class*="M52-DF"],
+.area-color-10[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-10,
+[class*="M52-DI"] .color.area-color-10 {
+  background-color: #6B4472;
+  fill: #6B4472; }
+  svg .area-color-10.rdfi-D rect, svg .area-color-10.rdfi-D circle, svg .area-color-10.rdfi-D path,
+  span.area-color-10.rdfi-D rect,
+  span.area-color-10.rdfi-D circle,
+  span.area-color-10.rdfi-D path,
+  .area-color-10[class*="M52-DF"] rect,
+  .area-color-10[class*="M52-DF"] circle,
+  .area-color-10[class*="M52-DF"] path,
+  .area-color-10[class*="M52-DI"] rect,
+  .area-color-10[class*="M52-DI"] circle,
+  .area-color-10[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-10 rect,
+  [class*="M52-DF"] .color.area-color-10 circle,
+  [class*="M52-DF"] .color.area-color-10 path,
+  [class*="M52-DI"] .color.area-color-10 rect,
+  [class*="M52-DI"] .color.area-color-10 circle,
+  [class*="M52-DI"] .color.area-color-10 path {
+    fill: #6B4472; }
+  svg .area-color-10.rdfi-D.darker,
+  span.area-color-10.rdfi-D.darker,
+  .area-color-10[class*="M52-DF"].darker,
+  .area-color-10[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-10.darker,
+  [class*="M52-DI"] .color.area-color-10.darker {
+    background-color: #2f1e32;
+    fill: #2f1e32; }
+    svg .area-color-10.rdfi-D.darker rect, svg .area-color-10.rdfi-D.darker circle, svg .area-color-10.rdfi-D.darker path,
+    span.area-color-10.rdfi-D.darker rect,
+    span.area-color-10.rdfi-D.darker circle,
+    span.area-color-10.rdfi-D.darker path,
+    .area-color-10[class*="M52-DF"].darker rect,
+    .area-color-10[class*="M52-DF"].darker circle,
+    .area-color-10[class*="M52-DF"].darker path,
+    .area-color-10[class*="M52-DI"].darker rect,
+    .area-color-10[class*="M52-DI"].darker circle,
+    .area-color-10[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-10.darker rect,
+    [class*="M52-DF"] .color.area-color-10.darker circle,
+    [class*="M52-DF"] .color.area-color-10.darker path,
+    [class*="M52-DI"] .color.area-color-10.darker rect,
+    [class*="M52-DI"] .color.area-color-10.darker circle,
+    [class*="M52-DI"] .color.area-color-10.darker path {
+      fill: #2f1e32; }
+  svg .area-color-10.rdfi-D.lighter,
+  span.area-color-10.rdfi-D.lighter,
+  .area-color-10[class*="M52-DF"].lighter,
+  .area-color-10[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-10.lighter,
+  [class*="M52-DI"] .color.area-color-10.lighter {
+    background-color: #a271ab;
+    fill: #a271ab; }
+    svg .area-color-10.rdfi-D.lighter rect, svg .area-color-10.rdfi-D.lighter circle, svg .area-color-10.rdfi-D.lighter path,
+    span.area-color-10.rdfi-D.lighter rect,
+    span.area-color-10.rdfi-D.lighter circle,
+    span.area-color-10.rdfi-D.lighter path,
+    .area-color-10[class*="M52-DF"].lighter rect,
+    .area-color-10[class*="M52-DF"].lighter circle,
+    .area-color-10[class*="M52-DF"].lighter path,
+    .area-color-10[class*="M52-DI"].lighter rect,
+    .area-color-10[class*="M52-DI"].lighter circle,
+    .area-color-10[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-10.lighter rect,
+    [class*="M52-DF"] .color.area-color-10.lighter circle,
+    [class*="M52-DF"] .color.area-color-10.lighter path,
+    [class*="M52-DI"] .color.area-color-10.lighter rect,
+    [class*="M52-DI"] .color.area-color-10.lighter circle,
+    [class*="M52-DI"] .color.area-color-10.lighter path {
+      fill: #a271ab; }
+
+svg .area-color-10.rdfi-R,
+span.area-color-10.rdfi-R,
+.area-color-10[class*="M52-RF"],
+.area-color-10[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-10,
+[class*="M52-RI"] .color.area-color-10 {
+  background-color: #8DE4D3;
+  fill: #8DE4D3; }
+  svg .area-color-10.rdfi-R rect, svg .area-color-10.rdfi-R circle, svg .area-color-10.rdfi-R path,
+  span.area-color-10.rdfi-R rect,
+  span.area-color-10.rdfi-R circle,
+  span.area-color-10.rdfi-R path,
+  .area-color-10[class*="M52-RF"] rect,
+  .area-color-10[class*="M52-RF"] circle,
+  .area-color-10[class*="M52-RF"] path,
+  .area-color-10[class*="M52-RI"] rect,
+  .area-color-10[class*="M52-RI"] circle,
+  .area-color-10[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-10 rect,
+  [class*="M52-RF"] .color.area-color-10 circle,
+  [class*="M52-RF"] .color.area-color-10 path,
+  [class*="M52-RI"] .color.area-color-10 rect,
+  [class*="M52-RI"] .color.area-color-10 circle,
+  [class*="M52-RI"] .color.area-color-10 path {
+    fill: #8DE4D3; }
+  svg .area-color-10.rdfi-R.darker,
+  span.area-color-10.rdfi-R.darker,
+  .area-color-10[class*="M52-RF"].darker,
+  .area-color-10[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-10.darker,
+  [class*="M52-RI"] .color.area-color-10.darker {
+    background-color: #3bd0b3;
+    fill: #3bd0b3; }
+    svg .area-color-10.rdfi-R.darker rect, svg .area-color-10.rdfi-R.darker circle, svg .area-color-10.rdfi-R.darker path,
+    span.area-color-10.rdfi-R.darker rect,
+    span.area-color-10.rdfi-R.darker circle,
+    span.area-color-10.rdfi-R.darker path,
+    .area-color-10[class*="M52-RF"].darker rect,
+    .area-color-10[class*="M52-RF"].darker circle,
+    .area-color-10[class*="M52-RF"].darker path,
+    .area-color-10[class*="M52-RI"].darker rect,
+    .area-color-10[class*="M52-RI"].darker circle,
+    .area-color-10[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-10.darker rect,
+    [class*="M52-RF"] .color.area-color-10.darker circle,
+    [class*="M52-RF"] .color.area-color-10.darker path,
+    [class*="M52-RI"] .color.area-color-10.darker rect,
+    [class*="M52-RI"] .color.area-color-10.darker circle,
+    [class*="M52-RI"] .color.area-color-10.darker path {
+      fill: #3bd0b3; }
+  svg .area-color-10.rdfi-R.lighter,
+  span.area-color-10.rdfi-R.lighter,
+  .area-color-10[class*="M52-RF"].lighter,
+  .area-color-10[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-10.lighter,
+  [class*="M52-RI"] .color.area-color-10.lighter {
+    background-color: #dff8f3;
+    fill: #dff8f3; }
+    svg .area-color-10.rdfi-R.lighter rect, svg .area-color-10.rdfi-R.lighter circle, svg .area-color-10.rdfi-R.lighter path,
+    span.area-color-10.rdfi-R.lighter rect,
+    span.area-color-10.rdfi-R.lighter circle,
+    span.area-color-10.rdfi-R.lighter path,
+    .area-color-10[class*="M52-RF"].lighter rect,
+    .area-color-10[class*="M52-RF"].lighter circle,
+    .area-color-10[class*="M52-RF"].lighter path,
+    .area-color-10[class*="M52-RI"].lighter rect,
+    .area-color-10[class*="M52-RI"].lighter circle,
+    .area-color-10[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-10.lighter rect,
+    [class*="M52-RF"] .color.area-color-10.lighter circle,
+    [class*="M52-RF"] .color.area-color-10.lighter path,
+    [class*="M52-RI"] .color.area-color-10.lighter rect,
+    [class*="M52-RI"] .color.area-color-10.lighter circle,
+    [class*="M52-RI"] .color.area-color-10.lighter path {
+      fill: #dff8f3; }
+
+svg .area-color-11.rdfi-D,
+span.area-color-11.rdfi-D,
+.area-color-11[class*="M52-DF"],
+.area-color-11[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-11,
+[class*="M52-DI"] .color.area-color-11 {
+  background-color: #D574BA;
+  fill: #D574BA; }
+  svg .area-color-11.rdfi-D rect, svg .area-color-11.rdfi-D circle, svg .area-color-11.rdfi-D path,
+  span.area-color-11.rdfi-D rect,
+  span.area-color-11.rdfi-D circle,
+  span.area-color-11.rdfi-D path,
+  .area-color-11[class*="M52-DF"] rect,
+  .area-color-11[class*="M52-DF"] circle,
+  .area-color-11[class*="M52-DF"] path,
+  .area-color-11[class*="M52-DI"] rect,
+  .area-color-11[class*="M52-DI"] circle,
+  .area-color-11[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-11 rect,
+  [class*="M52-DF"] .color.area-color-11 circle,
+  [class*="M52-DF"] .color.area-color-11 path,
+  [class*="M52-DI"] .color.area-color-11 rect,
+  [class*="M52-DI"] .color.area-color-11 circle,
+  [class*="M52-DI"] .color.area-color-11 path {
+    fill: #D574BA; }
+  svg .area-color-11.rdfi-D.darker,
+  span.area-color-11.rdfi-D.darker,
+  .area-color-11[class*="M52-DF"].darker,
+  .area-color-11[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-11.darker,
+  [class*="M52-DI"] .color.area-color-11.darker {
+    background-color: #ae358c;
+    fill: #ae358c; }
+    svg .area-color-11.rdfi-D.darker rect, svg .area-color-11.rdfi-D.darker circle, svg .area-color-11.rdfi-D.darker path,
+    span.area-color-11.rdfi-D.darker rect,
+    span.area-color-11.rdfi-D.darker circle,
+    span.area-color-11.rdfi-D.darker path,
+    .area-color-11[class*="M52-DF"].darker rect,
+    .area-color-11[class*="M52-DF"].darker circle,
+    .area-color-11[class*="M52-DF"].darker path,
+    .area-color-11[class*="M52-DI"].darker rect,
+    .area-color-11[class*="M52-DI"].darker circle,
+    .area-color-11[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-11.darker rect,
+    [class*="M52-DF"] .color.area-color-11.darker circle,
+    [class*="M52-DF"] .color.area-color-11.darker path,
+    [class*="M52-DI"] .color.area-color-11.darker rect,
+    [class*="M52-DI"] .color.area-color-11.darker circle,
+    [class*="M52-DI"] .color.area-color-11.darker path {
+      fill: #ae358c; }
+  svg .area-color-11.rdfi-D.lighter,
+  span.area-color-11.rdfi-D.lighter,
+  .area-color-11[class*="M52-DF"].lighter,
+  .area-color-11[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-11.lighter,
+  [class*="M52-DI"] .color.area-color-11.lighter {
+    background-color: #edc2e1;
+    fill: #edc2e1; }
+    svg .area-color-11.rdfi-D.lighter rect, svg .area-color-11.rdfi-D.lighter circle, svg .area-color-11.rdfi-D.lighter path,
+    span.area-color-11.rdfi-D.lighter rect,
+    span.area-color-11.rdfi-D.lighter circle,
+    span.area-color-11.rdfi-D.lighter path,
+    .area-color-11[class*="M52-DF"].lighter rect,
+    .area-color-11[class*="M52-DF"].lighter circle,
+    .area-color-11[class*="M52-DF"].lighter path,
+    .area-color-11[class*="M52-DI"].lighter rect,
+    .area-color-11[class*="M52-DI"].lighter circle,
+    .area-color-11[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-11.lighter rect,
+    [class*="M52-DF"] .color.area-color-11.lighter circle,
+    [class*="M52-DF"] .color.area-color-11.lighter path,
+    [class*="M52-DI"] .color.area-color-11.lighter rect,
+    [class*="M52-DI"] .color.area-color-11.lighter circle,
+    [class*="M52-DI"] .color.area-color-11.lighter path {
+      fill: #edc2e1; }
+
+svg .area-color-11.rdfi-R,
+span.area-color-11.rdfi-R,
+.area-color-11[class*="M52-RF"],
+.area-color-11[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-11,
+[class*="M52-RI"] .color.area-color-11 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-11.rdfi-R rect, svg .area-color-11.rdfi-R circle, svg .area-color-11.rdfi-R path,
+  span.area-color-11.rdfi-R rect,
+  span.area-color-11.rdfi-R circle,
+  span.area-color-11.rdfi-R path,
+  .area-color-11[class*="M52-RF"] rect,
+  .area-color-11[class*="M52-RF"] circle,
+  .area-color-11[class*="M52-RF"] path,
+  .area-color-11[class*="M52-RI"] rect,
+  .area-color-11[class*="M52-RI"] circle,
+  .area-color-11[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-11 rect,
+  [class*="M52-RF"] .color.area-color-11 circle,
+  [class*="M52-RF"] .color.area-color-11 path,
+  [class*="M52-RI"] .color.area-color-11 rect,
+  [class*="M52-RI"] .color.area-color-11 circle,
+  [class*="M52-RI"] .color.area-color-11 path {
+    fill: #ffffff; }
+  svg .area-color-11.rdfi-R.darker,
+  span.area-color-11.rdfi-R.darker,
+  .area-color-11[class*="M52-RF"].darker,
+  .area-color-11[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-11.darker,
+  [class*="M52-RI"] .color.area-color-11.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-11.rdfi-R.darker rect, svg .area-color-11.rdfi-R.darker circle, svg .area-color-11.rdfi-R.darker path,
+    span.area-color-11.rdfi-R.darker rect,
+    span.area-color-11.rdfi-R.darker circle,
+    span.area-color-11.rdfi-R.darker path,
+    .area-color-11[class*="M52-RF"].darker rect,
+    .area-color-11[class*="M52-RF"].darker circle,
+    .area-color-11[class*="M52-RF"].darker path,
+    .area-color-11[class*="M52-RI"].darker rect,
+    .area-color-11[class*="M52-RI"].darker circle,
+    .area-color-11[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-11.darker rect,
+    [class*="M52-RF"] .color.area-color-11.darker circle,
+    [class*="M52-RF"] .color.area-color-11.darker path,
+    [class*="M52-RI"] .color.area-color-11.darker rect,
+    [class*="M52-RI"] .color.area-color-11.darker circle,
+    [class*="M52-RI"] .color.area-color-11.darker path {
+      fill: #cccccc; }
+  svg .area-color-11.rdfi-R.lighter,
+  span.area-color-11.rdfi-R.lighter,
+  .area-color-11[class*="M52-RF"].lighter,
+  .area-color-11[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-11.lighter,
+  [class*="M52-RI"] .color.area-color-11.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-11.rdfi-R.lighter rect, svg .area-color-11.rdfi-R.lighter circle, svg .area-color-11.rdfi-R.lighter path,
+    span.area-color-11.rdfi-R.lighter rect,
+    span.area-color-11.rdfi-R.lighter circle,
+    span.area-color-11.rdfi-R.lighter path,
+    .area-color-11[class*="M52-RF"].lighter rect,
+    .area-color-11[class*="M52-RF"].lighter circle,
+    .area-color-11[class*="M52-RF"].lighter path,
+    .area-color-11[class*="M52-RI"].lighter rect,
+    .area-color-11[class*="M52-RI"].lighter circle,
+    .area-color-11[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-11.lighter rect,
+    [class*="M52-RF"] .color.area-color-11.lighter circle,
+    [class*="M52-RF"] .color.area-color-11.lighter path,
+    [class*="M52-RI"] .color.area-color-11.lighter rect,
+    [class*="M52-RI"] .color.area-color-11.lighter circle,
+    [class*="M52-RI"] .color.area-color-11.lighter path {
+      fill: white; }
+
+svg .area-color-12.rdfi-D,
+span.area-color-12.rdfi-D,
+.area-color-12[class*="M52-DF"],
+.area-color-12[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-12,
+[class*="M52-DI"] .color.area-color-12 {
+  background-color: #DAA9CC;
+  fill: #DAA9CC; }
+  svg .area-color-12.rdfi-D rect, svg .area-color-12.rdfi-D circle, svg .area-color-12.rdfi-D path,
+  span.area-color-12.rdfi-D rect,
+  span.area-color-12.rdfi-D circle,
+  span.area-color-12.rdfi-D path,
+  .area-color-12[class*="M52-DF"] rect,
+  .area-color-12[class*="M52-DF"] circle,
+  .area-color-12[class*="M52-DF"] path,
+  .area-color-12[class*="M52-DI"] rect,
+  .area-color-12[class*="M52-DI"] circle,
+  .area-color-12[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-12 rect,
+  [class*="M52-DF"] .color.area-color-12 circle,
+  [class*="M52-DF"] .color.area-color-12 path,
+  [class*="M52-DI"] .color.area-color-12 rect,
+  [class*="M52-DI"] .color.area-color-12 circle,
+  [class*="M52-DI"] .color.area-color-12 path {
+    fill: #DAA9CC; }
+  svg .area-color-12.rdfi-D.darker,
+  span.area-color-12.rdfi-D.darker,
+  .area-color-12[class*="M52-DF"].darker,
+  .area-color-12[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-12.darker,
+  [class*="M52-DI"] .color.area-color-12.darker {
+    background-color: #bb62a2;
+    fill: #bb62a2; }
+    svg .area-color-12.rdfi-D.darker rect, svg .area-color-12.rdfi-D.darker circle, svg .area-color-12.rdfi-D.darker path,
+    span.area-color-12.rdfi-D.darker rect,
+    span.area-color-12.rdfi-D.darker circle,
+    span.area-color-12.rdfi-D.darker path,
+    .area-color-12[class*="M52-DF"].darker rect,
+    .area-color-12[class*="M52-DF"].darker circle,
+    .area-color-12[class*="M52-DF"].darker path,
+    .area-color-12[class*="M52-DI"].darker rect,
+    .area-color-12[class*="M52-DI"].darker circle,
+    .area-color-12[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-12.darker rect,
+    [class*="M52-DF"] .color.area-color-12.darker circle,
+    [class*="M52-DF"] .color.area-color-12.darker path,
+    [class*="M52-DI"] .color.area-color-12.darker rect,
+    [class*="M52-DI"] .color.area-color-12.darker circle,
+    [class*="M52-DI"] .color.area-color-12.darker path {
+      fill: #bb62a2; }
+  svg .area-color-12.rdfi-D.lighter,
+  span.area-color-12.rdfi-D.lighter,
+  .area-color-12[class*="M52-DF"].lighter,
+  .area-color-12[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-12.lighter,
+  [class*="M52-DI"] .color.area-color-12.lighter {
+    background-color: #f9f0f6;
+    fill: #f9f0f6; }
+    svg .area-color-12.rdfi-D.lighter rect, svg .area-color-12.rdfi-D.lighter circle, svg .area-color-12.rdfi-D.lighter path,
+    span.area-color-12.rdfi-D.lighter rect,
+    span.area-color-12.rdfi-D.lighter circle,
+    span.area-color-12.rdfi-D.lighter path,
+    .area-color-12[class*="M52-DF"].lighter rect,
+    .area-color-12[class*="M52-DF"].lighter circle,
+    .area-color-12[class*="M52-DF"].lighter path,
+    .area-color-12[class*="M52-DI"].lighter rect,
+    .area-color-12[class*="M52-DI"].lighter circle,
+    .area-color-12[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-12.lighter rect,
+    [class*="M52-DF"] .color.area-color-12.lighter circle,
+    [class*="M52-DF"] .color.area-color-12.lighter path,
+    [class*="M52-DI"] .color.area-color-12.lighter rect,
+    [class*="M52-DI"] .color.area-color-12.lighter circle,
+    [class*="M52-DI"] .color.area-color-12.lighter path {
+      fill: #f9f0f6; }
+
+svg .area-color-12.rdfi-R,
+span.area-color-12.rdfi-R,
+.area-color-12[class*="M52-RF"],
+.area-color-12[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-12,
+[class*="M52-RI"] .color.area-color-12 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-12.rdfi-R rect, svg .area-color-12.rdfi-R circle, svg .area-color-12.rdfi-R path,
+  span.area-color-12.rdfi-R rect,
+  span.area-color-12.rdfi-R circle,
+  span.area-color-12.rdfi-R path,
+  .area-color-12[class*="M52-RF"] rect,
+  .area-color-12[class*="M52-RF"] circle,
+  .area-color-12[class*="M52-RF"] path,
+  .area-color-12[class*="M52-RI"] rect,
+  .area-color-12[class*="M52-RI"] circle,
+  .area-color-12[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-12 rect,
+  [class*="M52-RF"] .color.area-color-12 circle,
+  [class*="M52-RF"] .color.area-color-12 path,
+  [class*="M52-RI"] .color.area-color-12 rect,
+  [class*="M52-RI"] .color.area-color-12 circle,
+  [class*="M52-RI"] .color.area-color-12 path {
+    fill: #ffffff; }
+  svg .area-color-12.rdfi-R.darker,
+  span.area-color-12.rdfi-R.darker,
+  .area-color-12[class*="M52-RF"].darker,
+  .area-color-12[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-12.darker,
+  [class*="M52-RI"] .color.area-color-12.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-12.rdfi-R.darker rect, svg .area-color-12.rdfi-R.darker circle, svg .area-color-12.rdfi-R.darker path,
+    span.area-color-12.rdfi-R.darker rect,
+    span.area-color-12.rdfi-R.darker circle,
+    span.area-color-12.rdfi-R.darker path,
+    .area-color-12[class*="M52-RF"].darker rect,
+    .area-color-12[class*="M52-RF"].darker circle,
+    .area-color-12[class*="M52-RF"].darker path,
+    .area-color-12[class*="M52-RI"].darker rect,
+    .area-color-12[class*="M52-RI"].darker circle,
+    .area-color-12[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-12.darker rect,
+    [class*="M52-RF"] .color.area-color-12.darker circle,
+    [class*="M52-RF"] .color.area-color-12.darker path,
+    [class*="M52-RI"] .color.area-color-12.darker rect,
+    [class*="M52-RI"] .color.area-color-12.darker circle,
+    [class*="M52-RI"] .color.area-color-12.darker path {
+      fill: #cccccc; }
+  svg .area-color-12.rdfi-R.lighter,
+  span.area-color-12.rdfi-R.lighter,
+  .area-color-12[class*="M52-RF"].lighter,
+  .area-color-12[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-12.lighter,
+  [class*="M52-RI"] .color.area-color-12.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-12.rdfi-R.lighter rect, svg .area-color-12.rdfi-R.lighter circle, svg .area-color-12.rdfi-R.lighter path,
+    span.area-color-12.rdfi-R.lighter rect,
+    span.area-color-12.rdfi-R.lighter circle,
+    span.area-color-12.rdfi-R.lighter path,
+    .area-color-12[class*="M52-RF"].lighter rect,
+    .area-color-12[class*="M52-RF"].lighter circle,
+    .area-color-12[class*="M52-RF"].lighter path,
+    .area-color-12[class*="M52-RI"].lighter rect,
+    .area-color-12[class*="M52-RI"].lighter circle,
+    .area-color-12[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-12.lighter rect,
+    [class*="M52-RF"] .color.area-color-12.lighter circle,
+    [class*="M52-RF"] .color.area-color-12.lighter path,
+    [class*="M52-RI"] .color.area-color-12.lighter rect,
+    [class*="M52-RI"] .color.area-color-12.lighter circle,
+    [class*="M52-RI"] .color.area-color-12.lighter path {
+      fill: white; }
+
+svg .area-color-13.rdfi-D,
+span.area-color-13.rdfi-D,
+.area-color-13[class*="M52-DF"],
+.area-color-13[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-13,
+[class*="M52-DI"] .color.area-color-13 {
+  background-color: #9D0D6C;
+  fill: #9D0D6C; }
+  svg .area-color-13.rdfi-D rect, svg .area-color-13.rdfi-D circle, svg .area-color-13.rdfi-D path,
+  span.area-color-13.rdfi-D rect,
+  span.area-color-13.rdfi-D circle,
+  span.area-color-13.rdfi-D path,
+  .area-color-13[class*="M52-DF"] rect,
+  .area-color-13[class*="M52-DF"] circle,
+  .area-color-13[class*="M52-DF"] path,
+  .area-color-13[class*="M52-DI"] rect,
+  .area-color-13[class*="M52-DI"] circle,
+  .area-color-13[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-13 rect,
+  [class*="M52-DF"] .color.area-color-13 circle,
+  [class*="M52-DF"] .color.area-color-13 path,
+  [class*="M52-DI"] .color.area-color-13 rect,
+  [class*="M52-DI"] .color.area-color-13 circle,
+  [class*="M52-DI"] .color.area-color-13 path {
+    fill: #9D0D6C; }
+  svg .area-color-13.rdfi-D.darker,
+  span.area-color-13.rdfi-D.darker,
+  .area-color-13[class*="M52-DF"].darker,
+  .area-color-13[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-13.darker,
+  [class*="M52-DI"] .color.area-color-13.darker {
+    background-color: #3f052b;
+    fill: #3f052b; }
+    svg .area-color-13.rdfi-D.darker rect, svg .area-color-13.rdfi-D.darker circle, svg .area-color-13.rdfi-D.darker path,
+    span.area-color-13.rdfi-D.darker rect,
+    span.area-color-13.rdfi-D.darker circle,
+    span.area-color-13.rdfi-D.darker path,
+    .area-color-13[class*="M52-DF"].darker rect,
+    .area-color-13[class*="M52-DF"].darker circle,
+    .area-color-13[class*="M52-DF"].darker path,
+    .area-color-13[class*="M52-DI"].darker rect,
+    .area-color-13[class*="M52-DI"].darker circle,
+    .area-color-13[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-13.darker rect,
+    [class*="M52-DF"] .color.area-color-13.darker circle,
+    [class*="M52-DF"] .color.area-color-13.darker path,
+    [class*="M52-DI"] .color.area-color-13.darker rect,
+    [class*="M52-DI"] .color.area-color-13.darker circle,
+    [class*="M52-DI"] .color.area-color-13.darker path {
+      fill: #3f052b; }
+  svg .area-color-13.rdfi-D.lighter,
+  span.area-color-13.rdfi-D.lighter,
+  .area-color-13[class*="M52-DF"].lighter,
+  .area-color-13[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-13.lighter,
+  [class*="M52-DI"] .color.area-color-13.lighter {
+    background-color: #ed23a8;
+    fill: #ed23a8; }
+    svg .area-color-13.rdfi-D.lighter rect, svg .area-color-13.rdfi-D.lighter circle, svg .area-color-13.rdfi-D.lighter path,
+    span.area-color-13.rdfi-D.lighter rect,
+    span.area-color-13.rdfi-D.lighter circle,
+    span.area-color-13.rdfi-D.lighter path,
+    .area-color-13[class*="M52-DF"].lighter rect,
+    .area-color-13[class*="M52-DF"].lighter circle,
+    .area-color-13[class*="M52-DF"].lighter path,
+    .area-color-13[class*="M52-DI"].lighter rect,
+    .area-color-13[class*="M52-DI"].lighter circle,
+    .area-color-13[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-13.lighter rect,
+    [class*="M52-DF"] .color.area-color-13.lighter circle,
+    [class*="M52-DF"] .color.area-color-13.lighter path,
+    [class*="M52-DI"] .color.area-color-13.lighter rect,
+    [class*="M52-DI"] .color.area-color-13.lighter circle,
+    [class*="M52-DI"] .color.area-color-13.lighter path {
+      fill: #ed23a8; }
+
+svg .area-color-13.rdfi-R,
+span.area-color-13.rdfi-R,
+.area-color-13[class*="M52-RF"],
+.area-color-13[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-13,
+[class*="M52-RI"] .color.area-color-13 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-13.rdfi-R rect, svg .area-color-13.rdfi-R circle, svg .area-color-13.rdfi-R path,
+  span.area-color-13.rdfi-R rect,
+  span.area-color-13.rdfi-R circle,
+  span.area-color-13.rdfi-R path,
+  .area-color-13[class*="M52-RF"] rect,
+  .area-color-13[class*="M52-RF"] circle,
+  .area-color-13[class*="M52-RF"] path,
+  .area-color-13[class*="M52-RI"] rect,
+  .area-color-13[class*="M52-RI"] circle,
+  .area-color-13[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-13 rect,
+  [class*="M52-RF"] .color.area-color-13 circle,
+  [class*="M52-RF"] .color.area-color-13 path,
+  [class*="M52-RI"] .color.area-color-13 rect,
+  [class*="M52-RI"] .color.area-color-13 circle,
+  [class*="M52-RI"] .color.area-color-13 path {
+    fill: #ffffff; }
+  svg .area-color-13.rdfi-R.darker,
+  span.area-color-13.rdfi-R.darker,
+  .area-color-13[class*="M52-RF"].darker,
+  .area-color-13[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-13.darker,
+  [class*="M52-RI"] .color.area-color-13.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-13.rdfi-R.darker rect, svg .area-color-13.rdfi-R.darker circle, svg .area-color-13.rdfi-R.darker path,
+    span.area-color-13.rdfi-R.darker rect,
+    span.area-color-13.rdfi-R.darker circle,
+    span.area-color-13.rdfi-R.darker path,
+    .area-color-13[class*="M52-RF"].darker rect,
+    .area-color-13[class*="M52-RF"].darker circle,
+    .area-color-13[class*="M52-RF"].darker path,
+    .area-color-13[class*="M52-RI"].darker rect,
+    .area-color-13[class*="M52-RI"].darker circle,
+    .area-color-13[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-13.darker rect,
+    [class*="M52-RF"] .color.area-color-13.darker circle,
+    [class*="M52-RF"] .color.area-color-13.darker path,
+    [class*="M52-RI"] .color.area-color-13.darker rect,
+    [class*="M52-RI"] .color.area-color-13.darker circle,
+    [class*="M52-RI"] .color.area-color-13.darker path {
+      fill: #cccccc; }
+  svg .area-color-13.rdfi-R.lighter,
+  span.area-color-13.rdfi-R.lighter,
+  .area-color-13[class*="M52-RF"].lighter,
+  .area-color-13[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-13.lighter,
+  [class*="M52-RI"] .color.area-color-13.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-13.rdfi-R.lighter rect, svg .area-color-13.rdfi-R.lighter circle, svg .area-color-13.rdfi-R.lighter path,
+    span.area-color-13.rdfi-R.lighter rect,
+    span.area-color-13.rdfi-R.lighter circle,
+    span.area-color-13.rdfi-R.lighter path,
+    .area-color-13[class*="M52-RF"].lighter rect,
+    .area-color-13[class*="M52-RF"].lighter circle,
+    .area-color-13[class*="M52-RF"].lighter path,
+    .area-color-13[class*="M52-RI"].lighter rect,
+    .area-color-13[class*="M52-RI"].lighter circle,
+    .area-color-13[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-13.lighter rect,
+    [class*="M52-RF"] .color.area-color-13.lighter circle,
+    [class*="M52-RF"] .color.area-color-13.lighter path,
+    [class*="M52-RI"] .color.area-color-13.lighter rect,
+    [class*="M52-RI"] .color.area-color-13.lighter circle,
+    [class*="M52-RI"] .color.area-color-13.lighter path {
+      fill: white; }
+
+svg .area-color-14.rdfi-D,
+span.area-color-14.rdfi-D,
+.area-color-14[class*="M52-DF"],
+.area-color-14[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-14,
+[class*="M52-DI"] .color.area-color-14 {
+  background-color: #F5A683;
+  fill: #F5A683; }
+  svg .area-color-14.rdfi-D rect, svg .area-color-14.rdfi-D circle, svg .area-color-14.rdfi-D path,
+  span.area-color-14.rdfi-D rect,
+  span.area-color-14.rdfi-D circle,
+  span.area-color-14.rdfi-D path,
+  .area-color-14[class*="M52-DF"] rect,
+  .area-color-14[class*="M52-DF"] circle,
+  .area-color-14[class*="M52-DF"] path,
+  .area-color-14[class*="M52-DI"] rect,
+  .area-color-14[class*="M52-DI"] circle,
+  .area-color-14[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-14 rect,
+  [class*="M52-DF"] .color.area-color-14 circle,
+  [class*="M52-DF"] .color.area-color-14 path,
+  [class*="M52-DI"] .color.area-color-14 rect,
+  [class*="M52-DI"] .color.area-color-14 circle,
+  [class*="M52-DI"] .color.area-color-14 path {
+    fill: #F5A683; }
+  svg .area-color-14.rdfi-D.darker,
+  span.area-color-14.rdfi-D.darker,
+  .area-color-14[class*="M52-DF"].darker,
+  .area-color-14[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-14.darker,
+  [class*="M52-DI"] .color.area-color-14.darker {
+    background-color: #ed6225;
+    fill: #ed6225; }
+    svg .area-color-14.rdfi-D.darker rect, svg .area-color-14.rdfi-D.darker circle, svg .area-color-14.rdfi-D.darker path,
+    span.area-color-14.rdfi-D.darker rect,
+    span.area-color-14.rdfi-D.darker circle,
+    span.area-color-14.rdfi-D.darker path,
+    .area-color-14[class*="M52-DF"].darker rect,
+    .area-color-14[class*="M52-DF"].darker circle,
+    .area-color-14[class*="M52-DF"].darker path,
+    .area-color-14[class*="M52-DI"].darker rect,
+    .area-color-14[class*="M52-DI"].darker circle,
+    .area-color-14[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-14.darker rect,
+    [class*="M52-DF"] .color.area-color-14.darker circle,
+    [class*="M52-DF"] .color.area-color-14.darker path,
+    [class*="M52-DI"] .color.area-color-14.darker rect,
+    [class*="M52-DI"] .color.area-color-14.darker circle,
+    [class*="M52-DI"] .color.area-color-14.darker path {
+      fill: #ed6225; }
+  svg .area-color-14.rdfi-D.lighter,
+  span.area-color-14.rdfi-D.lighter,
+  .area-color-14[class*="M52-DF"].lighter,
+  .area-color-14[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-14.lighter,
+  [class*="M52-DI"] .color.area-color-14.lighter {
+    background-color: #fdeae1;
+    fill: #fdeae1; }
+    svg .area-color-14.rdfi-D.lighter rect, svg .area-color-14.rdfi-D.lighter circle, svg .area-color-14.rdfi-D.lighter path,
+    span.area-color-14.rdfi-D.lighter rect,
+    span.area-color-14.rdfi-D.lighter circle,
+    span.area-color-14.rdfi-D.lighter path,
+    .area-color-14[class*="M52-DF"].lighter rect,
+    .area-color-14[class*="M52-DF"].lighter circle,
+    .area-color-14[class*="M52-DF"].lighter path,
+    .area-color-14[class*="M52-DI"].lighter rect,
+    .area-color-14[class*="M52-DI"].lighter circle,
+    .area-color-14[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-14.lighter rect,
+    [class*="M52-DF"] .color.area-color-14.lighter circle,
+    [class*="M52-DF"] .color.area-color-14.lighter path,
+    [class*="M52-DI"] .color.area-color-14.lighter rect,
+    [class*="M52-DI"] .color.area-color-14.lighter circle,
+    [class*="M52-DI"] .color.area-color-14.lighter path {
+      fill: #fdeae1; }
+
+svg .area-color-14.rdfi-R,
+span.area-color-14.rdfi-R,
+.area-color-14[class*="M52-RF"],
+.area-color-14[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-14,
+[class*="M52-RI"] .color.area-color-14 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-14.rdfi-R rect, svg .area-color-14.rdfi-R circle, svg .area-color-14.rdfi-R path,
+  span.area-color-14.rdfi-R rect,
+  span.area-color-14.rdfi-R circle,
+  span.area-color-14.rdfi-R path,
+  .area-color-14[class*="M52-RF"] rect,
+  .area-color-14[class*="M52-RF"] circle,
+  .area-color-14[class*="M52-RF"] path,
+  .area-color-14[class*="M52-RI"] rect,
+  .area-color-14[class*="M52-RI"] circle,
+  .area-color-14[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-14 rect,
+  [class*="M52-RF"] .color.area-color-14 circle,
+  [class*="M52-RF"] .color.area-color-14 path,
+  [class*="M52-RI"] .color.area-color-14 rect,
+  [class*="M52-RI"] .color.area-color-14 circle,
+  [class*="M52-RI"] .color.area-color-14 path {
+    fill: #ffffff; }
+  svg .area-color-14.rdfi-R.darker,
+  span.area-color-14.rdfi-R.darker,
+  .area-color-14[class*="M52-RF"].darker,
+  .area-color-14[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-14.darker,
+  [class*="M52-RI"] .color.area-color-14.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-14.rdfi-R.darker rect, svg .area-color-14.rdfi-R.darker circle, svg .area-color-14.rdfi-R.darker path,
+    span.area-color-14.rdfi-R.darker rect,
+    span.area-color-14.rdfi-R.darker circle,
+    span.area-color-14.rdfi-R.darker path,
+    .area-color-14[class*="M52-RF"].darker rect,
+    .area-color-14[class*="M52-RF"].darker circle,
+    .area-color-14[class*="M52-RF"].darker path,
+    .area-color-14[class*="M52-RI"].darker rect,
+    .area-color-14[class*="M52-RI"].darker circle,
+    .area-color-14[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-14.darker rect,
+    [class*="M52-RF"] .color.area-color-14.darker circle,
+    [class*="M52-RF"] .color.area-color-14.darker path,
+    [class*="M52-RI"] .color.area-color-14.darker rect,
+    [class*="M52-RI"] .color.area-color-14.darker circle,
+    [class*="M52-RI"] .color.area-color-14.darker path {
+      fill: #cccccc; }
+  svg .area-color-14.rdfi-R.lighter,
+  span.area-color-14.rdfi-R.lighter,
+  .area-color-14[class*="M52-RF"].lighter,
+  .area-color-14[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-14.lighter,
+  [class*="M52-RI"] .color.area-color-14.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-14.rdfi-R.lighter rect, svg .area-color-14.rdfi-R.lighter circle, svg .area-color-14.rdfi-R.lighter path,
+    span.area-color-14.rdfi-R.lighter rect,
+    span.area-color-14.rdfi-R.lighter circle,
+    span.area-color-14.rdfi-R.lighter path,
+    .area-color-14[class*="M52-RF"].lighter rect,
+    .area-color-14[class*="M52-RF"].lighter circle,
+    .area-color-14[class*="M52-RF"].lighter path,
+    .area-color-14[class*="M52-RI"].lighter rect,
+    .area-color-14[class*="M52-RI"].lighter circle,
+    .area-color-14[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-14.lighter rect,
+    [class*="M52-RF"] .color.area-color-14.lighter circle,
+    [class*="M52-RF"] .color.area-color-14.lighter path,
+    [class*="M52-RI"] .color.area-color-14.lighter rect,
+    [class*="M52-RI"] .color.area-color-14.lighter circle,
+    [class*="M52-RI"] .color.area-color-14.lighter path {
+      fill: white; }
+
+svg .area-color-15.rdfi-D,
+span.area-color-15.rdfi-D,
+.area-color-15[class*="M52-DF"],
+.area-color-15[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-15,
+[class*="M52-DI"] .color.area-color-15 {
+  background-color: #D9A08D;
+  fill: #D9A08D; }
+  svg .area-color-15.rdfi-D rect, svg .area-color-15.rdfi-D circle, svg .area-color-15.rdfi-D path,
+  span.area-color-15.rdfi-D rect,
+  span.area-color-15.rdfi-D circle,
+  span.area-color-15.rdfi-D path,
+  .area-color-15[class*="M52-DF"] rect,
+  .area-color-15[class*="M52-DF"] circle,
+  .area-color-15[class*="M52-DF"] path,
+  .area-color-15[class*="M52-DI"] rect,
+  .area-color-15[class*="M52-DI"] circle,
+  .area-color-15[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-15 rect,
+  [class*="M52-DF"] .color.area-color-15 circle,
+  [class*="M52-DF"] .color.area-color-15 path,
+  [class*="M52-DI"] .color.area-color-15 rect,
+  [class*="M52-DI"] .color.area-color-15 circle,
+  [class*="M52-DI"] .color.area-color-15 path {
+    fill: #D9A08D; }
+  svg .area-color-15.rdfi-D.darker,
+  span.area-color-15.rdfi-D.darker,
+  .area-color-15[class*="M52-DF"].darker,
+  .area-color-15[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-15.darker,
+  [class*="M52-DI"] .color.area-color-15.darker {
+    background-color: #c06041;
+    fill: #c06041; }
+    svg .area-color-15.rdfi-D.darker rect, svg .area-color-15.rdfi-D.darker circle, svg .area-color-15.rdfi-D.darker path,
+    span.area-color-15.rdfi-D.darker rect,
+    span.area-color-15.rdfi-D.darker circle,
+    span.area-color-15.rdfi-D.darker path,
+    .area-color-15[class*="M52-DF"].darker rect,
+    .area-color-15[class*="M52-DF"].darker circle,
+    .area-color-15[class*="M52-DF"].darker path,
+    .area-color-15[class*="M52-DI"].darker rect,
+    .area-color-15[class*="M52-DI"].darker circle,
+    .area-color-15[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-15.darker rect,
+    [class*="M52-DF"] .color.area-color-15.darker circle,
+    [class*="M52-DF"] .color.area-color-15.darker path,
+    [class*="M52-DI"] .color.area-color-15.darker rect,
+    [class*="M52-DI"] .color.area-color-15.darker circle,
+    [class*="M52-DI"] .color.area-color-15.darker path {
+      fill: #c06041; }
+  svg .area-color-15.rdfi-D.lighter,
+  span.area-color-15.rdfi-D.lighter,
+  .area-color-15[class*="M52-DF"].lighter,
+  .area-color-15[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-15.lighter,
+  [class*="M52-DI"] .color.area-color-15.lighter {
+    background-color: #f3e0da;
+    fill: #f3e0da; }
+    svg .area-color-15.rdfi-D.lighter rect, svg .area-color-15.rdfi-D.lighter circle, svg .area-color-15.rdfi-D.lighter path,
+    span.area-color-15.rdfi-D.lighter rect,
+    span.area-color-15.rdfi-D.lighter circle,
+    span.area-color-15.rdfi-D.lighter path,
+    .area-color-15[class*="M52-DF"].lighter rect,
+    .area-color-15[class*="M52-DF"].lighter circle,
+    .area-color-15[class*="M52-DF"].lighter path,
+    .area-color-15[class*="M52-DI"].lighter rect,
+    .area-color-15[class*="M52-DI"].lighter circle,
+    .area-color-15[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-15.lighter rect,
+    [class*="M52-DF"] .color.area-color-15.lighter circle,
+    [class*="M52-DF"] .color.area-color-15.lighter path,
+    [class*="M52-DI"] .color.area-color-15.lighter rect,
+    [class*="M52-DI"] .color.area-color-15.lighter circle,
+    [class*="M52-DI"] .color.area-color-15.lighter path {
+      fill: #f3e0da; }
+
+svg .area-color-15.rdfi-R,
+span.area-color-15.rdfi-R,
+.area-color-15[class*="M52-RF"],
+.area-color-15[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-15,
+[class*="M52-RI"] .color.area-color-15 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-15.rdfi-R rect, svg .area-color-15.rdfi-R circle, svg .area-color-15.rdfi-R path,
+  span.area-color-15.rdfi-R rect,
+  span.area-color-15.rdfi-R circle,
+  span.area-color-15.rdfi-R path,
+  .area-color-15[class*="M52-RF"] rect,
+  .area-color-15[class*="M52-RF"] circle,
+  .area-color-15[class*="M52-RF"] path,
+  .area-color-15[class*="M52-RI"] rect,
+  .area-color-15[class*="M52-RI"] circle,
+  .area-color-15[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-15 rect,
+  [class*="M52-RF"] .color.area-color-15 circle,
+  [class*="M52-RF"] .color.area-color-15 path,
+  [class*="M52-RI"] .color.area-color-15 rect,
+  [class*="M52-RI"] .color.area-color-15 circle,
+  [class*="M52-RI"] .color.area-color-15 path {
+    fill: #ffffff; }
+  svg .area-color-15.rdfi-R.darker,
+  span.area-color-15.rdfi-R.darker,
+  .area-color-15[class*="M52-RF"].darker,
+  .area-color-15[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-15.darker,
+  [class*="M52-RI"] .color.area-color-15.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-15.rdfi-R.darker rect, svg .area-color-15.rdfi-R.darker circle, svg .area-color-15.rdfi-R.darker path,
+    span.area-color-15.rdfi-R.darker rect,
+    span.area-color-15.rdfi-R.darker circle,
+    span.area-color-15.rdfi-R.darker path,
+    .area-color-15[class*="M52-RF"].darker rect,
+    .area-color-15[class*="M52-RF"].darker circle,
+    .area-color-15[class*="M52-RF"].darker path,
+    .area-color-15[class*="M52-RI"].darker rect,
+    .area-color-15[class*="M52-RI"].darker circle,
+    .area-color-15[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-15.darker rect,
+    [class*="M52-RF"] .color.area-color-15.darker circle,
+    [class*="M52-RF"] .color.area-color-15.darker path,
+    [class*="M52-RI"] .color.area-color-15.darker rect,
+    [class*="M52-RI"] .color.area-color-15.darker circle,
+    [class*="M52-RI"] .color.area-color-15.darker path {
+      fill: #cccccc; }
+  svg .area-color-15.rdfi-R.lighter,
+  span.area-color-15.rdfi-R.lighter,
+  .area-color-15[class*="M52-RF"].lighter,
+  .area-color-15[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-15.lighter,
+  [class*="M52-RI"] .color.area-color-15.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-15.rdfi-R.lighter rect, svg .area-color-15.rdfi-R.lighter circle, svg .area-color-15.rdfi-R.lighter path,
+    span.area-color-15.rdfi-R.lighter rect,
+    span.area-color-15.rdfi-R.lighter circle,
+    span.area-color-15.rdfi-R.lighter path,
+    .area-color-15[class*="M52-RF"].lighter rect,
+    .area-color-15[class*="M52-RF"].lighter circle,
+    .area-color-15[class*="M52-RF"].lighter path,
+    .area-color-15[class*="M52-RI"].lighter rect,
+    .area-color-15[class*="M52-RI"].lighter circle,
+    .area-color-15[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-15.lighter rect,
+    [class*="M52-RF"] .color.area-color-15.lighter circle,
+    [class*="M52-RF"] .color.area-color-15.lighter path,
+    [class*="M52-RI"] .color.area-color-15.lighter rect,
+    [class*="M52-RI"] .color.area-color-15.lighter circle,
+    [class*="M52-RI"] .color.area-color-15.lighter path {
+      fill: white; }
+
+svg .area-color-16.rdfi-D,
+span.area-color-16.rdfi-D,
+.area-color-16[class*="M52-DF"],
+.area-color-16[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-16,
+[class*="M52-DI"] .color.area-color-16 {
+  background-color: #B67979;
+  fill: #B67979; }
+  svg .area-color-16.rdfi-D rect, svg .area-color-16.rdfi-D circle, svg .area-color-16.rdfi-D path,
+  span.area-color-16.rdfi-D rect,
+  span.area-color-16.rdfi-D circle,
+  span.area-color-16.rdfi-D path,
+  .area-color-16[class*="M52-DF"] rect,
+  .area-color-16[class*="M52-DF"] circle,
+  .area-color-16[class*="M52-DF"] path,
+  .area-color-16[class*="M52-DI"] rect,
+  .area-color-16[class*="M52-DI"] circle,
+  .area-color-16[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-16 rect,
+  [class*="M52-DF"] .color.area-color-16 circle,
+  [class*="M52-DF"] .color.area-color-16 path,
+  [class*="M52-DI"] .color.area-color-16 rect,
+  [class*="M52-DI"] .color.area-color-16 circle,
+  [class*="M52-DI"] .color.area-color-16 path {
+    fill: #B67979; }
+  svg .area-color-16.rdfi-D.darker,
+  span.area-color-16.rdfi-D.darker,
+  .area-color-16[class*="M52-DF"].darker,
+  .area-color-16[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-16.darker,
+  [class*="M52-DI"] .color.area-color-16.darker {
+    background-color: #824747;
+    fill: #824747; }
+    svg .area-color-16.rdfi-D.darker rect, svg .area-color-16.rdfi-D.darker circle, svg .area-color-16.rdfi-D.darker path,
+    span.area-color-16.rdfi-D.darker rect,
+    span.area-color-16.rdfi-D.darker circle,
+    span.area-color-16.rdfi-D.darker path,
+    .area-color-16[class*="M52-DF"].darker rect,
+    .area-color-16[class*="M52-DF"].darker circle,
+    .area-color-16[class*="M52-DF"].darker path,
+    .area-color-16[class*="M52-DI"].darker rect,
+    .area-color-16[class*="M52-DI"].darker circle,
+    .area-color-16[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-16.darker rect,
+    [class*="M52-DF"] .color.area-color-16.darker circle,
+    [class*="M52-DF"] .color.area-color-16.darker path,
+    [class*="M52-DI"] .color.area-color-16.darker rect,
+    [class*="M52-DI"] .color.area-color-16.darker circle,
+    [class*="M52-DI"] .color.area-color-16.darker path {
+      fill: #824747; }
+  svg .area-color-16.rdfi-D.lighter,
+  span.area-color-16.rdfi-D.lighter,
+  .area-color-16[class*="M52-DF"].lighter,
+  .area-color-16[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-16.lighter,
+  [class*="M52-DI"] .color.area-color-16.lighter {
+    background-color: #dabbbb;
+    fill: #dabbbb; }
+    svg .area-color-16.rdfi-D.lighter rect, svg .area-color-16.rdfi-D.lighter circle, svg .area-color-16.rdfi-D.lighter path,
+    span.area-color-16.rdfi-D.lighter rect,
+    span.area-color-16.rdfi-D.lighter circle,
+    span.area-color-16.rdfi-D.lighter path,
+    .area-color-16[class*="M52-DF"].lighter rect,
+    .area-color-16[class*="M52-DF"].lighter circle,
+    .area-color-16[class*="M52-DF"].lighter path,
+    .area-color-16[class*="M52-DI"].lighter rect,
+    .area-color-16[class*="M52-DI"].lighter circle,
+    .area-color-16[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-16.lighter rect,
+    [class*="M52-DF"] .color.area-color-16.lighter circle,
+    [class*="M52-DF"] .color.area-color-16.lighter path,
+    [class*="M52-DI"] .color.area-color-16.lighter rect,
+    [class*="M52-DI"] .color.area-color-16.lighter circle,
+    [class*="M52-DI"] .color.area-color-16.lighter path {
+      fill: #dabbbb; }
+
+svg .area-color-16.rdfi-R,
+span.area-color-16.rdfi-R,
+.area-color-16[class*="M52-RF"],
+.area-color-16[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-16,
+[class*="M52-RI"] .color.area-color-16 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-16.rdfi-R rect, svg .area-color-16.rdfi-R circle, svg .area-color-16.rdfi-R path,
+  span.area-color-16.rdfi-R rect,
+  span.area-color-16.rdfi-R circle,
+  span.area-color-16.rdfi-R path,
+  .area-color-16[class*="M52-RF"] rect,
+  .area-color-16[class*="M52-RF"] circle,
+  .area-color-16[class*="M52-RF"] path,
+  .area-color-16[class*="M52-RI"] rect,
+  .area-color-16[class*="M52-RI"] circle,
+  .area-color-16[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-16 rect,
+  [class*="M52-RF"] .color.area-color-16 circle,
+  [class*="M52-RF"] .color.area-color-16 path,
+  [class*="M52-RI"] .color.area-color-16 rect,
+  [class*="M52-RI"] .color.area-color-16 circle,
+  [class*="M52-RI"] .color.area-color-16 path {
+    fill: #ffffff; }
+  svg .area-color-16.rdfi-R.darker,
+  span.area-color-16.rdfi-R.darker,
+  .area-color-16[class*="M52-RF"].darker,
+  .area-color-16[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-16.darker,
+  [class*="M52-RI"] .color.area-color-16.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-16.rdfi-R.darker rect, svg .area-color-16.rdfi-R.darker circle, svg .area-color-16.rdfi-R.darker path,
+    span.area-color-16.rdfi-R.darker rect,
+    span.area-color-16.rdfi-R.darker circle,
+    span.area-color-16.rdfi-R.darker path,
+    .area-color-16[class*="M52-RF"].darker rect,
+    .area-color-16[class*="M52-RF"].darker circle,
+    .area-color-16[class*="M52-RF"].darker path,
+    .area-color-16[class*="M52-RI"].darker rect,
+    .area-color-16[class*="M52-RI"].darker circle,
+    .area-color-16[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-16.darker rect,
+    [class*="M52-RF"] .color.area-color-16.darker circle,
+    [class*="M52-RF"] .color.area-color-16.darker path,
+    [class*="M52-RI"] .color.area-color-16.darker rect,
+    [class*="M52-RI"] .color.area-color-16.darker circle,
+    [class*="M52-RI"] .color.area-color-16.darker path {
+      fill: #cccccc; }
+  svg .area-color-16.rdfi-R.lighter,
+  span.area-color-16.rdfi-R.lighter,
+  .area-color-16[class*="M52-RF"].lighter,
+  .area-color-16[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-16.lighter,
+  [class*="M52-RI"] .color.area-color-16.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-16.rdfi-R.lighter rect, svg .area-color-16.rdfi-R.lighter circle, svg .area-color-16.rdfi-R.lighter path,
+    span.area-color-16.rdfi-R.lighter rect,
+    span.area-color-16.rdfi-R.lighter circle,
+    span.area-color-16.rdfi-R.lighter path,
+    .area-color-16[class*="M52-RF"].lighter rect,
+    .area-color-16[class*="M52-RF"].lighter circle,
+    .area-color-16[class*="M52-RF"].lighter path,
+    .area-color-16[class*="M52-RI"].lighter rect,
+    .area-color-16[class*="M52-RI"].lighter circle,
+    .area-color-16[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-16.lighter rect,
+    [class*="M52-RF"] .color.area-color-16.lighter circle,
+    [class*="M52-RF"] .color.area-color-16.lighter path,
+    [class*="M52-RI"] .color.area-color-16.lighter rect,
+    [class*="M52-RI"] .color.area-color-16.lighter circle,
+    [class*="M52-RI"] .color.area-color-16.lighter path {
+      fill: white; }
+
+svg .area-color-17.rdfi-D,
+span.area-color-17.rdfi-D,
+.area-color-17[class*="M52-DF"],
+.area-color-17[class*="M52-DI"],
+[class*="M52-DF"] .color.area-color-17,
+[class*="M52-DI"] .color.area-color-17 {
+  background-color: #D53131;
+  fill: #D53131; }
+  svg .area-color-17.rdfi-D rect, svg .area-color-17.rdfi-D circle, svg .area-color-17.rdfi-D path,
+  span.area-color-17.rdfi-D rect,
+  span.area-color-17.rdfi-D circle,
+  span.area-color-17.rdfi-D path,
+  .area-color-17[class*="M52-DF"] rect,
+  .area-color-17[class*="M52-DF"] circle,
+  .area-color-17[class*="M52-DF"] path,
+  .area-color-17[class*="M52-DI"] rect,
+  .area-color-17[class*="M52-DI"] circle,
+  .area-color-17[class*="M52-DI"] path,
+  [class*="M52-DF"] .color.area-color-17 rect,
+  [class*="M52-DF"] .color.area-color-17 circle,
+  [class*="M52-DF"] .color.area-color-17 path,
+  [class*="M52-DI"] .color.area-color-17 rect,
+  [class*="M52-DI"] .color.area-color-17 circle,
+  [class*="M52-DI"] .color.area-color-17 path {
+    fill: #D53131; }
+  svg .area-color-17.rdfi-D.darker,
+  span.area-color-17.rdfi-D.darker,
+  .area-color-17[class*="M52-DF"].darker,
+  .area-color-17[class*="M52-DI"].darker,
+  [class*="M52-DF"] .color.area-color-17.darker,
+  [class*="M52-DI"] .color.area-color-17.darker {
+    background-color: #851b1b;
+    fill: #851b1b; }
+    svg .area-color-17.rdfi-D.darker rect, svg .area-color-17.rdfi-D.darker circle, svg .area-color-17.rdfi-D.darker path,
+    span.area-color-17.rdfi-D.darker rect,
+    span.area-color-17.rdfi-D.darker circle,
+    span.area-color-17.rdfi-D.darker path,
+    .area-color-17[class*="M52-DF"].darker rect,
+    .area-color-17[class*="M52-DF"].darker circle,
+    .area-color-17[class*="M52-DF"].darker path,
+    .area-color-17[class*="M52-DI"].darker rect,
+    .area-color-17[class*="M52-DI"].darker circle,
+    .area-color-17[class*="M52-DI"].darker path,
+    [class*="M52-DF"] .color.area-color-17.darker rect,
+    [class*="M52-DF"] .color.area-color-17.darker circle,
+    [class*="M52-DF"] .color.area-color-17.darker path,
+    [class*="M52-DI"] .color.area-color-17.darker rect,
+    [class*="M52-DI"] .color.area-color-17.darker circle,
+    [class*="M52-DI"] .color.area-color-17.darker path {
+      fill: #851b1b; }
+  svg .area-color-17.rdfi-D.lighter,
+  span.area-color-17.rdfi-D.lighter,
+  .area-color-17[class*="M52-DF"].lighter,
+  .area-color-17[class*="M52-DI"].lighter,
+  [class*="M52-DF"] .color.area-color-17.lighter,
+  [class*="M52-DI"] .color.area-color-17.lighter {
+    background-color: #e68686;
+    fill: #e68686; }
+    svg .area-color-17.rdfi-D.lighter rect, svg .area-color-17.rdfi-D.lighter circle, svg .area-color-17.rdfi-D.lighter path,
+    span.area-color-17.rdfi-D.lighter rect,
+    span.area-color-17.rdfi-D.lighter circle,
+    span.area-color-17.rdfi-D.lighter path,
+    .area-color-17[class*="M52-DF"].lighter rect,
+    .area-color-17[class*="M52-DF"].lighter circle,
+    .area-color-17[class*="M52-DF"].lighter path,
+    .area-color-17[class*="M52-DI"].lighter rect,
+    .area-color-17[class*="M52-DI"].lighter circle,
+    .area-color-17[class*="M52-DI"].lighter path,
+    [class*="M52-DF"] .color.area-color-17.lighter rect,
+    [class*="M52-DF"] .color.area-color-17.lighter circle,
+    [class*="M52-DF"] .color.area-color-17.lighter path,
+    [class*="M52-DI"] .color.area-color-17.lighter rect,
+    [class*="M52-DI"] .color.area-color-17.lighter circle,
+    [class*="M52-DI"] .color.area-color-17.lighter path {
+      fill: #e68686; }
+
+svg .area-color-17.rdfi-R,
+span.area-color-17.rdfi-R,
+.area-color-17[class*="M52-RF"],
+.area-color-17[class*="M52-RI"],
+[class*="M52-RF"] .color.area-color-17,
+[class*="M52-RI"] .color.area-color-17 {
+  background-color: #ffffff;
+  fill: #ffffff; }
+  svg .area-color-17.rdfi-R rect, svg .area-color-17.rdfi-R circle, svg .area-color-17.rdfi-R path,
+  span.area-color-17.rdfi-R rect,
+  span.area-color-17.rdfi-R circle,
+  span.area-color-17.rdfi-R path,
+  .area-color-17[class*="M52-RF"] rect,
+  .area-color-17[class*="M52-RF"] circle,
+  .area-color-17[class*="M52-RF"] path,
+  .area-color-17[class*="M52-RI"] rect,
+  .area-color-17[class*="M52-RI"] circle,
+  .area-color-17[class*="M52-RI"] path,
+  [class*="M52-RF"] .color.area-color-17 rect,
+  [class*="M52-RF"] .color.area-color-17 circle,
+  [class*="M52-RF"] .color.area-color-17 path,
+  [class*="M52-RI"] .color.area-color-17 rect,
+  [class*="M52-RI"] .color.area-color-17 circle,
+  [class*="M52-RI"] .color.area-color-17 path {
+    fill: #ffffff; }
+  svg .area-color-17.rdfi-R.darker,
+  span.area-color-17.rdfi-R.darker,
+  .area-color-17[class*="M52-RF"].darker,
+  .area-color-17[class*="M52-RI"].darker,
+  [class*="M52-RF"] .color.area-color-17.darker,
+  [class*="M52-RI"] .color.area-color-17.darker {
+    background-color: #cccccc;
+    fill: #cccccc; }
+    svg .area-color-17.rdfi-R.darker rect, svg .area-color-17.rdfi-R.darker circle, svg .area-color-17.rdfi-R.darker path,
+    span.area-color-17.rdfi-R.darker rect,
+    span.area-color-17.rdfi-R.darker circle,
+    span.area-color-17.rdfi-R.darker path,
+    .area-color-17[class*="M52-RF"].darker rect,
+    .area-color-17[class*="M52-RF"].darker circle,
+    .area-color-17[class*="M52-RF"].darker path,
+    .area-color-17[class*="M52-RI"].darker rect,
+    .area-color-17[class*="M52-RI"].darker circle,
+    .area-color-17[class*="M52-RI"].darker path,
+    [class*="M52-RF"] .color.area-color-17.darker rect,
+    [class*="M52-RF"] .color.area-color-17.darker circle,
+    [class*="M52-RF"] .color.area-color-17.darker path,
+    [class*="M52-RI"] .color.area-color-17.darker rect,
+    [class*="M52-RI"] .color.area-color-17.darker circle,
+    [class*="M52-RI"] .color.area-color-17.darker path {
+      fill: #cccccc; }
+  svg .area-color-17.rdfi-R.lighter,
+  span.area-color-17.rdfi-R.lighter,
+  .area-color-17[class*="M52-RF"].lighter,
+  .area-color-17[class*="M52-RI"].lighter,
+  [class*="M52-RF"] .color.area-color-17.lighter,
+  [class*="M52-RI"] .color.area-color-17.lighter {
+    background-color: white;
+    fill: white; }
+    svg .area-color-17.rdfi-R.lighter rect, svg .area-color-17.rdfi-R.lighter circle, svg .area-color-17.rdfi-R.lighter path,
+    span.area-color-17.rdfi-R.lighter rect,
+    span.area-color-17.rdfi-R.lighter circle,
+    span.area-color-17.rdfi-R.lighter path,
+    .area-color-17[class*="M52-RF"].lighter rect,
+    .area-color-17[class*="M52-RF"].lighter circle,
+    .area-color-17[class*="M52-RF"].lighter path,
+    .area-color-17[class*="M52-RI"].lighter rect,
+    .area-color-17[class*="M52-RI"].lighter circle,
+    .area-color-17[class*="M52-RI"].lighter path,
+    [class*="M52-RF"] .color.area-color-17.lighter rect,
+    [class*="M52-RF"] .color.area-color-17.lighter circle,
+    [class*="M52-RF"] .color.area-color-17.lighter path,
+    [class*="M52-RI"] .color.area-color-17.lighter rect,
+    [class*="M52-RI"] .color.area-color-17.lighter circle,
+    [class*="M52-RI"] .color.area-color-17.lighter path {
+      fill: white; }
+
+.discrete-grey {
+  background-color: #bdbdbd;
+  fill: #bdbdbd; }
+  .discrete-grey rect, .discrete-grey circle, .discrete-grey path {
+    fill: #bdbdbd; }
+
+.money-amount {
+  font-variant-numeric: oldstyle-nums tabular-nums;
+  font-weight: bold;
+  white-space: nowrap; }
+  .money-amount.tooltip {
+    font-weight: normal; }
+  .rdfi-D .money-amount {
+    color: #AA2200; }
+  .rdfi-R .money-amount {
+    color: #3C4B81; }
+  .money-amount .millions,
+  .money-amount .thousands,
+  .money-amount .hundreds {
+    padding-right: 2px; }
+
+ol.legend-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1em; }
+  ol.legend-list > li {
+    border-radius: .25em;
+    cursor: help;
+    display: flex;
+    margin-bottom: .25em; }
+  ol.legend-list .color {
+    border-radius: 3px;
+    display: inline-block;
+    flex: 0 0 auto;
+    align-self: first baseline;
+    height: 1em;
+    width: 1em;
+    margin: 0 .3em 0 0;
+    vertical-align: sub; }
+  ol.legend-list a {
+    display: block; }
+  ol.legend-list a[href] {
+    color: #342b24;
+    display: block;
+    text-decoration: underline; }
+    ol.legend-list a[href]:hover, ol.legend-list a[href]:focus {
+      color: black;
+      text-decoration: none; }
+  ol.legend-list .focused:before {
+    content: "▶ ";
+    color: #342b24;
+    margin-left: -1.3em;
+    position: absolute; }
+  ol.legend-list .focused a {
+    text-decoration: none; }
+
+.finance-element-context {
+  width: 100%;
+  max-width: 60em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+  .finance-element-context a {
+    text-decoration: underline; }
+    .finance-element-context a .text {
+      text-decoration: underline; }
+  .finance-element-context > * {
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.4em;
+    height: 2.2em;
+    white-space: nowrap; }
+    .finance-element-context > * > * {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 0.3em;
+      width: 0;
+      transition: width 0.4s ease;
+      will-change: width; }
+  .finance-element-context .text {
+    margin-left: 0.5em; }
+    .finance-element-context .text:nth-child(2) {
+      color: black; }
+
+.finance-dataviz-container .raw-data {
+  font-size: .8em;
+  width: 100%; }
+  @media screen and (min-width: 480px) {
+    .finance-dataviz-container .raw-data {
+      font-size: inherit; } }
+  .finance-dataviz-container .raw-data thead th,
+  .finance-dataviz-container .raw-data th[scope="col"] {
+    border-bottom: 2px solid #bdbdbd;
+    color: #bdbdbd;
+    font-weight: normal;
+    font-size: .9em;
+    text-align: left; }
+  .finance-dataviz-container .raw-data th[scope="colgroup"].money-amount {
+    color: #8a8a8a; }
+  .finance-dataviz-container .raw-data .money-amount {
+    text-align: right !important; }
+  .finance-dataviz-container .raw-data .colgroup {
+    text-align: left; }
+    .finance-dataviz-container .raw-data .colgroup td, .finance-dataviz-container .raw-data .colgroup th {
+      padding-bottom: .75rem;
+      padding-top: .75rem; }
+    .finance-dataviz-container .raw-data .colgroup.colgroup--group th {
+      font-size: 1.25em; }
+    .finance-dataviz-container .raw-data .colgroup.colgroup--group:not(:first-of-type) th {
+      padding-top: 2rem; }
+  .finance-dataviz-container .raw-data tbody tr {
+    border-bottom: 1px solid #bdbdbd; }
+  .finance-dataviz-container .raw-data td,
+  .finance-dataviz-container .raw-data th {
+    padding: .4em .2em; }
+  .finance-dataviz-container .raw-data td.digits,
+  .finance-dataviz-container .raw-data th.digits {
+    text-align: right; }
+  .finance-dataviz-container .raw-data .raw-record.raw-record--nature-detail {
+    color: #8a8a8a; }
+    .finance-dataviz-container .raw-data .raw-record.raw-record--nature-detail td:first-of-type {
+      padding-left: .25em; }
+      .finance-dataviz-container .raw-data .raw-record.raw-record--nature-detail td:first-of-type:before {
+        content: "├─ ";
+        font-family: monospace; }
+    .finance-dataviz-container .raw-data .raw-record.raw-record--nature-detail.last-item td:first-of-type:before {
+      content: "└─ "; }
+    .finance-dataviz-container .raw-data .raw-record.raw-record--nature-detail .money-amount {
+      font-weight: normal !important; }
+  .finance-dataviz-container .raw-data .raw-record:hover,
+  .finance-dataviz-container .raw-data .raw-record:focus {
+    background-color: #fff;
+    color: #342b24;
+    border-bottom-color: #342b24; }
+
+.finance-dataviz-container .raw-data .money-amount {
+  font-family: monospace;
+  font-weight: bold; }
+
+.sunburst .slice path {
+  fill: #d4c685; }
+
+.sunburst .slice > .slice path {
+  fill: #f7ef81; }
+
+.sunburst .slice > .slice > .slice path {
+  fill: #cfe795; }
+
+.sunburst .slice > .slice > .slice > .slice path {
+  fill: #a7d3a6; }
+
+.sunburst .slice > .slice > .slice > .slice > .slice path {
+  fill: #add2c2; }
+
+.sunburst text {
+  color: black;
+  stroke-width: 0; }
+
+.sunburst .active-selection .slice > .piece path,
+.sunburst .active-selection .slice > .piece text {
+  opacity: 0.3; }
+
+.sunburst .active-selection .slice.highlighted > .piece path,
+.sunburst .active-selection .slice.highlighted > .piece text {
+  opacity: 1; }
+
+.sunburst .active-selection .slice.selected > .piece path {
+  stroke: indianred;
+  stroke-width: 2px; }
+
+.side-by-side {
+  display: inline-block;
+  width: 50%; }
+
+figure.donut {
+  margin: 0;
+  position: relative; }
+  figure.donut g:focus {
+    stroke: #e62e46;
+    stroke-width: 2; }
+  figure.donut .money-amount {
+    display: block; }
+  figure.donut figcaption {
+    left: 0;
+    margin: -2em 0 0;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    z-index: -1;
+    /* text does not hide any hover-able path underneath */ }
+
+.explore-budget .h4 select {
+  font-size: inherit;
+  margin: 0 .5em; }
+  .explore-budget .h4 select .selected {
+    font-weight: bold; }
+
+.explore-budget section {
+  padding-top: 1em; }
+  .explore-budget section.discrete {
+    background: #FAF9F9; }
+    .explore-budget section.discrete h2, .explore-budget section.discrete .h2 {
+      color: #342b24; }
+  .explore-budget section .intro {
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto; }
+
+.explore-budget .rdfi-choice {
+  display: flex;
+  flex-direction: row; }
+
+.explore-budget .icon {
+  height: 24px;
+  width: 24px; }
+  .explore-budget .icon--pull {
+    position: absolute;
+    left: 0; }
+
+.explore-budget span.money-amount {
+  display: block;
+  font-size: 1.1em; }
+  .explore-budget span.money-amount .suffix, .explore-budget span.money-amount .prefix {
+    font-weight: normal; }
+
+.explore-budget .side-by-side {
+  border-bottom: 2px solid #bdbdbd;
+  margin: 1.5em 0;
+  padding: 0 0 1.5em;
+  width: 100%; }
+  @media screen and (min-width: 600px) {
+    .explore-budget .side-by-side {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around; }
+      .explore-budget .side-by-side > .side {
+        flex: 1 1 auto;
+        max-width: 350px;
+        padding: 0;
+        margin: 0; } }
+  .explore-budget .side-by-side figcaption {
+    font-size: 1.1em; }
+    .explore-budget .side-by-side figcaption .money-amount {
+      font-size: 1.3em; }
+  .explore-budget .side-by-side .explanatory-legend dt {
+    font-weight: bold;
+    position: relative;
+    white-space: nowrap; }
+  .explore-budget .side-by-side .explanatory-legend dt,
+  .explore-budget .side-by-side .explanatory-legend dd {
+    margin-left: 0;
+    padding-left: 40px; }
+  .explore-budget .side-by-side .explanatory-legend dd {
+    margin-bottom: 1.5em; }
+  .explore-budget .side-by-side .explanatory-legend p, .explore-budget .side-by-side .explanatory-legend details {
+    font-size: .9rem;
+    margin-bottom: 0.25em; }
+  .explore-budget .side-by-side .explanatory-legend summary {
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: underline solid #9d8f84 2px; }
+  .explore-budget .side-by-side .explanatory-legend .rdfi-R.rdfi-F .icon path {
+    fill: #556AB5; }
+  .explore-budget .side-by-side .explanatory-legend .rdfi-R.rdfi-I .icon path {
+    fill: #7D91D5; }
+  .explore-budget .side-by-side .explanatory-legend .rdfi-D.rdfi-F .icon path {
+    fill: #FB7800; }
+  .explore-budget .side-by-side .explanatory-legend .rdfi-D.rdfi-I .icon path {
+    fill: #FFA655; }
+  .explore-budget .side-by-side .explanatory-legend .icon {
+    display: inline-block;
+    margin-left: -34px;
+    margin-right: 10px;
+    vertical-align: middle; }
+  .explore-budget .side-by-side .explanatory-legend .markdown-rendered p {
+    color: #685c53;
+    margin-top: 0;
+    margin-bottom: .25em; }
+
+.explore-budget .tabs {
+  background: #FAF9F9;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start; }
+  @media screen and (min-width: 600px) {
+    .explore-budget .tabs {
+      flex-flow: row nowrap; } }
+  .explore-budget .tabs > * {
+    flex: 1 1 auto; }
+  .explore-budget .tabs [role="tab"] {
+    border-bottom: 8px solid #bdbdbd;
+    color: rgba(52, 43, 36, 0.7);
+    display: block;
+    padding: 1em;
+    text-decoration: none; }
+    .explore-budget .tabs [role="tab"]:hover:not([aria-selected="true"]), .explore-budget .tabs [role="tab"]:focus:not([aria-selected="true"]) {
+      box-shadow: 0 0 4px #8a8a8a;
+      color: #342b24; }
+    .explore-budget .tabs [role="tab"][aria-selected="true"] {
+      box-shadow: 0 0 4px #575757;
+      color: #342b24; }
+  .explore-budget .tabs .icon {
+    display: block;
+    margin-bottom: .75em; }
+
+.explore-budget .inline-tabs {
+  border-bottom: 1px solid #bdbdbd;
+  display: flex; }
+  @media screen and (min-width: 600px) {
+    .explore-budget .inline-tabs {
+      padding: 0 3rem; } }
+  .explore-budget .inline-tabs > li {
+    align-self: center;
+    margin-bottom: -1px; }
+  .explore-budget .inline-tabs a[role="tab"] {
+    color: #342b24;
+    display: block; }
+  .explore-budget .inline-tabs a[role="tab"],
+  .explore-budget .inline-tabs button[role="tab"] {
+    background: transparent;
+    border: none;
+    border-top: 3px solid transparent !important;
+    font-size: .8em;
+    padding: .5em 1em;
+    text-decoration: underline;
+    white-space: nowrap; }
+    @media screen and (min-width: 600px) {
+      .explore-budget .inline-tabs a[role="tab"],
+      .explore-budget .inline-tabs button[role="tab"] {
+        font-size: inherit; } }
+    .explore-budget .inline-tabs a[role="tab"][aria-selected="true"],
+    .explore-budget .inline-tabs button[role="tab"][aria-selected="true"] {
+      background: #F2F0EE;
+      border-left: 1px solid #bdbdbd !important;
+      border-right: 1px solid #bdbdbd !important;
+      border-bottom: none;
+      text-decoration: none; }
+    .explore-budget .inline-tabs a[role="tab"]:hover, .explore-budget .inline-tabs a[role="tab"]:focus,
+    .explore-budget .inline-tabs button[role="tab"]:hover,
+    .explore-budget .inline-tabs button[role="tab"]:focus {
+      text-decoration: none; }
+  .explore-budget .inline-tabs .icon {
+    vertical-align: middle; }
+
+.explore-budget .tabs--rdfi [role="tab"].rdfi-R.rdfi-F {
+  border-color: rgba(85, 106, 181, 0.7);
+  transition: border-color .2s ease-in-out; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-R.rdfi-F[aria-selected="true"] {
+    border-color: #556AB5;
+    border-bottom-color: #556AB5 !important;
+    border-top-color: #556AB5 !important; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-R.rdfi-F .icon {
+    color: #556AB5; }
+
+.explore-budget .tabs--rdfi [role="tab"].rdfi-R.rdfi-I {
+  border-color: rgba(125, 145, 213, 0.7);
+  transition: border-color .2s ease-in-out; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-R.rdfi-I[aria-selected="true"] {
+    border-color: #7D91D5;
+    border-bottom-color: #7D91D5 !important;
+    border-top-color: #7D91D5 !important; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-R.rdfi-I .icon {
+    color: #7D91D5; }
+
+.explore-budget .tabs--rdfi [role="tab"].rdfi-D.rdfi-F {
+  border-color: rgba(251, 120, 0, 0.7);
+  transition: border-color .2s ease-in-out; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-D.rdfi-F[aria-selected="true"] {
+    border-color: #FB7800;
+    border-bottom-color: #FB7800 !important;
+    border-top-color: #FB7800 !important; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-D.rdfi-F .icon {
+    color: #FB7800; }
+
+.explore-budget .tabs--rdfi [role="tab"].rdfi-D.rdfi-I {
+  border-color: rgba(255, 166, 85, 0.7);
+  transition: border-color .2s ease-in-out; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-D.rdfi-I[aria-selected="true"] {
+    border-color: #FFA655;
+    border-bottom-color: #FFA655 !important;
+    border-top-color: #FFA655 !important; }
+  .explore-budget .tabs--rdfi [role="tab"].rdfi-D.rdfi-I .icon {
+    color: #FFA655; }
+
+.explore-budget .tabpanel {
+  background: #F2F0EE;
+  padding: 1rem; }
+  .explore-budget .tabpanel .h4 {
+    margin: 0 0 2rem 0;
+    padding-top: 1rem; }
+
+.explore-budget .stackchart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .explore-budget .stackchart .over-time {
+    flex: 1 0 70%; }
+  .explore-budget .stackchart .legend-list {
+    flex: 1 1 25%;
+    flex-direction: row reverse;
+    font-size: .9em;
+    padding-left: 1em;
+    margin-bottom: 2.5em; }
+  .explore-budget .stackchart .money-amount + small {
+    display: block; }
+  @media screen and (min-width: 480px) {
+    .explore-budget .stackchart {
+      justify-content: space-between; }
+      .explore-budget .stackchart .legend-list {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start; }
+        .explore-budget .stackchart .legend-list > li {
+          margin: 0 .5em .5em 0;
+          flex: 1;
+          white-space: nowrap; } }
+  @media screen and (min-width: 1100px) {
+    .explore-budget .stackchart {
+      align-items: flex-end;
+      flex-direction: row; }
+      .explore-budget .stackchart .legend-list {
+        flex-direction: column-reverse; }
+        .explore-budget .stackchart .legend-list > li {
+          flex: 1 0 100%;
+          margin: 0 0 .25em 0;
+          white-space: normal; } }
+
+.explore-budget .donut g.rdfi-R.rdfi-F {
+  fill: #556AB5; }
+
+.explore-budget .donut g.rdfi-R.rdfi-I {
+  fill: #7D91D5; }
+
+.explore-budget .donut g.rdfi-D.rdfi-F {
+  fill: #FB7800; }
+
+.explore-budget .donut g.rdfi-D.rdfi-I {
+  fill: #FFA655; }
+
+.explore-budget .legend-list .color {
+  border: 1px solid #fff;
+  border-radius: 100%; }
+
+.explore-budget .bubble-chart-cluster {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  /* makes it clear for keyboard navigation */
+  /* makes it clear for keyboard navigation */
+  /* makes it clear for keyboard navigation */
+  /* makes it clear for keyboard navigation */ }
+  .explore-budget .bubble-chart-cluster nav {
+    flex: 1 1 100%; }
+  .explore-budget .bubble-chart-cluster .legend-list {
+    display: flex;
+    justify-content: space-between; }
+    .explore-budget .bubble-chart-cluster .legend-list ul li {
+      display: inline; }
+    .explore-budget .bubble-chart-cluster .legend-list:nth-child(2) {
+      text-align: right; }
+  .explore-budget .bubble-chart-cluster .bubble-chart {
+    margin: 1.5em 0;
+    position: relative;
+    width: 25%; }
+    .explore-budget .bubble-chart-cluster .bubble-chart figcaption {
+      display: block;
+      line-height: 1;
+      padding: 0 .5em;
+      position: absolute;
+      text-align: center;
+      text-shadow: -1px 0px white, 1px 0 white, 0 -1px white, 0 1px white;
+      width: 100%; }
+      .explore-budget .bubble-chart-cluster .bubble-chart figcaption .money-amount {
+        display: block;
+        margin-bottom: .2em; }
+      .explore-budget .bubble-chart-cluster .bubble-chart figcaption span:not(.money-amount) {
+        font-size: .9em; }
+    .explore-budget .bubble-chart-cluster .bubble-chart .money-amount {
+      display: block; }
+    .explore-budget .bubble-chart-cluster .bubble-chart.rdfi-D .money-amount {
+      color: #AA2200;
+      /* test */ }
+    .explore-budget .bubble-chart-cluster .bubble-chart.rdfi-R .money-amount {
+      color: #3C4B81;
+      /* test */ }
+  .explore-budget .bubble-chart-cluster .rdfi-R.rdfi-F {
+    fill: #556AB5; }
+  .explore-budget .bubble-chart-cluster a:focus .rdfi-R.rdfi-F,
+  .explore-budget .bubble-chart-cluster a:hover .rdfi-R.rdfi-F {
+    fill: #7989c4; }
+  .explore-budget .bubble-chart-cluster .rdfi-R.rdfi-I {
+    fill: #7D91D5; }
+  .explore-budget .bubble-chart-cluster a:focus .rdfi-R.rdfi-I,
+  .explore-budget .bubble-chart-cluster a:hover .rdfi-R.rdfi-I {
+    fill: #a4b2e1; }
+  .explore-budget .bubble-chart-cluster .rdfi-D.rdfi-F {
+    fill: #FB7800; }
+  .explore-budget .bubble-chart-cluster a:focus .rdfi-D.rdfi-F,
+  .explore-budget .bubble-chart-cluster a:hover .rdfi-D.rdfi-F {
+    fill: #ff922f; }
+  .explore-budget .bubble-chart-cluster .rdfi-D.rdfi-I {
+    fill: #FFA655; }
+  .explore-budget .bubble-chart-cluster a:focus .rdfi-D.rdfi-I,
+  .explore-budget .bubble-chart-cluster a:hover .rdfi-D.rdfi-I {
+    fill: #ffc188; }
+
+.explore-budget .m52-by-fonction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch; }
+  @media screen and (min-width: 800px) {
+    .explore-budget .m52-by-fonction {
+      flex-direction: row; } }
+  .explore-budget .m52-by-fonction > :first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 2; }
+    .explore-budget .m52-by-fonction > :first-child .sunburst .slice {
+      cursor: pointer; }
+  .explore-budget .m52-by-fonction > :nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1; }
+  .explore-budget .m52-by-fonction .display-choice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1em 0 2em 0; }
+    .explore-budget .m52-by-fonction .display-choice .radio {
+      margin-left: 0.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch; }
+      .explore-budget .m52-by-fonction .display-choice .radio button {
+        padding: 0.5em;
+        border: 1px solid #bdbdbd; }
+        .explore-budget .m52-by-fonction .display-choice .radio button.selected {
+          background-color: #e62e46; }
+  .explore-budget .m52-by-fonction .M52-RI-0 path,
+  .explore-budget .m52-by-fonction .M52-RF-0 path {
+    fill: #62A5CB; }
+  .explore-budget .m52-by-fonction .M52-DI-0 path,
+  .explore-budget .m52-by-fonction .M52-DF-0 path {
+    fill: #EE9FCF; }
+  .explore-budget .m52-by-fonction .M52-RI-1 path,
+  .explore-budget .m52-by-fonction .M52-RF-1 path {
+    fill: #12982D; }
+  .explore-budget .m52-by-fonction .M52-DI-1 path,
+  .explore-budget .m52-by-fonction .M52-DF-1 path {
+    fill: #FEC125; }
+  .explore-budget .m52-by-fonction .M52-RI-2 path,
+  .explore-budget .m52-by-fonction .M52-RF-2 path {
+    fill: #5AAF4B; }
+  .explore-budget .m52-by-fonction .M52-DI-2 path,
+  .explore-budget .m52-by-fonction .M52-DF-2 path {
+    fill: #FE6F3E; }
+  .explore-budget .m52-by-fonction .M52-RI-3 path,
+  .explore-budget .m52-by-fonction .M52-RF-3 path {
+    fill: #00AAD2; }
+  .explore-budget .m52-by-fonction .M52-DI-3 path,
+  .explore-budget .m52-by-fonction .M52-DF-3 path {
+    fill: #FF6C7E; }
+  .explore-budget .m52-by-fonction .M52-RI-4 path,
+  .explore-budget .m52-by-fonction .M52-RF-4 path {
+    fill: #462D87; }
+  .explore-budget .m52-by-fonction .M52-DI-4 path,
+  .explore-budget .m52-by-fonction .M52-DF-4 path {
+    fill: #E2A302; }
+  .explore-budget .m52-by-fonction .M52-RI-5 path,
+  .explore-budget .m52-by-fonction .M52-RF-5 path {
+    fill: #ABD533; }
+  .explore-budget .m52-by-fonction .M52-DI-5 path,
+  .explore-budget .m52-by-fonction .M52-DF-5 path {
+    fill: #670501; }
+  .explore-budget .m52-by-fonction .M52-RI-6 path,
+  .explore-budget .m52-by-fonction .M52-RF-6 path {
+    fill: #317CB2; }
+  .explore-budget .m52-by-fonction .M52-DI-6 path,
+  .explore-budget .m52-by-fonction .M52-DF-6 path {
+    fill: #95704D; }
+  .explore-budget .m52-by-fonction .M52-RI-7 path,
+  .explore-budget .m52-by-fonction .M52-RF-7 path {
+    fill: #A2B8F0; }
+  .explore-budget .m52-by-fonction .M52-DI-7 path,
+  .explore-budget .m52-by-fonction .M52-DF-7 path {
+    fill: #B34A01; }
+  .explore-budget .m52-by-fonction .M52-RI-8 path,
+  .explore-budget .m52-by-fonction .M52-RF-8 path {
+    fill: #02424A; }
+  .explore-budget .m52-by-fonction .M52-DI-8 path,
+  .explore-budget .m52-by-fonction .M52-DF-8 path {
+    fill: #F7393A; }
+  .explore-budget .m52-by-fonction .M52-RI-9 path,
+  .explore-budget .m52-by-fonction .M52-RF-9 path {
+    fill: #1F9383; }
+  .explore-budget .m52-by-fonction .M52-DI-9 path,
+  .explore-budget .m52-by-fonction .M52-DF-9 path {
+    fill: #E7AD79; }
+  .explore-budget .m52-by-fonction .M52-RI-10 path,
+  .explore-budget .m52-by-fonction .M52-RF-10 path {
+    fill: #8DE4D3; }
+  .explore-budget .m52-by-fonction .M52-DI-10 path,
+  .explore-budget .m52-by-fonction .M52-DF-10 path {
+    fill: #6B4472; }
+  .explore-budget .m52-by-fonction .M52-RI-11 path,
+  .explore-budget .m52-by-fonction .M52-RF-11 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-11 path,
+  .explore-budget .m52-by-fonction .M52-DF-11 path {
+    fill: #D574BA; }
+  .explore-budget .m52-by-fonction .M52-RI-12 path,
+  .explore-budget .m52-by-fonction .M52-RF-12 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-12 path,
+  .explore-budget .m52-by-fonction .M52-DF-12 path {
+    fill: #DAA9CC; }
+  .explore-budget .m52-by-fonction .M52-RI-13 path,
+  .explore-budget .m52-by-fonction .M52-RF-13 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-13 path,
+  .explore-budget .m52-by-fonction .M52-DF-13 path {
+    fill: #9D0D6C; }
+  .explore-budget .m52-by-fonction .M52-RI-14 path,
+  .explore-budget .m52-by-fonction .M52-RF-14 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-14 path,
+  .explore-budget .m52-by-fonction .M52-DF-14 path {
+    fill: #F5A683; }
+  .explore-budget .m52-by-fonction .M52-RI-15 path,
+  .explore-budget .m52-by-fonction .M52-RF-15 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-15 path,
+  .explore-budget .m52-by-fonction .M52-DF-15 path {
+    fill: #D9A08D; }
+  .explore-budget .m52-by-fonction .M52-RI-16 path,
+  .explore-budget .m52-by-fonction .M52-RF-16 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-16 path,
+  .explore-budget .m52-by-fonction .M52-DF-16 path {
+    fill: #B67979; }
+  .explore-budget .m52-by-fonction .M52-RI-17 path,
+  .explore-budget .m52-by-fonction .M52-RF-17 path {
+    fill: #ffffff; }
+  .explore-budget .m52-by-fonction .M52-DI-17 path,
+  .explore-budget .m52-by-fonction .M52-DF-17 path {
+    fill: #D53131; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-0, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-0 {
+    background-color: #62A5CB; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-0, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-0 {
+    background-color: #EE9FCF; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-1, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-1 {
+    background-color: #12982D; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-1, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-1 {
+    background-color: #FEC125; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-2, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-2 {
+    background-color: #5AAF4B; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-2, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-2 {
+    background-color: #FE6F3E; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-3, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-3 {
+    background-color: #00AAD2; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-3, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-3 {
+    background-color: #FF6C7E; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-4, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-4 {
+    background-color: #462D87; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-4, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-4 {
+    background-color: #E2A302; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-5, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-5 {
+    background-color: #ABD533; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-5, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-5 {
+    background-color: #670501; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-6, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-6 {
+    background-color: #317CB2; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-6, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-6 {
+    background-color: #95704D; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-7, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-7 {
+    background-color: #A2B8F0; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-7, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-7 {
+    background-color: #B34A01; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-8, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-8 {
+    background-color: #02424A; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-8, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-8 {
+    background-color: #F7393A; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-9, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-9 {
+    background-color: #1F9383; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-9, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-9 {
+    background-color: #E7AD79; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-10, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-10 {
+    background-color: #8DE4D3; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-10, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-10 {
+    background-color: #6B4472; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-11, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-11 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-11, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-11 {
+    background-color: #D574BA; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-12, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-12 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-12, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-12 {
+    background-color: #DAA9CC; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-13, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-13 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-13, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-13 {
+    background-color: #9D0D6C; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-14, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-14 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-14, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-14 {
+    background-color: #F5A683; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-15, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-15 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-15, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-15 {
+    background-color: #D9A08D; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-16, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-16 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-16, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-16 {
+    background-color: #B67979; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-RI-17, .explore-budget .m52-by-fonction .legend-list .color.M52-RF-17 {
+    background-color: #ffffff; }
+  .explore-budget .m52-by-fonction .legend-list .color.M52-DI-17, .explore-budget .m52-by-fonction .legend-list .color.M52-DF-17 {
+    background-color: #D53131; }
+
+.explore-budget .actionable {
+  cursor: pointer; }
+
+.explore-budget .with-focus .brick:not(.focused) rect, .explore-budget .with-focus .brick:not(.focused) circle, .explore-budget .with-focus .brick:not(.focused) path,
+.explore-budget .with-focus .disk:not(.focused) rect,
+.explore-budget .with-focus .disk:not(.focused) circle,
+.explore-budget .with-focus .disk:not(.focused) path {
+  fill: #bdbdbd !important; }
+
+.explore-budget .with-focus g.actionable:not(.focused) {
+  fill: #bdbdbd !important; }
+
+footer.w-files {
+  background: #FAF9F9;
+  width: 100%;
+  padding: 1em; }
+  footer.w-files h3 {
+    margin-bottom: .6em;
+    text-align: left; }
+  footer.w-files .icon {
+    height: 24px;
+    width: 24px;
+    color: black;
+    margin-right: .3em;
+    vertical-align: bottom; }
+    footer.w-files .icon--pull {
+      position: absolute;
+      left: 0; }
+  footer.w-files .w-files__links {
+    margin-bottom: 1.5em; }
+    footer.w-files .w-files__links > li {
+      margin-bottom: .25em; }
+  footer.w-files a {
+    color: #342b24;
+    text-decoration: underline; }
+    footer.w-files a:hover, footer.w-files a:focus {
+      color: black;
+      text-decoration: none; }
+  @media screen and (min-width: 600px) {
+    footer.w-files {
+      padding: 2em 5em; } }
+
+.d3-axis line {
+  stroke: #E5E2DF;
+  stroke-width: 1px; }
+
+.d3-axis text {
+  fill: #685c53;
+  font-size: .8em; }
+
+.d3-axis.x .actionable:not(.selected) text {
+  text-decoration: underline; }
+
+.stackchart .content text.stackchart-title {
+  fill: #685c53;
+  font-size: .9em; }
+  .stackchart .content text.stackchart-title tspan:nth-child(2) {
+    font-weight: 100; }
+
+.stackchart .content .selected text.stackchart-title {
+  fill: #342b24;
+  font-weight: bold; }
+
+.stackchart .content .brick.focused {
+  stroke: white;
+  stroke-width: 1px;
+  filter: drop-shadow(0 0 2px blue); }
+
+.stackchart .d3-axis .selected {
+  font-weight: bold; }
+  .stackchart .d3-axis .selected text {
+    fill: black; }
+
+.stackchart .react-tooltip {
+  width: 200px; }
+
+.react-tooltip {
+  box-sizing: border-box;
+  box-shadow: 1px 1px 1px #a4a4a4;
+  padding: 0.8em;
+  color: #342b24;
+  background-color: white;
+  opacity: 1;
+  border: 1px solid #E5E2DF;
+  border-radius: 1px; }
+  .react-tooltip.show {
+    opacity: 1 !important; }
+  .react-tooltip .label {
+    font-weight: bold; }
+  .react-tooltip p:first-child {
+    margin-top: 0em; }
+  .react-tooltip p:last-child {
+    margin-bottom: 0em; }
+  .react-tooltip a {
+    color: black; }
+  .react-tooltip .react-tooltip-type-aggregation {
+    color: #685c53; }
+
+.btn {
+  display: inline-block;
+  color: white;
+  background: #e62e46;
+  font-size: 1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 2px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s ease-in;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3); }
