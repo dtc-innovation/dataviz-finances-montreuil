@@ -53,7 +53,7 @@ Minima:
 
 ## Installer le projet
 
-L'installation de [`node@>=12`][nodejs] est nécessaire avant de continuer.
+L'installation de [`node@>=14`][nodejs] est nécessaire avant de continuer.
 
 Il faut (_forker_ et) _cloner_ ce dépôt pour procéder à l'installation des dépendances du projet :
 
