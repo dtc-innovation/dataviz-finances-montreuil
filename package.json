@@ -23,6 +23,7 @@
     "watch:bundle": "cross-env NODE_ENV=development BUNDLE_SUFFIX='.dev' BASE_URL=http://localhost:3000 run-p watch:bundle:*",
     "watch:bundle:style": "node-sass --watch src/public/style/main.scss build/public${BUNDLE_SUFFIX}.css",
     "watch:bundle:script": "watchify --iw **/node_modules/** src/public/js/main.js -o build/dataviz-finance-bundle${BUNDLE_SUFFIX}.js -d -v",
+    "watch:bundle:script": "watchify --iw **/node_modules/** src/finance-overview/js/main.js -o build/finance-overview-bundle${BUNDLE_SUFFIX}.js -d -v",
     "lint": "eslint --ignore-path .gitignore src/",
     "lint-fix": "npm run lint -- --fix"
   },
