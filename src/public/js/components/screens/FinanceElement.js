@@ -155,7 +155,6 @@ export function FinanceElement({contentId, element, explorationYear, aggregation
 
     const isLeaf = !(thisYearPartition && thisYearPartition.size >= 2);*/
 
-    console.log('element', element)
     const total = element && aggregatedDocumentBudgetaireNodeTotal(element)
     const lignesBudget = element && aggregatedDocumentBudgetaireNodeElements(element)
 

@@ -60,8 +60,6 @@ test("StackChart with 2 equal values takes all the height with BRICK_SPACING", (
     const firstRect = rects.at(0);
     const secondRect = rects.at(1);
 
-    //console.log('heights', firstRect.props.height, typeof firstRect.props.height);
-
     expect(firstRect.prop('height') + secondRect.prop('height') + rects.length*BRICK_SPACING).toBe(HEIGHT - 2*HEIGHT_PADDING);
     expect(firstRect.prop('height')).toEqual(secondRect.prop('height'));
 });

@@ -29,8 +29,8 @@ export default function BubbleChartCluster(props){
     const maxNodeValue = max([].concat(...families.map(f => f.children)), f => f.total);
     const total = sum(families, f => f.total);
 
-    console.log('families', families)
-    console.log('families total %d | max %d', total, maxNodeValue)
+    console.debug('families', families)
+    console.debug('families total %d | max %d', total, maxNodeValue)
 
     return (<div className={cx('bubble-chart-cluster', focusedItem && 'with-focus')}>
         {families
