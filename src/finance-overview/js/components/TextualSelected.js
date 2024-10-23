@@ -3,7 +3,8 @@ import {OrderedSet} from 'immutable';
 import {format} from 'currency-formatter';
 
 import {M52_INSTRUCTION, AGGREGATED_INSTRUCTION} from '../../../shared/js/finance/constants';
-import {makeLigneBudgetId} from 'document-budgetaire/Records.js';
+import * as pkg from 'document-budgetaire/Records.js';
+const {makeLigneBudgetId} = pkg;
 
 
 export default class TextualSelected extends React.PureComponent{

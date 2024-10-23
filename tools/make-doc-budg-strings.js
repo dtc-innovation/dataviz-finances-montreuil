@@ -1,5 +1,5 @@
-import {join} from 'path';
-import {readdir, readFile, writeFile} from 'fs-extra';
+import {join} from 'node:path';
+import {readdir, readFile, writeFile} from 'node:fs/promises';
 import xmlBufferToString from 'xml-buffer-tostring';
 import {DOMParser} from 'xmldom';
 

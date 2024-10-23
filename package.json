@@ -4,8 +4,9 @@
   "version": "1.0.8",
   "description": "...",
   "main": "index.js",
+  "type": "module",
   "engines": {
-    "node": ">=14"
+    "node": ">=22"
   },
   "scripts": {
     "serve": "serve -l 3000 --no-clipboard",
@@ -14,14 +15,14 @@
     "build": "run-s build:data:* build:env:*",
     "build:env:prod": "cross-env NODE_ENV=production BASE_URL=${BASE_URL:=https://dtc-innovation.github.io/dataviz-finances-montreuil} run-p build:bundle:*",
     "build:env:demo": "cross-env NODE_ENV=demo BUNDLE_SUFFIX='.dev' BASE_URL=${BASE_URL:=https://dtc-innovation.github.io/dataviz-finances-montreuil} run-p build:bundle:*",
-    "build:bundle:style": "node-sass src/public/style/main.scss build/public${BUNDLE_SUFFIX}.css",
+    "build:bundle:style": "sass src/public/style/main.scss build/public${BUNDLE_SUFFIX}.css",
     "build:bundle:script": "browserify src/public/js/main.js -o build/dataviz-finance-bundle${BUNDLE_SUFFIX}.js -p tinyify",
     "build:bundle:overview": "browserify src/finance-overview/js/main.js -o build/finance-overview-bundle${BUNDLE_SUFFIX}.js -p tinyify",
-    "build:data:finance-data": "cross-env SOURCE_COMPTES_DIR=data/finances/plansDeCompte SOURCE_CA_DIR=data/finances/CA BUILD_FINANCE_DIR=build/finances node -r esm tools/make-finance-data.js",
-    "build:data:finance-strings": "cross-env SOURCE_COMPTES_DIR=data/finances/plansDeCompte BUILD_FINANCE_DIR=build/finances node -r esm tools/make-doc-budg-strings.js",
+    "build:data:finance-data": "cross-env SOURCE_COMPTES_DIR=data/finances/plansDeCompte SOURCE_CA_DIR=data/finances/CA BUILD_FINANCE_DIR=build/finances node tools/make-finance-data.js",
+    "build:data:finance-strings": "cross-env SOURCE_COMPTES_DIR=data/finances/plansDeCompte BUILD_FINANCE_DIR=build/finances node tools/make-doc-budg-strings.js",
     "dl:plans-de-compte": "plans-de-compte --in data/finances/CA --out data/finances/plansDeCompte",
     "watch:bundle": "cross-env NODE_ENV=development BUNDLE_SUFFIX='.dev' BASE_URL=http://localhost:3000 run-p watch:bundle:*",
-    "watch:bundle:style": "node-sass --watch src/public/style/main.scss build/public${BUNDLE_SUFFIX}.css",
+    "watch:bundle:style": "sass --watch src/public/style/main.scss build/public${BUNDLE_SUFFIX}.css",
     "watch:bundle:script": "watchify --iw **/node_modules/** src/finance-overview/js/main.js -o build/finance-overview-bundle${BUNDLE_SUFFIX}.js -d -v",
     "lint": "eslint --ignore-path .gitignore src/",
     "lint-fix": "npm run lint -- --fix"
@@ -36,6 +37,7 @@
     "url": "https://github.com/dtc-innovation/dataviz-finances-montreuil/issues"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>tests/setupTests.js"
     ],
@@ -53,17 +55,8 @@
       "babelify"
     ]
   },
-  "esm": {
-    "mode": "auto",
-    "cjs": {
-      "namedExports": true,
-      "vars": true
-    }
-  },
   "dependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "acorn": "^6.4.2",
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "currency-formatter": "^1.5.9",
     "d3-array": "^2.12.1",
     "d3-dsv": "^1.2.0",
@@ -72,19 +65,17 @@
     "d3-scale": "^1.0.7",
     "d3-shape": "^1.3.7",
     "document-budgetaire": "file:src/document-budgetaire",
-    "esm": "^3.2.25",
     "fast-memoize": "^2.5.2",
-    "fs-extra": "^4.0.3",
     "immutable": "^4.3.7",
     "lodash.memoize": "^4.1.2",
     "markdown-it": "^8.4.2",
     "markdown-it-link-attributes": "^2.1.0",
     "nearley": "^2.20.1",
     "page": "^1.11.6",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-redux": "^7.2.9",
-    "react-tooltip": "^3.11.6",
+    "react-tooltip": "^4.0.0",
     "redux": "^4.2.1",
     "uuid": "^3.4.0",
     "xml-buffer-tostring": "^0.2.0",
@@ -93,22 +84,22 @@
   "devDependencies": {
     "@babel/preset-env": "^7.25.9",
     "@babel/preset-react": "^7.25.9",
-    "babel-jest": "^24.9.0",
-    "babel-plugin-inline-react-svg": "^1.1.2",
-    "babel-plugin-transform-inline-environment-variables": "^0.2.0",
+    "@cfaester/enzyme-adapter-react-18": "^0.8.0",
+    "babel-jest": "^29.7.0",
+    "babel-plugin-inline-react-svg": "^2.0.0",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.0",
     "babelify": "^10.0.0",
     "browserify": "^16.5.2",
-    "cross-env": "^5.2.1",
+    "cross-env": "^7.0.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.8",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.37.2",
-    "jest": "^24.9.0",
-    "jest-immutable-matchers": "^1.4.0",
-    "node-sass": "^4.14.1",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-immutable-matchers": "^3.0.0",
     "npm-run-all": "^4.1.5",
     "plans-de-compte": "git+https://github.com/dtc-innovation/plans-de-compte.git#cd8b03b",
-    "react-test-renderer": "^16.14.0",
+    "sass": "^1.80.3",
     "serve": "^11.3.2",
     "tinyify": "^2.5.2",
     "watchify": "^3.11.1"

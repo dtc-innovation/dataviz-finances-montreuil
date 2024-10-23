@@ -1,10 +1,10 @@
-import {join} from 'path';
-import {mkdir, writeFile, readFile} from 'fs-extra';
+import {join} from 'node:path';
+import {mkdir, writeFile, readFile} from 'node:fs/promises';
 import {csvParse} from 'd3-dsv'
 
-import xmlDocumentToDocumentBudgetaire from '../src/shared/js/finance/xmlDocumentToDocumentBudgetaire';
-import makeNatureToChapitreFI from '../src/shared/js/finance/makeNatureToChapitreFI';
-import makeAggregateFunction from '../src/shared/js/finance/makeAggregateFunction';
+import xmlDocumentToDocumentBudgetaire from '../src/shared/js/finance/xmlDocumentToDocumentBudgetaire.js';
+import makeNatureToChapitreFI from '../src/shared/js/finance/makeNatureToChapitreFI.js';
+import makeAggregateFunction from '../src/shared/js/finance/makeAggregateFunction.js';
 
 import MontreuilNomenclatureToAggregationDescription from '../src/public/js/MontreuilNomenclatureToAggregationDescription.js'
 
@@ -16,11 +16,11 @@ const BUILD_FINANCE_DIR = process.env.BUILD_FINANCE_DIR;
 
 const natureToChapitreFIP = readXmlFilesInDir(SOURCE_COMPTES_DIR).then(makeNatureToChapitreFI);
 
-const montreuilNomenclatureP = readFile(join(__dirname, '../data/agrégation-montreuil.csv'), {encoding: 'utf8'})
+const montreuilNomenclatureP = readFile(join(import.meta.dirname, '../data/agrégation-montreuil.csv'), {encoding: 'utf8'})
 .then(csvParse)
 
 
-mkdir(BUILD_FINANCE_DIR)
+mkdir(BUILD_FINANCE_DIR, {recursive: true})
 .catch(err => {
     // ignore if folder already exists
     if(err.code !== 'EEXIST') { throw err; }

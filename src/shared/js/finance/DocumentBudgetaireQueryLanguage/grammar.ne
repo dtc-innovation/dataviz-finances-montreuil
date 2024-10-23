@@ -1,3 +1,4 @@
+@preprocessor module
 # Grammar inspired by https://github.com/kach/nearley/blob/master/examples/calculator/arithmetic.ne
 
 main -> _ AS _      {% ts => ts[1] %}
@@ -17,7 +18,7 @@ AS -> AS _ "+" _ M  {% ts => ts.filter(x => !!x) %}
     | AS _ "-" _ M  {% ts => ts.filter(x => !!x) %}
     | M             {% id %}
 
-# Subsets 
+# Subsets
 SUBSET -> RD        {% id %}
     | FI            {% id %}
     | RDFI          {% id %}
