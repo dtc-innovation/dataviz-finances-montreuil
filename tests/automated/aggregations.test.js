@@ -1,15 +1,12 @@
 import {Set as ImmutableSet} from 'immutable'
 import {sum} from 'd3-array';
 
-import * as matchers from 'jest-immutable-matchers';
-
-import { DocumentBudgetaire, LigneBudgetRecord } from 'document-budgetaire/Records.js';
+import * as pkg from 'document-budgetaire/Records.js';
+const { DocumentBudgetaire, LigneBudgetRecord } = pkg;
 import hierarchicalByFunction from '../../src/shared/js/finance/hierarchicalByFunction';
 import {flattenTree} from '../../src/shared/js/finance/visitHierarchical.js';
 
 import { DF, RF, RI, DI } from '../../src/shared/js/finance/constants';
-
-jest.addMatchers(matchers);
 
 const {documentBudgetaires, aggregations} = require('../../build/finances/finance-data.json');
 const docBudg = documentBudgetaires.map(db => {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +24,6 @@
   },
   "dependencies": {
     "babelify": "^10.0.0",
-    "immutable": "^3.8.1"
+    "immutable": "^4.0.0"
   }
 }

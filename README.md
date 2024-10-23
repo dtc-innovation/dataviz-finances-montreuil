@@ -37,7 +37,6 @@ L'outil est composé comme suit :
 ```html
 <div class="finance-dataviz-container"></div>
 <link rel="stylesheet" href="https://dtc-innovation.github.io/dataviz-finances-montreuil/build/public.css">
-<script defer crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Map%2CSet%2CIntl%2CArray.prototype.flat%2CArray.prototype.flatMap%2Ces2017%2Ces2016%2Ces2015"></script>
 <script defer src="https://dtc-innovation.github.io/dataviz-finances-montreuil/build/dataviz-finance-bundle.js"></script>
 ```
 

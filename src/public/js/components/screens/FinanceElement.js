@@ -8,7 +8,8 @@ import page from 'page';
 
 import { max } from 'd3-array';
 
-import {makeLigneBudgetId}  from 'document-budgetaire/Records.js';
+import * as pkg  from 'document-budgetaire/Records.js';
+const {makeLigneBudgetId} = pkg;
 import {hierarchicalByFunction}  from '../../../../shared/js/finance/memoized';
 import {default as visit, flattenTree, getElementById} from '../../../../shared/js/finance/visitHierarchical.js';
 import {aggregatedDocumentBudgetaireNodeTotal, aggregatedDocumentBudgetaireNodeElements} from '../../../../shared/js/finance/AggregationDataStructures.js';

@@ -3,7 +3,8 @@ import {format} from 'currency-formatter';
 import {sum} from 'd3-array';
 
 import {hierarchicalAggregated} from '../../../shared/js/finance/memoized';
-import {makeLigneBudgetId} from 'document-budgetaire/Records.js';
+import * as pkg from 'document-budgetaire/Records.js';
+const {makeLigneBudgetId} = pkg;
 import {flattenTree} from '../../../shared/js/finance/visitHierarchical';
 
 function makeUnusedM52RowsSet(aggregatedInstruction, rows){

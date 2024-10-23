@@ -1,13 +1,9 @@
 import {Set as ImmutableSet} from 'immutable'
 
-import * as matchers from 'jest-immutable-matchers';
-
 import { DocumentBudgetaire, LigneBudgetRecord } from 'document-budgetaire/Records.js';
 import hierarchicalByFunction from '../../src/shared/js/finance/hierarchicalByFunction';
 
 import { DF, RF, RI, DI } from '../../src/shared/js/finance/constants';
-
-jest.addMatchers(matchers);
 
 const {documentBudgetaires} = require('../../build/finances/finance-data.json');
 const docBudg = documentBudgetaires.map(db => {

@@ -1,7 +1,8 @@
 import {Set} from 'immutable';
 
 import {csvParse} from 'd3-dsv';
-import {SplitLigneBudgetRecord} from 'document-budgetaire/Records.js';
+import * as pkg from 'document-budgetaire/Records.js';
+const {SplitLigneBudgetRecord} = pkg;
 
 export function format(rows){
 

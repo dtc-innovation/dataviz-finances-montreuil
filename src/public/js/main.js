@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { Record, Map as ImmutableMap, List, Set as ImmutableSet } from 'immutable';
 import { csv } from 'd3-fetch';
@@ -9,7 +9,8 @@ import page from 'page';
 import {assets, FINANCE_DATA, AGGREGATED_ATEMPORAL, AGGREGATED_TEMPORAL, CORRECTIONS_AGGREGATED} from './constants/resources';
 import reducer from './reducer';
 
-import {LigneBudgetRecord, DocumentBudgetaire} from 'document-budgetaire/Records.js';
+import * as pkg from 'document-budgetaire/Records.js';
+const {LigneBudgetRecord, DocumentBudgetaire} = pkg;
 import csvStringToCorrections from '../../shared/js/finance/csvStringToCorrections.js';
 
 import Breadcrumb from '../../shared/js/components/Breadcrumb';
@@ -183,12 +184,13 @@ csv(assets[AGGREGATED_TEMPORAL])
  */
 
 const exploreView = ({params}) => {
+    const contentRoot = createRoot(CONTAINER_ELEMENT)
+    const breadcrumbRoot = createRoot(BREADCRUMB_CONTAINER)
     const {financeDetailId, politiqueId} = params
     store.dispatch({ type: FINANCE_DETAIL_ID_CHANGE, financeDetailId, politiqueId })
 
-    ReactDOM.render(
+    contentRoot.render(
         <Provider store={store}><ExploreBudget /></Provider>,
-        CONTAINER_ELEMENT
     );
 
     const breadcrumb = DEFAULT_BREADCRUMB.push({
@@ -196,7 +198,7 @@ const exploreView = ({params}) => {
         url: '#!/explorer/DEPENSE/FONCTIONNEMENT'
     });
 
-    ReactDOM.render(<Breadcrumb items={breadcrumb} />, BREADCRUMB_CONTAINER );
+    breadcrumbRoot.render(<Breadcrumb items={breadcrumb} />);
 }
 
 page('/', () => page.redirect('/explorer/DEPENSE/FONCTIONNEMENT'));

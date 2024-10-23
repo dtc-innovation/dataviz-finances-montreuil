@@ -2,7 +2,8 @@ import React, {Fragment, useRef, useEffect} from 'react';
 import {group, sum} from 'd3-array';
 import cx from 'clsx';
 
-import {makeLigneBudgetId}  from 'document-budgetaire/Records.js';
+import * as pkg  from 'document-budgetaire/Records.js';
+const {makeLigneBudgetId} = pkg;
 
 import {natureLabels,fonctionLabels} from '../../../../build/finances/finance-strings.json';
 import {currencyFormat} from './MoneyAmount.js';
